@@ -1,0 +1,214 @@
+{
+    "displayName" : "BNSF Barstow",
+    "shortName" : "Barstow",
+    
+    "filterColors":{
+        "humpColors":{
+            "SLUFF" : "#ffffff",
+            "SHOP" : "#ff0000",
+            "BARFUEL" : "#ff00ff",
+            "BARSAND" : "#ff00ff",
+            "0102" : "#cc9900",
+            "0101" : "#996600",
+            "0041" : "#996633",
+            "SBD" : "#669900",
+            "PPH" : "#99cc00",
+            "FRS" : "#00ff00",
+            "WAT" : "#3333cc",
+            "SDG" : "#995533",
+            "GAL" : "#9966ff",
+            "STO" : "#00ff99",
+            "PAS" : "#99cc00",
+            "BAK" : "#ffcc00",
+            "MAL" : "#0099ff",
+            "LAJ" : "#00ffff",
+            "LMC" : "#00ccff",
+            "BEL" : "#cc0099",
+            "KCK" : "#ff6600",
+            "WCL" : "#ffff00",
+            "0611" : "#660033",
+            "1161" : "#990000",
+            "PHX": "#c65353",
+            "default" : "#ffffff"
+        },
+        "simpleColors":{
+            "engine" : "orange",
+            "hazmat" : "red", 
+            "default" : "white"
+            
+        }
+    },
+    
+    
+    
+    "humpTags" : {
+        "B1":"SLUFF SHOP BARFUEL BARSAND",
+        "B2":"0102",
+        "B3":"0101",
+        "B4":"0041",
+        "B5":"SBD",
+        "B6":"PPH",
+        "B7":"OVERFLOW",
+        "B8":"FRS",
+        "B9":"OVERFLOW",
+        "B10":"WAT",
+        "B11":"SDG",
+        "B12":"GAL",
+        "B13":"STO",
+        "B14":"OVERFLOW",
+        "B15":"PAS",
+        "B16":"OVERFLOW",
+        "B17":"BAK",
+        "B18":"MAL",
+        "B19":"LAJ",
+        "B20":"LMC",
+        "B21":"BEL",
+        "B22":"KCK",
+        "B23":"WCL",
+        "B24":"0611",
+        "B25":"1161",
+        "B26":"PHX"
+    },
+    
+    "subyards":{
+        "Receiving":{
+            "R11":{"length":null, "visTag":"RUNNER"},
+            "R1":{"length":6450},
+            "R2":{"length":6700},
+            "R3":{"length":7050},
+            "R4":{"length":7360},
+            "R5":{"length":7650},
+            "R6":{"length":7570},
+            "R7":{"length":7280},
+            "R8":{"length":6970},
+            "R9":{"length":6650},
+            "R10":{"length":6490}
+        },
+        "Bowl":{
+            "B1":{"length":1650, "visTag":"SLUFF"},
+            "B2":{"length":1760, "visTag":"CAJON"},
+            "B3":{"length":1870, "visTag":"HESPERIA"},
+            "B4":{"length":1975, "visTag":"THORN"},
+            "B5":{"length":2085, "visTag":"SAN BERNARDINO"},
+            "B6":{"length":2195, "visTag":"PORPHYRY"},
+            "B7":{"length":2300, "visTag":"OVERFLOW"},
+            "B8":{"length":2410, "visTag":"CALWA"},
+            "B9":{"length":2520, "visTag":"OVERFLOW"},
+            "B10":{"length":2630, "visTag":"WATSON"},
+            "B11":{"length":2740, "visTag":"SAN DIEGO"},
+            "B12":{"length":2850, "visTag":"GALESBURG"},
+            "B13":{"length":2900, "visTag":"STOCKTON"},
+            "B14":{"length":2795, "visTag":"OVERFLOW"},
+            "B15":{"length":2685, "visTag":"PASCO"},
+            "B16":{"length":2685, "visTag":"OVERFLOW"},
+            "B17":{"length":3065, "visTag":"BAKERSFIELD"},
+            "B18":{"length":3065, "visTag":"MALABAR"},
+            "B19":{"length":3175, "visTag":"LAJ"},
+            "B20":{"length":3175, "visTag":"LA MIRADA"},
+            "B21":{"length":3120, "visTag":"BELEN"},
+            "B22":{"length":3010, "visTag":"KANSAS CITY"},
+            "B23":{"length":2900, "visTag":"WEST COLTON"},
+            "B24":{"length":2795, "visTag":"BORON"},
+            "B25":{"length":2630, "visTag":"CADIZ"},
+            "B26":{"length":2630, "visTag":"PHOENIX"}
+        },
+        "North Departure":{
+            "ND1":{"length":8000},
+            "ND2":{"length":7680},
+            "ND3":{"length":7445},
+            "ND4":{"length":7155},
+            "ND5":{"length":6860},
+            "ND6":{"length":6860}
+        },
+        "South Departure":{
+            "SD1":{"length":6700},
+            "SD2":{"length":6400},
+            "SD3":{"length":6115},
+            "SD4":{"length":5730},
+            "SD5":{"length":5530},
+            "SD6":{"length":5400}
+        },
+        "Local Yard":{
+            "L1":{"length":3080},
+            "L2":{"length":3080},
+            "L3":{"length":3080},
+            "L4":{"length":3080}
+        },
+        "Inspection Yard":{
+            "I1":{"length":8110},
+            "I2":{"length":7610},
+            "I3":{"length":7610}
+        },
+        "Ramp":{
+            "Buggy 1":{"length":2790},
+            "Buggy 2":{"length":2790}
+        },
+        "Old Yard":{
+            "OY1":{"length":1745},
+            "OY2":{"length":1745},
+            "OY3":{"length":2080},
+            "OY4":{"length":4990},
+            "OY5":{"length":5115},
+            "OY6":{"length":5450},
+            "OY7":{"length":4080},
+            "OY8":{"length":4210},
+            "OY9":{"length":2255},
+            "OY10":{"length":1950},
+            "OY11":{"length":1720},
+            "OY12":{"length":null}
+        }
+        
+    },
+    "nextTrain":{
+        "SHOP":["B/O"],
+        "BARFUEL":["TERM"],
+        "BARSAND":["TERM"],
+        "0102":["L-CAL0102"],
+        "0101":["L-CAL0101"],
+        "0041":["R-CAL0041"],
+        "SBD":["H-BARSDG"],
+        "PPH":["H-BARSDG"],
+        "FRS":["H-BARSTO", "H-BARPAS"],
+        "WAT":["M-BARWAT", "H-BARWAT"],
+        "SDG":["M-BARSDG", "H-BARSDG"],
+        "GAL":["M-BARGAL", "H-BARGAL"],
+        "STO":["M-BARSTO", "H-BARSTO"],
+        "PAS":["M-BARPAS", "H-BARPAS"],
+        "BAK":["H-BARBAK"],
+        "MAL":["H-BARLAC"],
+        "LAJ":["H-BARLAC"],
+        "LMC":["H-BARLAC"],
+        "BEL":["M-BARBEL", "H-BARBEL"],
+        "KCK":["M-BARKCK", "H-BARKCK"],
+        "WCL":["H-BARWCL"],
+        "0611":["L-CAL0611"],
+        "1161":["L-CAL1161"],
+        "PHX":["L-CAL1161"]
+    },
+    
+    "offRouteTags": ["WAT", "SDG", "GAL", "STO", "PAS", "BEL", "KCK", "PHX",
+                     "FR", "RV", "LB", "FW", "AN", "TU", "RO", "NP"],
+    
+    "originateTrains":[
+        "L-CAL0101", "L-CAL0102", "L-CAL0611", "L-CAL1161", "R-CAL0041",
+        
+        "H-BARBAK", "H-BARBEL", "H-BARGAL", "H-BARKCK", 
+        "H-BARLAC", "H-BARPAS", "H-BARSDG", "H-BARSTO", 
+        "H-BARWAT", "H-BARWCL",  
+        
+        "M-BARBEL", "M-BARGAL", "M-BARKCK", "M-BARPAS", 
+        "M-BARSDG", "M-BARSTO", "M-BARWAT"      
+    ],
+    "workTrains":[],
+    "buildableTracks":[
+        "ND1", "ND2", "ND3", "ND4", "ND5", "ND6",
+        "SD1", "SD2", "SD3", "SD4", "SD5", "SD6",
+        "L1", "L2", "L3", "L4",
+        "I1", "I2", "I3", 
+        "R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8", "R9", "R10",
+        "OY1", "OY2", "OY3", "OY4", "OY5", "OY6", 
+        "OY7", "OY8", "OY9", "OY10", "OY11", "OY12"
+    ]
+        
+}
+

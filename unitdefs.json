@@ -1,0 +1,2324 @@
+[
+  {
+    "xmlName": "R8_CoveredHopper_ACF2700_CSX1",
+    "initials": "CSXT",
+    "emptyWeight": 28,
+    "lengthFt": 41.6
+  },
+  {
+    "xmlName": "R8_CoveredHopper_ACF2700_CSX2",
+    "initials": "CSXT",
+    "emptyWeight": 28,
+    "lengthFt": 41.6
+  },
+  {
+    "xmlName": "R8_CoveredHopper_ACF2700_DTS01",
+    "initials": "DTS",
+    "emptyWeight": 28,
+    "lengthFt": 41.6
+  },
+  {
+    "xmlName": "R8_CoveredHopper_ACF2970_BN01",
+    "initials": "BN",
+    "emptyWeight": 28,
+    "lengthFt": 41.46
+  },
+  {
+    "xmlName": "R8_CoveredHopper_ACF2970_BNSF01",
+    "initials": "BNSF",
+    "emptyWeight": 28,
+    "lengthFt": 41.46
+  },
+  {
+    "xmlName": "R8_CoveredHopper_ACF2970_CNW01",
+    "initials": "CNW",
+    "emptyWeight": 28,
+    "lengthFt": 41.46
+  },
+  {
+    "xmlName": "R8_CoveredHopper_ACF2970_NW01",
+    "initials": "NW",
+    "emptyWeight": 28,
+    "lengthFt": 41.46
+  },
+  {
+    "xmlName": "R8_CoveredHopper_ACF2970_SP01",
+    "initials": "SP",
+    "emptyWeight": 28,
+    "lengthFt": 41.46
+  },
+  {
+    "xmlName": "R8_CoveredHopper_ACF2970_WW01",
+    "initials": "WW",
+    "emptyWeight": 28,
+    "lengthFt": 41.46
+  },
+  {
+    "xmlName": "R8_CoveredHopper_Trin3281_CEFX",
+    "initials": "CEFX",
+    "emptyWeight": 26,
+    "lengthFt": 41.79
+  },
+  {
+    "xmlName": "R8_CoveredHopper_Trin3281_CEMX",
+    "initials": "CEMX",
+    "emptyWeight": 26,
+    "lengthFt": 41.79
+  },
+  {
+    "xmlName": "R8_CoveredHopper_Trin3281_GACX01",
+    "initials": "GACX",
+    "emptyWeight": 27,
+    "lengthFt": 41.79
+  },
+  {
+    "xmlName": "R8_CoveredHopper_Trin3281_MBKX01",
+    "initials": "MBKX",
+    "emptyWeight": 26,
+    "lengthFt": 41.79
+  },
+  {
+    "xmlName": "R8_CoveredHopper_Trin3281_MCEX01",
+    "initials": "MCEX",
+    "emptyWeight": 26,
+    "lengthFt": 41.79
+  },
+  {
+    "xmlName": "R8_CoveredHopper_Trin3281_NS",
+    "initials": "NS",
+    "emptyWeight": 26,
+    "lengthFt": 41.79
+  },
+  {
+    "xmlName": "R8_CoveredHopper_Trin3281_TILX",
+    "initials": "TILX",
+    "emptyWeight": 26,
+    "lengthFt": 41.79
+  },
+  {
+    "xmlName": "R8_CoveredHopper_PS4750_BNSF01",
+    "initials": "BNSF",
+    "emptyWeight": 32,
+    "lengthFt": 59.75
+  },
+  {
+    "xmlName": "R8_CoveredHopper_PS4750_CSXT01",
+    "initials": "CSXT",
+    "emptyWeight": 32,
+    "lengthFt": 59.75
+  },
+  {
+    "xmlName": "R8_CoveredHopper_PS4750_DGHX01",
+    "initials": "DGHX",
+    "emptyWeight": 32,
+    "lengthFt": 59.75
+  },
+  {
+    "xmlName": "R8_CoveredHopper_PS4750_UP01",
+    "initials": "UP",
+    "emptyWeight": 32,
+    "lengthFt": 59.75
+  },
+  {
+    "xmlName": "Run8_Tank105_Acid",
+    "initials": "TILX",
+    "emptyWeight": 36,
+    "lengthFt": 49.47
+  },
+  {
+    "xmlName": "Run8_Tank105_AcidDirt",
+    "initials": "TILX",
+    "emptyWeight": 36,
+    "lengthFt": 49.47
+  },
+  {
+    "xmlName": "R8_Autorack_ATSF_ETTX1",
+    "initials": "ATSF",
+    "emptyWeight": 50,
+    "lengthFt": 93.76
+  },
+  {
+    "xmlName": "R8_AutoRack_Bi_CN01",
+    "initials": "CN",
+    "emptyWeight": 50,
+    "lengthFt": 93.76
+  },
+  {
+    "xmlName": "R8_AutoRack_Bi_CR01",
+    "initials": "CR",
+    "emptyWeight": 50,
+    "lengthFt": 93.76
+  },
+  {
+    "xmlName": "R8_AutoRack_Bi_CSX01",
+    "initials": "CSXT",
+    "emptyWeight": 50,
+    "lengthFt": 93.76
+  },
+  {
+    "xmlName": "R8_AutoRack_Bi_UP01",
+    "initials": "UP",
+    "emptyWeight": 50,
+    "lengthFt": 93.76
+  },
+  {
+    "xmlName": "R8_Autorack_CNW_TTGX1",
+    "initials": "CNW",
+    "emptyWeight": 50,
+    "lengthFt": 93.76
+  },
+  {
+    "xmlName": "R8_Autorack_CP_TTGX1",
+    "initials": "CP",
+    "emptyWeight": 50,
+    "lengthFt": 93.76
+  },
+  {
+    "xmlName": "R8_Autorack_DRGW_TTGX1",
+    "initials": "DGRW",
+    "emptyWeight": 50,
+    "lengthFt": 93.76
+  },
+  {
+    "xmlName": "R8_Autorack_GTW01",
+    "initials": "GTW",
+    "emptyWeight": 50,
+    "lengthFt": 93.76
+  },
+  {
+    "xmlName": "R8_Autorack_NW_ETTX1",
+    "initials": "NW",
+    "emptyWeight": 50,
+    "lengthFt": 93.76
+  },
+  {
+    "xmlName": "R8_Autorack_SLSF_ETTX1",
+    "initials": "SLSF",
+    "emptyWeight": 50,
+    "lengthFt": 93.76
+  },
+  {
+    "xmlName": "R8_AutoRack_Tri_BN01",
+    "initials": "BN",
+    "emptyWeight": 53,
+    "lengthFt": 93.76
+  },
+  {
+    "xmlName": "R8_AutoRack_Tri_BNSF01",
+    "initials": "BNSF",
+    "emptyWeight": 53,
+    "lengthFt": 93.76
+  },
+  {
+    "xmlName": "R8_AutoRack_Tri_NS01",
+    "initials": "NS",
+    "emptyWeight": 53,
+    "lengthFt": 93.76
+  },
+  {
+    "xmlName": "R8_AutoRack_Tri_SP01",
+    "initials": "SP",
+    "emptyWeight": 53,
+    "lengthFt": 93.76
+  },
+  {
+    "xmlName": "R8_Autorack_WP_ETTX1",
+    "initials": "WP",
+    "emptyWeight": 50,
+    "lengthFt": 93.76
+  },
+  {
+    "xmlName": "R8_BallastHopper_BSC2200_UP01",
+    "initials": "UP",
+    "emptyWeight": 31,
+    "lengthFt": 43.68
+  },
+  {
+    "xmlName": "R8_BallastHopper_PS2003_ATSF01",
+    "initials": "ATSF",
+    "emptyWeight": 25,
+    "lengthFt": 39.23
+  },
+  {
+    "xmlName": "R8_BallastHopper_PS2003_BN01",
+    "initials": "BN",
+    "emptyWeight": 25,
+    "lengthFt": 39.23
+  },
+  {
+    "xmlName": "R8_BallastHopper_PS2003_CSX01",
+    "initials": "CSXT",
+    "emptyWeight": 25,
+    "lengthFt": 39.23
+  },
+  {
+    "xmlName": "R8_BallastHopper_PS2003_SPMW01",
+    "initials": "SPMW",
+    "emptyWeight": 25,
+    "lengthFt": 39.23
+  },
+  {
+    "xmlName": "R8_Bethgon_BNSF01",
+    "initials": "BNSF",
+    "emptyWeight": 25,
+    "lengthFt": 53.16
+  },
+  {
+    "xmlName": "R8_Bethgon_CMO01",
+    "initials": "CMO",
+    "emptyWeight": 25,
+    "lengthFt": 53.16
+  },
+  {
+    "xmlName": "R8_Bethgon_SEMX01",
+    "initials": "SEMX",
+    "emptyWeight": 25,
+    "lengthFt": 53.16
+  },
+  {
+    "xmlName": "R8_Boxcar_50ft_PlateF_AOK01",
+    "initials": "AOK",
+    "emptyWeight": 37,
+    "lengthFt": 54.52
+  },
+  {
+    "xmlName": "R8_Boxcar_50ft_PlateF_BN01",
+    "initials": "BN",
+    "emptyWeight": 37,
+    "lengthFt": 54.52
+  },
+  {
+    "xmlName": "R8_Boxcar_50ft_PlateF_BNSF01",
+    "initials": "BNSF",
+    "emptyWeight": 37,
+    "lengthFt": 54.52
+  },
+  {
+    "xmlName": "R8_Boxcar_50ft_PlateF_BNSF02",
+    "initials": "BNSF",
+    "emptyWeight": 37,
+    "lengthFt": 54.52
+  },
+  {
+    "xmlName": "R8_Boxcar_50ft_PlateF_CAT01",
+    "initials": "SRY",
+    "emptyWeight": 37,
+    "lengthFt": 54.52
+  },
+  {
+    "xmlName": "R8_Boxcar_50ft_PlateF_CEFX01",
+    "initials": "CEFX",
+    "emptyWeight": 37,
+    "lengthFt": 54.52
+  },
+  {
+    "xmlName": "R8_Boxcar_50ft_PlateF_CN01",
+    "initials": "CN",
+    "emptyWeight": 37,
+    "lengthFt": 54.52
+  },
+  {
+    "xmlName": "R8_Boxcar_50ft_PlateF_CNW01",
+    "initials": "CNW",
+    "emptyWeight": 37,
+    "lengthFt": 54.52
+  },
+  {
+    "xmlName": "R8_Boxcar_50ft_PlateF_CR01",
+    "initials": "CR",
+    "emptyWeight": 37,
+    "lengthFt": 54.52
+  },
+  {
+    "xmlName": "R8_Boxcar_50ft_PlateF_CSX01",
+    "initials": "CSXT",
+    "emptyWeight": 37,
+    "lengthFt": 54.52
+  },
+  {
+    "xmlName": "R8_Boxcar_50ft_PlateF_IB01",
+    "initials": "IB",
+    "emptyWeight": 37,
+    "lengthFt": 54.52
+  },
+  {
+    "xmlName": "R8_Boxcar_50ft_PlateF_NOKL01",
+    "initials": "NOK",
+    "emptyWeight": 37,
+    "lengthFt": 54.52
+  },
+  {
+    "xmlName": "R8_Boxcar_50ft_PlateF_R801",
+    "initials": "R8W",
+    "emptyWeight": 37,
+    "lengthFt": 54.52
+  },
+  {
+    "xmlName": "R8_Boxcar_50ft_PlateF_SP01",
+    "initials": "SP",
+    "emptyWeight": 37,
+    "lengthFt": 54.52
+  },
+  {
+    "xmlName": "R8_Boxcar_50ft_PlateF_TTX01",
+    "initials": "FBOX",
+    "emptyWeight": 37,
+    "lengthFt": 54.52
+  },
+  {
+    "xmlName": "R8_Boxcar_50ft_PlateF_WC01",
+    "initials": "WC",
+    "emptyWeight": 37,
+    "lengthFt": 54.52
+  },
+  {
+    "xmlName": "R8_Boxcar_FMC5347_CAGY01",
+    "initials": "CAGY",
+    "emptyWeight": 31,
+    "lengthFt": 57.15
+  },
+  {
+    "xmlName": "R8_Boxcar_FMC5347_CNW01",
+    "initials": "CNW",
+    "emptyWeight": 31,
+    "lengthFt": 57.15
+  },
+  {
+    "xmlName": "R8_Boxcar_FMC5347_EACH01",
+    "initials": "EACH",
+    "emptyWeight": 31,
+    "lengthFt": 57.15
+  },
+  {
+    "xmlName": "R8_Boxcar_FMC5347_MTW01",
+    "initials": "MTW",
+    "emptyWeight": 31,
+    "lengthFt": 57.15
+  },
+  {
+    "xmlName": "R8_Boxcar_FMC5347_NOPB01",
+    "initials": "NOPB",
+    "emptyWeight": 31,
+    "lengthFt": 57.15
+  },
+  {
+    "xmlName": "R8_Boxcar_FMC5347_RBOX01",
+    "initials": "RBOX",
+    "emptyWeight": 31,
+    "lengthFt": 57.15
+  },
+  {
+    "xmlName": "R8_Boxcar_FMC5347_SP01",
+    "initials": "SP",
+    "emptyWeight": 31,
+    "lengthFt": 57.15
+  },
+  {
+    "xmlName": "R8_Boxcar_FMC5347_SSW01",
+    "initials": "SSW",
+    "emptyWeight": 31,
+    "lengthFt": 57.15
+  },
+  {
+    "xmlName": "R8_Boxcar_Grnvl10kcuft_NADX01",
+    "initials": "NADX",
+    "emptyWeight": 49.25,
+    "lengthFt": 92.51
+  },
+  {
+    "xmlName": "R8_Boxcar_Grnvl10kcuft_SSW01",
+    "initials": "SSW",
+    "emptyWeight": 60.85,
+    "lengthFt": 92.51
+  },
+  {
+    "xmlName": "R8_Bulkhead_Thrall_TTJX01",
+    "initials": "TTJX",
+    "emptyWeight": 46,
+    "lengthFt": 71.98
+  },
+  {
+    "xmlName": "R8_Bulkhead_Thrall_TTPX01",
+    "initials": "TTPX",
+    "emptyWeight": 46,
+    "lengthFt": 71.98
+  },
+  {
+    "xmlName": "R8_Bulkhead_Thrall_TTPX02",
+    "initials": "TTPX",
+    "emptyWeight": 46,
+    "lengthFt": 71.98
+  },
+  {
+    "xmlName": "R8_C14Hopper_AGP01",
+    "initials": "SHPX",
+    "emptyWeight": 30,
+    "lengthFt": 60.36
+  },
+  {
+    "xmlName": "R8_C14Hopper_ASHX01",
+    "initials": "ASHX",
+    "emptyWeight": 30,
+    "lengthFt": 60.36
+  },
+  {
+    "xmlName": "R8_C14Hopper_BN01",
+    "initials": "BN",
+    "emptyWeight": 30,
+    "lengthFt": 60.36
+  },
+  {
+    "xmlName": "R8_C14Hopper_BNSF01",
+    "initials": "BNSF",
+    "emptyWeight": 30,
+    "lengthFt": 60.36
+  },
+  {
+    "xmlName": "R8_C14Hopper_BNSF02",
+    "initials": "BNSF",
+    "emptyWeight": 30,
+    "lengthFt": 60.36
+  },
+  {
+    "xmlName": "R8_C14Hopper_CAGX01",
+    "initials": "CAGX",
+    "emptyWeight": 30,
+    "lengthFt": 60.36
+  },
+  {
+    "xmlName": "R8_C14Hopper_CARG01",
+    "initials": "NDYX",
+    "emptyWeight": 30,
+    "lengthFt": 60.36
+  },
+  {
+    "xmlName": "R8_C14Hopper_CPR02",
+    "initials": "SOO",
+    "emptyWeight": 30,
+    "lengthFt": 60.36
+  },
+  {
+    "xmlName": "R8_C14Hopper_CSX01",
+    "initials": "CSXT",
+    "emptyWeight": 30,
+    "lengthFt": 60.36
+  },
+  {
+    "xmlName": "R8_C14Hopper_DME01",
+    "initials": "DME",
+    "emptyWeight": 30,
+    "lengthFt": 60.36
+  },
+  {
+    "xmlName": "R8_C14Hopper_GAT01",
+    "initials": "GACX",
+    "emptyWeight": 30,
+    "lengthFt": 60.36
+  },
+  {
+    "xmlName": "R8_C14Hopper_POTASH01",
+    "initials": "GACX",
+    "emptyWeight": 30,
+    "lengthFt": 60.36
+  },
+  {
+    "xmlName": "R8_C14Hopper_Run8_01",
+    "initials": "R8W",
+    "emptyWeight": 30,
+    "lengthFt": 60.36
+  },
+  {
+    "xmlName": "R8_C14Hopper_SOY01",
+    "initials": "SOYX",
+    "emptyWeight": 30,
+    "lengthFt": 60.36
+  },
+  {
+    "xmlName": "R8_C14Hopper_UP01",
+    "initials": "CMO",
+    "emptyWeight": 30,
+    "lengthFt": 60.36
+  },
+  {
+    "xmlName": "R8_C14Hopper_UP02",
+    "initials": "UP",
+    "emptyWeight": 30,
+    "lengthFt": 60.36
+  },
+  {
+    "xmlName": "R8_Caboose_c509_SP01",
+    "initials": "SP",
+    "emptyWeight": 30,
+    "lengthFt": 41.46
+  },
+  {
+    "xmlName": "R8_Caboose_c509_SP02",
+    "initials": "SP",
+    "emptyWeight": 30,
+    "lengthFt": 41.46
+  },
+  {
+    "xmlName": "R8_Caboose_c509_SP03",
+    "initials": "SP",
+    "emptyWeight": 30,
+    "lengthFt": 41.46
+  },
+  {
+    "xmlName": "R8_Caboose_ce11_ATSF01",
+    "initials": "ATSF",
+    "emptyWeight": 30,
+    "lengthFt": 41.46
+  },
+  {
+    "xmlName": "R8_Caboose_ce11_ATSF02",
+    "initials": "ATSF",
+    "emptyWeight": 30,
+    "lengthFt": 41.46
+  },
+  {
+    "xmlName": "R8_Caboose_ce11_ATSF03",
+    "initials": "ATSF",
+    "emptyWeight": 30,
+    "lengthFt": 41.46
+  },
+  {
+    "xmlName": "R8_ShovePlatform_BNSF01",
+    "initials": "BNSF",
+    "emptyWeight": 29.5,
+    "lengthFt": 41.47
+  },
+  {
+    "xmlName": "R8_Centerbeam_BC01",
+    "initials": "BCOL",
+    "emptyWeight": 31,
+    "lengthFt": 78.64
+  },
+  {
+    "xmlName": "R8_Centerbeam_CN01",
+    "initials": "CN",
+    "emptyWeight": 31,
+    "lengthFt": 78.64
+  },
+  {
+    "xmlName": "R8_Centerbeam_IC01",
+    "initials": "IC",
+    "emptyWeight": 31,
+    "lengthFt": 78.64
+  },
+  {
+    "xmlName": "R8_Centerbeam_NOKL01",
+    "initials": "NOKL",
+    "emptyWeight": 31,
+    "lengthFt": 78.64
+  },
+  {
+    "xmlName": "R8_Centerbeam_TTZX01",
+    "initials": "TTX",
+    "emptyWeight": 31,
+    "lengthFt": 78.64
+  },
+  {
+    "xmlName": "R8_Centerbeam_TTZX02",
+    "initials": "TTX",
+    "emptyWeight": 31,
+    "lengthFt": 78.64
+  },
+  {
+    "xmlName": "R8_Hopper_BSC3350_LN02",
+    "initials": "LN",
+    "emptyWeight": 32,
+    "lengthFt": 51.7
+  },
+  {
+    "xmlName": "R8_Hopper_BSC3420_ATSF",
+    "initials": "ATSF",
+    "emptyWeight": 29,
+    "lengthFt": 49.6
+  },
+  {
+    "xmlName": "R8_Hopper_BSC3420_BNSF",
+    "initials": "BNSF",
+    "emptyWeight": 29,
+    "lengthFt": 49.6
+  },
+  {
+    "xmlName": "R8_Hopper_BSC3483_BN",
+    "initials": "BN",
+    "emptyWeight": 34,
+    "lengthFt": 51.64
+  },
+  {
+    "xmlName": "R8_Hopper_BSC3483_DRGW",
+    "initials": "DGRW",
+    "emptyWeight": 34,
+    "lengthFt": 51.64
+  },
+  {
+    "xmlName": "R8_Hopper_BSC3483_DRGW02",
+    "initials": "DRGW",
+    "emptyWeight": 34,
+    "lengthFt": 51.64
+  },
+  {
+    "xmlName": "R8_Hopper_BSC3600_CSX",
+    "initials": "CSXT",
+    "emptyWeight": 34,
+    "lengthFt": 52.82
+  },
+  {
+    "xmlName": "R8_Hopper_BSC3600_UP01",
+    "initials": "UP",
+    "emptyWeight": 34,
+    "lengthFt": 52.82
+  },
+  {
+    "xmlName": "R8_Hopper_BSC3600_UP02",
+    "initials": "UP",
+    "emptyWeight": 34,
+    "lengthFt": 52.82
+  },
+  {
+    "xmlName": "R8_Coil_Evans_Cov_BNSF01",
+    "initials": "BNSF",
+    "emptyWeight": 34,
+    "lengthFt": 57.14
+  },
+  {
+    "xmlName": "R8_Coil_Evans_Cov_CR01",
+    "initials": "CR",
+    "emptyWeight": 34,
+    "lengthFt": 57.14
+  },
+  {
+    "xmlName": "R8_Coil_Evans_Cov_CSS01",
+    "initials": "CSS",
+    "emptyWeight": 34,
+    "lengthFt": 57.14
+  },
+  {
+    "xmlName": "R8_Coil_Evans_Opn_BNSF01",
+    "initials": "BNSF",
+    "emptyWeight": 34,
+    "lengthFt": 57.14
+  },
+  {
+    "xmlName": "R8_Coil_Evans_Opn_CR01",
+    "initials": "CR",
+    "emptyWeight": 34,
+    "lengthFt": 57.14
+  },
+  {
+    "xmlName": "R8_Coil_Evans_Opn_CSS01",
+    "initials": "CSS",
+    "emptyWeight": 34,
+    "lengthFt": 57.14
+  },
+  {
+    "xmlName": "R8_Gon_ACF1995_EJE01",
+    "initials": "EJE",
+    "emptyWeight": 38,
+    "lengthFt": 56.43
+  },
+  {
+    "xmlName": "R8_Gon_TRIN1828_IHB01",
+    "initials": "IHB",
+    "emptyWeight": 38,
+    "lengthFt": 57.55
+  },
+  {
+    "xmlName": "R8_Gon_ALB2494_UP01",
+    "initials": "UP",
+    "emptyWeight": 33,
+    "lengthFt": 57.15
+  },
+  {
+    "xmlName": "R8_Gon_TRIN1828_BNSF01",
+    "initials": "BNSF",
+    "emptyWeight": 31,
+    "lengthFt": 57.55
+  },
+  {
+    "xmlName": "Run8_Tank107BN01",
+    "initials": "BNSF",
+    "emptyWeight": 40,
+    "lengthFt": 59.38
+  },
+  {
+    "xmlName": "Run8_Tank107GATX02",
+    "initials": "GATX",
+    "emptyWeight": 40,
+    "lengthFt": 59.38
+  },
+  {
+    "xmlName": "Run8_Tank107GATX03",
+    "initials": "GATX",
+    "emptyWeight": 40,
+    "lengthFt": 59.38
+  },
+  {
+    "xmlName": "Run8_Tank107PROCR01",
+    "initials": "PROX",
+    "emptyWeight": 40,
+    "lengthFt": 59.38
+  },
+  {
+    "xmlName": "R8_Hyrail_MOW_BNSF_Ford",
+    "initials": "BNSF",
+    "emptyWeight": 2.5,
+    "lengthFt": 18
+  },
+  {
+    "xmlName": "R8_WellCar40_DTTX02",
+    "initials": "DTTX",
+    "emptyWeight": 25,
+    "lengthFt": 63
+  },
+  {
+    "xmlName": "R8_WellCar40_DTTX03",
+    "initials": "DTTX",
+    "emptyWeight": 25,
+    "lengthFt": 63
+  },
+  {
+    "xmlName": "R8_WellCar40_DTTX04",
+    "initials": "DTTX",
+    "emptyWeight": 25,
+    "lengthFt": 63
+  },
+  {
+    "xmlName": "R8_WellCar40_DTTX05",
+    "initials": "DTTX",
+    "emptyWeight": 25,
+    "lengthFt": 63
+  },
+  {
+    "xmlName": "R8_WellCar40_DTTX06",
+    "initials": "DTTX",
+    "emptyWeight": 25,
+    "lengthFt": 63
+  },
+  {
+    "xmlName": "R8_WellCar40_DTTX07",
+    "initials": "DTTX",
+    "emptyWeight": 25,
+    "lengthFt": 63
+  },
+  {
+    "xmlName": "R8_WellCar40_DTTX09",
+    "initials": "DTTX",
+    "emptyWeight": 25,
+    "lengthFt": 63
+  },
+  {
+    "xmlName": "R8_WellCar40_DTTX10",
+    "initials": "DTTX",
+    "emptyWeight": 25,
+    "lengthFt": 63
+  },
+  {
+    "xmlName": "R8_WellCar40_DTTX11",
+    "initials": "DTTX",
+    "emptyWeight": 25,
+    "lengthFt": 63
+  },
+  {
+    "xmlName": "R8_WellCar40_DTTX12",
+    "initials": "DTTX",
+    "emptyWeight": 25,
+    "lengthFt": 63
+  },
+  {
+    "xmlName": "R8_WellCar40_DTTX13",
+    "initials": "DTTX",
+    "emptyWeight": 25,
+    "lengthFt": 63
+  },
+  {
+    "xmlName": "R8_WellCar40_DTTX14",
+    "initials": "DTTX",
+    "emptyWeight": 25,
+    "lengthFt": 63
+  },
+  {
+    "xmlName": "R8_WellCar40_DTTX16",
+    "initials": "DTTX",
+    "emptyWeight": 25,
+    "lengthFt": 63
+  },
+  {
+    "xmlName": "R8_WellCar40_DTTX17",
+    "initials": "DTTX",
+    "emptyWeight": 25,
+    "lengthFt": 63
+  },
+  {
+    "xmlName": "R8_WellCar40_DTTX18",
+    "initials": "DTTX",
+    "emptyWeight": 25,
+    "lengthFt": 63
+  },
+  {
+    "xmlName": "R8_WellCar40_DTTX19",
+    "initials": "DTTX",
+    "emptyWeight": 25,
+    "lengthFt": 63
+  },
+  {
+    "xmlName": "R8_WellCar40_DTTX20",
+    "initials": "DTTX",
+    "emptyWeight": 25,
+    "lengthFt": 63
+  },
+  {
+    "xmlName": "R8_WellCar40_DTTX21",
+    "initials": "DTTX",
+    "emptyWeight": 25,
+    "lengthFt": 63
+  },
+  {
+    "xmlName": "R8_WellCar40_DTTX23",
+    "initials": "DTTX",
+    "emptyWeight": 25,
+    "lengthFt": 63
+  },
+  {
+    "xmlName": "R8_WellCar40_DTTX24",
+    "initials": "DTTX",
+    "emptyWeight": 25,
+    "lengthFt": 63
+  },
+  {
+    "xmlName": "R8_WellCar40_DTTX25",
+    "initials": "DTTX",
+    "emptyWeight": 25,
+    "lengthFt": 63
+  },
+  {
+    "xmlName": "R8_WellCar40_DTTX26",
+    "initials": "DTTX",
+    "emptyWeight": 25,
+    "lengthFt": 63
+  },
+  {
+    "xmlName": "R8_WellCar40_DTTX27",
+    "initials": "DTTX",
+    "emptyWeight": 25,
+    "lengthFt": 63
+  },
+  {
+    "xmlName": "R8_WellCar40_DTTX28",
+    "initials": "DTTX",
+    "emptyWeight": 25,
+    "lengthFt": 63
+  },
+  {
+    "xmlName": "Run8_52ftwell_1China",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_1Hanjin",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_1JBHunt",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_1Maersk",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_1NFI",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_1Schneider",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_2China",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_2China_NFI",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_2Evergreen",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_2Hanjin",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_2JBHunt",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_2JBHunt_Schneider",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_2KLine",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_2Maersk",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_2Maersk_Hyundai",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_2NFI",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_53_40_China",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_53_40_China_Hyundai",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_53_40_China_Maersk",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_53_40_China_NFI",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_53_40_Evergreen",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_53_40_Hanjin",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_53_40_HorizonHanjin",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_53_40_Hyundai",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_53_40_HyundaiChina",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_53_40_HyundaiNFI",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_53_40_JBHunt",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_53_40_JBHuntSchneider",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_53_40_JBHuntSeastar",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_53_40_Kline",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_53_40_Maersk",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_53_40_MaerskChina",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_53_40_MaerskHyundai",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_53_40_MaerskNFI",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_53_40_NFI",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_53_40_NFIChina",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_53_40_NFIHyundai",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_53_40_NFIMaersk",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_53_40_Schneider",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_53_40_SchneiderJBHunt",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_53_40_SeastarEvergreen",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_A_Empty",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_52ftwell_Doublestack53",
+    "initials": "TTX",
+    "emptyWeight": 27,
+    "lengthFt": 71.06
+  },
+  {
+    "xmlName": "Run8_WellCar53AP_FEC01",
+    "initials": "FEC",
+    "emptyWeight": 25,
+    "lengthFt": 76.77
+  },
+  {
+    "xmlName": "Run8_WellCar53AP_FEC02",
+    "initials": "FEC",
+    "emptyWeight": 25,
+    "lengthFt": 76.77
+  },
+  {
+    "xmlName": "Run8_WellCar53AP_FEC03",
+    "initials": "FEC",
+    "emptyWeight": 25,
+    "lengthFt": 76.77
+  },
+  {
+    "xmlName": "Run8_WellCar53AP_FEC04",
+    "initials": "FEC",
+    "emptyWeight": 25,
+    "lengthFt": 76.77
+  },
+  {
+    "xmlName": "Run8_WellCar53AP_FEC08",
+    "initials": "FEC",
+    "emptyWeight": 25,
+    "lengthFt": 76.77
+  },
+  {
+    "xmlName": "Run8_WellCar53AP_FEC09",
+    "initials": "FEC",
+    "emptyWeight": 25,
+    "lengthFt": 76.77
+  },
+  {
+    "xmlName": "Run8_WellCar53AP_FEC10",
+    "initials": "FEC",
+    "emptyWeight": 25,
+    "lengthFt": 76.77
+  },
+  {
+    "xmlName": "Run8_WellCar53AP_FEC11",
+    "initials": "FEC",
+    "emptyWeight": 25,
+    "lengthFt": 76.77
+  },
+  {
+    "xmlName": "Run8_WellCar53AP_FEC12",
+    "initials": "FEC",
+    "emptyWeight": 25,
+    "lengthFt": 76.77
+  },
+  {
+    "xmlName": "Run8_WellCar53AP_FEC14",
+    "initials": "FEC",
+    "emptyWeight": 25,
+    "lengthFt": 76.77
+  },
+  {
+    "xmlName": "Run8_WellCar53AP_FEC15",
+    "initials": "FEC",
+    "emptyWeight": 25,
+    "lengthFt": 76.77
+  },
+  {
+    "xmlName": "Run8_WellCar53AP_FEC16",
+    "initials": "FEC",
+    "emptyWeight": 25,
+    "lengthFt": 76.77
+  },
+  {
+    "xmlName": "Run8_WellCar53AP_FEC17",
+    "initials": "FEC",
+    "emptyWeight": 25,
+    "lengthFt": 76.77
+  },
+  {
+    "xmlName": "Run8_WellCar53AP_FEC18",
+    "initials": "FEC",
+    "emptyWeight": 25,
+    "lengthFt": 76.77
+  },
+  {
+    "xmlName": "Run8_WellCar53_DTTX01",
+    "initials": "DTTX",
+    "emptyWeight": 25,
+    "lengthFt": 76.77
+  },
+  {
+    "xmlName": "Run8_WellCar53_DTTX02",
+    "initials": "DTTX",
+    "emptyWeight": 25,
+    "lengthFt": 76.77
+  },
+  {
+    "xmlName": "Run8_WellCar53_DTTX03",
+    "initials": "DTTX",
+    "emptyWeight": 25,
+    "lengthFt": 76.77
+  },
+  {
+    "xmlName": "Run8_WellCar53_DTTX04",
+    "initials": "DTTX",
+    "emptyWeight": 25,
+    "lengthFt": 76.77
+  },
+  {
+    "xmlName": "Run8_WellCar53_DTTX07",
+    "initials": "DTTX",
+    "emptyWeight": 25,
+    "lengthFt": 76.77
+  },
+  {
+    "xmlName": "Run8_WellCar53_DTTX08",
+    "initials": "DTTX",
+    "emptyWeight": 25,
+    "lengthFt": 76.77
+  },
+  {
+    "xmlName": "Run8_WellCar53_DTTX09",
+    "initials": "DTTX",
+    "emptyWeight": 25,
+    "lengthFt": 76.77
+  },
+  {
+    "xmlName": "Run8_WellCar53_DTTX10",
+    "initials": "DTTX",
+    "emptyWeight": 25,
+    "lengthFt": 76.77
+  },
+  {
+    "xmlName": "Run8_WellCar53_DTTX11",
+    "initials": "DTTX",
+    "emptyWeight": 25,
+    "lengthFt": 76.77
+  },
+  {
+    "xmlName": "R8_C449W_Run801",
+    "initials": "R8W",
+    "emptyWeight": 0,
+    "lengthFt": 74.47
+  },
+  {
+    "xmlName": "R8_C449W_ATSF01",
+    "initials": "ATSF",
+    "emptyWeight": 0,
+    "lengthFt": 74.47
+  },
+  {
+    "xmlName": "R8_C449W_ATSF02",
+    "initials": "ATSF",
+    "emptyWeight": 0,
+    "lengthFt": 74.47
+  },
+  {
+    "xmlName": "R8_C449W_SP01",
+    "initials": "SP",
+    "emptyWeight": 0,
+    "lengthFt": 74.47
+  },
+  {
+    "xmlName": "R8_C449W_SP02",
+    "initials": "SP",
+    "emptyWeight": 0,
+    "lengthFt": 74.47
+  },
+  {
+    "xmlName": "R8_GP40-2_BNSF01",
+    "initials": "BNSF",
+    "emptyWeight": 0,
+    "lengthFt": 59.58
+  },
+  {
+    "xmlName": "R8_GP40-2_CON01",
+    "initials": "CR",
+    "emptyWeight": 0,
+    "lengthFt": 59.58
+  },
+  {
+    "xmlName": "R8_GP40-2_CSX01",
+    "initials": "CSXT",
+    "emptyWeight": 0,
+    "lengthFt": 59.58
+  },
+  {
+    "xmlName": "R8_GP40-2_CSX02",
+    "initials": "CSXT",
+    "emptyWeight": 0,
+    "lengthFt": 59.58
+  },
+  {
+    "xmlName": "R8_GP40-2_DRGW01",
+    "initials": "DGRW",
+    "emptyWeight": 0,
+    "lengthFt": 59.58
+  },
+  {
+    "xmlName": "R8_GP40-2_RUN802",
+    "initials": "R8W",
+    "emptyWeight": 0,
+    "lengthFt": 59.58
+  },
+  {
+    "xmlName": "R8_GP40-2_SJVR01",
+    "initials": "SJVR",
+    "emptyWeight": 0,
+    "lengthFt": 59.58
+  },
+  {
+    "xmlName": "R8_GP40-2_SP01",
+    "initials": "SP",
+    "emptyWeight": 0,
+    "lengthFt": 59.58
+  },
+  {
+    "xmlName": "R8_GP40-2_UP01",
+    "initials": "UP",
+    "emptyWeight": 0,
+    "lengthFt": 59.58
+  },
+  {
+    "xmlName": "R8_GP40-2_WP01",
+    "initials": "WP",
+    "emptyWeight": 0,
+    "lengthFt": 59.58
+  },
+  {
+    "xmlName": "R8_SD40-2_ATSF01",
+    "initials": "ATSF",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD40-2_ATSF02",
+    "initials": "ATSF",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD40-2_BN01",
+    "initials": "BN",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD40-2_BNSF01",
+    "initials": "BNSF",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD40-2_BNSF02",
+    "initials": "BNSF",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD40-2_BNSF03",
+    "initials": "BNSF",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD40-2_BNSF04",
+    "initials": "BNSF",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD40-2_CARG01",
+    "initials": "CAR",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD40-2_Chess",
+    "initials": "BO",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD40-2_CN01",
+    "initials": "CN",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD40-2_CON01",
+    "initials": "CR",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD40-2_CSX01",
+    "initials": "CSXT",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD40-2_CSX02",
+    "initials": "CSXT",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD40-2_FEC01",
+    "initials": "FEC",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD40-2_GCFX01",
+    "initials": "GCFX",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD40-2_NS01",
+    "initials": "NS",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD40-2_RUNW01",
+    "initials": "R8W",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD40-2_SBS01",
+    "initials": "SBS",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD40-2_SOO02",
+    "initials": "SOO",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD40-2_SP01",
+    "initials": "SP",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD40-2_UP01",
+    "initials": "UP",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD40T-2_DRGW01",
+    "initials": "DRGW",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD40T-2_R801",
+    "initials": "R8W",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD40T-2_SP01",
+    "initials": "SP",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD40T-2_UP01",
+    "initials": "UP",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD40T-2_UP02",
+    "initials": "UP",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD40T-2_UP03",
+    "initials": "UP",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD45-2_ACR01",
+    "initials": "ACE",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD45-2_ATSF01",
+    "initials": "ATSF",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD45-2_ATSF02",
+    "initials": "ATSF",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD45-2_ATSF03",
+    "initials": "ATSF",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD45-2_ATSF04",
+    "initials": "ATSF",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD45-2_BNSF01",
+    "initials": "BNSF",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD45-2_BNSF02",
+    "initials": "BNSF",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD45-2_CON01",
+    "initials": "CON",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD45-2_CON02",
+    "initials": "CON",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD45-2_CSX01",
+    "initials": "CSXT",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD45-2_CSX02",
+    "initials": "CSXT",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD45-2_CSX03",
+    "initials": "CSXT",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD45-2_NS01",
+    "initials": "NS",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD45-2_Run801",
+    "initials": "R8W",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD45-2_SBS01",
+    "initials": "SBS",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD45-2_SCL01",
+    "initials": "SCL",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "R8_SD45-2_TRON01",
+    "initials": "TRON",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "Run8_ES44DC",
+    "initials": "BNSF",
+    "emptyWeight": 0,
+    "lengthFt": 73.29
+  },
+  {
+    "xmlName": "Run8_ES44DC_BNSF",
+    "initials": "BNSF",
+    "emptyWeight": 0,
+    "lengthFt": 73.29
+  },
+  {
+    "xmlName": "Run8_ES44DC_BNSF02",
+    "initials": "BNSF",
+    "emptyWeight": 0,
+    "lengthFt": 73.29
+  },
+  {
+    "xmlName": "Run8_ES44DC_CSX",
+    "initials": "CSXT",
+    "emptyWeight": 0,
+    "lengthFt": 73.29
+  },
+  {
+    "xmlName": "Run8_ES44DC_NS",
+    "initials": "NS",
+    "emptyWeight": 0,
+    "lengthFt": 73.29
+  },
+  {
+    "xmlName": "Run8_ES44DC_SP",
+    "initials": "SP",
+    "emptyWeight": 0,
+    "lengthFt": 73.29
+  },
+  {
+    "xmlName": "Run8_ES44DC_UP",
+    "initials": "UP",
+    "emptyWeight": 0,
+    "lengthFt": 73.29
+  },
+  {
+    "xmlName": "Run8_ES44DC_UP01",
+    "initials": "UP",
+    "emptyWeight": 0,
+    "lengthFt": 73.29
+  },
+  {
+    "xmlName": "Run8_P42_Amtrak03",
+    "initials": "AMTK",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "Run8_P42_Amtrak04",
+    "initials": "AMTK",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "Run8_P42_Amtrak05",
+    "initials": "AMTK",
+    "emptyWeight": 0,
+    "lengthFt": 69.02
+  },
+  {
+    "xmlName": "Run8_SD70ACE_BNSF01",
+    "initials": "BNSF",
+    "emptyWeight": 0,
+    "lengthFt": 74.34
+  },
+  {
+    "xmlName": "Run8_SD70ACE_CSX01",
+    "initials": "CSXT",
+    "emptyWeight": 0,
+    "lengthFt": 74.34
+  },
+  {
+    "xmlName": "Run8_SD70ACE_KCS01",
+    "initials": "KCS",
+    "emptyWeight": 0,
+    "lengthFt": 74.34
+  },
+  {
+    "xmlName": "Run8_SD70ACE_NS01",
+    "initials": "NS",
+    "emptyWeight": 0,
+    "lengthFt": 74.34
+  },
+  {
+    "xmlName": "Run8_SD70ACE_NS_JC01",
+    "initials": "NS",
+    "emptyWeight": 0,
+    "lengthFt": 74.34
+  },
+  {
+    "xmlName": "Run8_SD70ACE_RUNW01",
+    "initials": "R8W",
+    "emptyWeight": 0,
+    "lengthFt": 74.34
+  },
+  {
+    "xmlName": "Run8_SD70ACE_RUNW02",
+    "initials": "R8W",
+    "emptyWeight": 0,
+    "lengthFt": 74.34
+  },
+  {
+    "xmlName": "Run8_SD70ACE_UP01",
+    "initials": "UP",
+    "emptyWeight": 0,
+    "lengthFt": 74.34
+  },
+  {
+    "xmlName": "Run8_SD70ACE_UP02",
+    "initials": "UP",
+    "emptyWeight": 0,
+    "lengthFt": 74.34
+  },
+  {
+    "xmlName": "Run8_SD70ACE_UP_DRGW01",
+    "initials": "UP",
+    "emptyWeight": 0,
+    "lengthFt": 74.34
+  },
+  {
+    "xmlName": "Run8_SD70ACE_UP_Katy01",
+    "initials": "UP",
+    "emptyWeight": 0,
+    "lengthFt": 74.34
+  },
+  {
+    "xmlName": "Run8_SD70ACE_UP_SP",
+    "initials": "UP",
+    "emptyWeight": 0,
+    "lengthFt": 74.34
+  },
+  {
+    "xmlName": "Run8_SD70ACE_UP_WP01",
+    "initials": "UP",
+    "emptyWeight": 0,
+    "lengthFt": 74.34
+  },
+  {
+    "xmlName": "R8_Amtrak_AmfleetCoachIII01",
+    "initials": "AMTK",
+    "emptyWeight": 53,
+    "lengthFt": 85.26
+  },
+  {
+    "xmlName": "R8_Amtrak_AmfleetCoachIV01",
+    "initials": "AMTK",
+    "emptyWeight": 53,
+    "lengthFt": 85.26
+  },
+  {
+    "xmlName": "R8_Amtrak_AmfleetCoachIVb01",
+    "initials": "AMTK",
+    "emptyWeight": 53,
+    "lengthFt": 85.26
+  },
+  {
+    "xmlName": "R8_Amtrak_AmfleetLoungeIII01",
+    "initials": "AMTK",
+    "emptyWeight": 53,
+    "lengthFt": 85.26
+  },
+  {
+    "xmlName": "R8_Amtrak_AmfleetLoungeIV01",
+    "initials": "AMTK",
+    "emptyWeight": 53,
+    "lengthFt": 85.26
+  },
+  {
+    "xmlName": "R8_Amtrak_AmfleetLoungeIVb01",
+    "initials": "AMTK",
+    "emptyWeight": 53,
+    "lengthFt": 85.26
+  },
+  {
+    "xmlName": "R8_Amtrak_Baggage03",
+    "initials": "AMTK",
+    "emptyWeight": 85,
+    "lengthFt": 74.01
+  },
+  {
+    "xmlName": "R8_Amtrak_Baggage04",
+    "initials": "AMTK",
+    "emptyWeight": 85,
+    "lengthFt": 74.01
+  },
+  {
+    "xmlName": "R8_Amtrak_Baggage04b",
+    "initials": "AMTK",
+    "emptyWeight": 85,
+    "lengthFt": 74.01
+  },
+  {
+    "xmlName": "R8_Amtrak_CchBagPhsIII",
+    "initials": "AMTK",
+    "emptyWeight": 85,
+    "lengthFt": 87
+  },
+  {
+    "xmlName": "R8_Amtrak_CchBagPhsIV",
+    "initials": "AMTK",
+    "emptyWeight": 85,
+    "lengthFt": 87
+  },
+  {
+    "xmlName": "R8_Amtrak_CchBagPhsV",
+    "initials": "AMTK",
+    "emptyWeight": 85,
+    "lengthFt": 87
+  },
+  {
+    "xmlName": "R8_Amtrak_CoachPhsIII",
+    "initials": "AMTK",
+    "emptyWeight": 85,
+    "lengthFt": 87
+  },
+  {
+    "xmlName": "R8_Amtrak_CoachPhsIV",
+    "initials": "AMTK",
+    "emptyWeight": 85,
+    "lengthFt": 87
+  },
+  {
+    "xmlName": "R8_Amtrak_CoachPhsV",
+    "initials": "AMTK",
+    "emptyWeight": 85,
+    "lengthFt": 87
+  },
+  {
+    "xmlName": "R8_Amtrak_DinerPhsIII",
+    "initials": "AMTK",
+    "emptyWeight": 85,
+    "lengthFt": 87
+  },
+  {
+    "xmlName": "R8_Amtrak_DinerPhsIV",
+    "initials": "AMTK",
+    "emptyWeight": 85,
+    "lengthFt": 87
+  },
+  {
+    "xmlName": "R8_Amtrak_DinerPhsV",
+    "initials": "AMTK",
+    "emptyWeight": 85,
+    "lengthFt": 87
+  },
+  {
+    "xmlName": "R8_Amtrak_LoungePhsIII",
+    "initials": "AMTK",
+    "emptyWeight": 85,
+    "lengthFt": 87
+  },
+  {
+    "xmlName": "R8_Amtrak_LoungePhsIV",
+    "initials": "AMTK",
+    "emptyWeight": 85,
+    "lengthFt": 87
+  },
+  {
+    "xmlName": "R8_Amtrak_LoungePhsV",
+    "initials": "AMTK",
+    "emptyWeight": 85,
+    "lengthFt": 87
+  },
+  {
+    "xmlName": "R8_Amtrak_MHC03",
+    "initials": "AMTK",
+    "emptyWeight": 57,
+    "lengthFt": 65.61
+  },
+  {
+    "xmlName": "R8_Amtrak_MHC04",
+    "initials": "AMTK",
+    "emptyWeight": 57,
+    "lengthFt": 65.61
+  },
+  {
+    "xmlName": "R8_Amtrak_SleeperPhsIII",
+    "initials": "AMTK",
+    "emptyWeight": 85,
+    "lengthFt": 87
+  },
+  {
+    "xmlName": "R8_Amtrak_SleeperPhsIV",
+    "initials": "AMTK",
+    "emptyWeight": 85,
+    "lengthFt": 87
+  },
+  {
+    "xmlName": "R8_Amtrak_SleeperPhsV",
+    "initials": "AMTK",
+    "emptyWeight": 85,
+    "lengthFt": 87
+  },
+  {
+    "xmlName": "R8_Amtrak_TransPhsIII",
+    "initials": "AMTK",
+    "emptyWeight": 85,
+    "lengthFt": 87
+  },
+  {
+    "xmlName": "R8_Amtrak_TransPhsIV",
+    "initials": "AMTK",
+    "emptyWeight": 85,
+    "lengthFt": 87
+  },
+  {
+    "xmlName": "R8_Amtrak_TransPhsV",
+    "initials": "AMTK",
+    "emptyWeight": 85,
+    "lengthFt": 87
+  },
+  {
+    "xmlName": "R8_AutoRack_Amtrak01",
+    "initials": "AMTK",
+    "emptyWeight": 41.3,
+    "lengthFt": 93.76
+  },
+  {
+    "xmlName": "R8_AutoRack_Amtrak02",
+    "initials": "AMTK",
+    "emptyWeight": 41.3,
+    "lengthFt": 93.76
+  },
+  {
+    "xmlName": "R8_Pig_ATSF01",
+    "initials": "ATSF",
+    "emptyWeight": 31,
+    "lengthFt": 93.73
+  },
+  {
+    "xmlName": "R8_Pig_KTTX01",
+    "initials": "KTTX",
+    "emptyWeight": 35,
+    "lengthFt": 93.73
+  },
+  {
+    "xmlName": "R8_Pig_KTTX02",
+    "initials": "KTTX",
+    "emptyWeight": 35,
+    "lengthFt": 93.73
+  },
+  {
+    "xmlName": "R8_Pig_RTTX01",
+    "initials": "RTTX",
+    "emptyWeight": 36,
+    "lengthFt": 93.73
+  },
+  {
+    "xmlName": "R8_Pig_RTTX02",
+    "initials": "RTTX",
+    "emptyWeight": 36,
+    "lengthFt": 93.73
+  },
+  {
+    "xmlName": "R8_Pig_RTTX03",
+    "initials": "RTTX",
+    "emptyWeight": 36,
+    "lengthFt": 93.73
+  },
+  {
+    "xmlName": "R8_Pig_RTTX04",
+    "initials": "RTTX",
+    "emptyWeight": 36,
+    "lengthFt": 93.73
+  },
+  {
+    "xmlName": "R8_Pig_RTTX05",
+    "initials": "RTTX",
+    "emptyWeight": 36,
+    "lengthFt": 93.73
+  },
+  {
+    "xmlName": "R8_Pig_RTTX06",
+    "initials": "RTTX",
+    "emptyWeight": 36,
+    "lengthFt": 93.73
+  },
+  {
+    "xmlName": "R8_Pig_RTTX07",
+    "initials": "RTTX",
+    "emptyWeight": 36,
+    "lengthFt": 93.73
+  },
+  {
+    "xmlName": "R8_Pig_TTAX01",
+    "initials": "TTAX",
+    "emptyWeight": 35,
+    "lengthFt": 93.73
+  },
+  {
+    "xmlName": "R8_Pig_TTWX01",
+    "initials": "TTWX",
+    "emptyWeight": 35,
+    "lengthFt": 93.73
+  },
+  {
+    "xmlName": "R8_Pig_TTWX02",
+    "initials": "TTWX",
+    "emptyWeight": 35,
+    "lengthFt": 93.73
+  },
+  {
+    "xmlName": "R8_Pig_TTWX03",
+    "initials": "TTWX",
+    "emptyWeight": 35,
+    "lengthFt": 93.73
+  },
+  {
+    "xmlName": "R8_Pig_TTWX04",
+    "initials": "TTWX",
+    "emptyWeight": 35,
+    "lengthFt": 93.73
+  },
+  {
+    "xmlName": "R8_Pig_TTWX05",
+    "initials": "TTWX",
+    "emptyWeight": 35,
+    "lengthFt": 93.73
+  },
+  {
+    "xmlName": "R8_Pig_TTWX06",
+    "initials": "CRYX",
+    "emptyWeight": 35,
+    "lengthFt": 93.73
+  },
+  {
+    "xmlName": "R8_Gon_GSC3242_MP01",
+    "initials": "MP",
+    "emptyWeight": 36,
+    "lengthFt": 70.14
+  },
+  {
+    "xmlName": "R8_Gon_GSC3242_SP01",
+    "initials": "SP",
+    "emptyWeight": 36,
+    "lengthFt": 70.14
+  },
+  {
+    "xmlName": "R8_PlasticPelletHopper_ACF5250_ACFX01",
+    "initials": "ACFX",
+    "emptyWeight": 33,
+    "lengthFt": 58.49
+  },
+  {
+    "xmlName": "R8_PlasticPelletHopper_ACF5250_ACFX02",
+    "initials": "ACFX",
+    "emptyWeight": 33,
+    "lengthFt": 58.49
+  },
+  {
+    "xmlName": "R8_PlasticPelletHopper_ACF5250_AMCX01",
+    "initials": "AMCX",
+    "emptyWeight": 33,
+    "lengthFt": 58.49
+  },
+  {
+    "xmlName": "R8_PlasticPelletHopper_ACF5250_BPRX01",
+    "initials": "BPRX",
+    "emptyWeight": 33,
+    "lengthFt": 58.49
+  },
+  {
+    "xmlName": "R8_PlasticPelletHopper_ACF5250_ETCX01",
+    "initials": "ETCX",
+    "emptyWeight": 33,
+    "lengthFt": 58.49
+  },
+  {
+    "xmlName": "R8_PlasticPelletHopper_ACF5250_KCIX01",
+    "initials": "KCXI",
+    "emptyWeight": 33,
+    "lengthFt": 58.49
+  },
+  {
+    "xmlName": "R8_CoveredHopper_PS4750_NAHX01",
+    "initials": "NAHX",
+    "emptyWeight": 32,
+    "lengthFt": 59.75
+  },
+  {
+    "xmlName": "R8_Gon_GSC3242_CR01",
+    "initials": "CR",
+    "emptyWeight": 36,
+    "lengthFt": 70.14
+  },
+  {
+    "xmlName": "R8_Gon_THR2743_CSX01",
+    "initials": "CSXT",
+    "emptyWeight": 29,
+    "lengthFt": 57.15
+  },
+  {
+    "xmlName": "R8_Reefer_Greenbrier_72_CRYX",
+    "initials": "CRYX",
+    "emptyWeight": 50,
+    "lengthFt": 82.02
+  },
+  {
+    "xmlName": "R8_Reefer_Millenium_64_TPIX",
+    "initials": "TPIX",
+    "emptyWeight": 48,
+    "lengthFt": 76.64
+  },
+  {
+    "xmlName": "R8_Reefer_PCF_57_rbld_ARMN",
+    "initials": "ARMN",
+    "emptyWeight": 44,
+    "lengthFt": 63.58
+  },
+  {
+    "xmlName": "R8_Reefer_PCF_57_SFRC",
+    "initials": "SFRC",
+    "emptyWeight": 44,
+    "lengthFt": 63.58
+  },
+  {
+    "xmlName": "R8_Reefer_PCF_57_SPFE",
+    "initials": "SPFE",
+    "emptyWeight": 44,
+    "lengthFt": 63.58
+  },
+  {
+    "xmlName": "R8_Reefer_PCF_57_UPFE",
+    "initials": "UP",
+    "emptyWeight": 44,
+    "lengthFt": 63.58
+  },
+  {
+    "xmlName": "R8_Reefer_PCF_FGMR01",
+    "initials": "FGMR",
+    "emptyWeight": 44.15,
+    "lengthFt": 63.52
+  },
+  {
+    "xmlName": "R8_Reefer_TrinCool_64_ARMN",
+    "initials": "UP",
+    "emptyWeight": 46,
+    "lengthFt": 73.09
+  },
+  {
+    "xmlName": "R8_Reefer_TrinCool_72_BNSF",
+    "initials": "BNSF",
+    "emptyWeight": 53,
+    "lengthFt": 80.52
+  },
+  {
+    "xmlName": "R8_Hopper_BSC3420_ATSFrock",
+    "initials": "ATSF",
+    "emptyWeight": 29,
+    "lengthFt": 49.6
+  },
+  {
+    "xmlName": "R8_Gon_THR2494_GONX01",
+    "initials": "GONX",
+    "emptyWeight": 38,
+    "lengthFt": 57.15
+  },
+  {
+    "xmlName": "R8_Gon_THR2743_DJJX01",
+    "initials": "DJJX",
+    "emptyWeight": 29,
+    "lengthFt": 57.15
+  },
+  {
+    "xmlName": "Run8_Tank105_AGFX",
+    "initials": "ACFX",
+    "emptyWeight": 36,
+    "lengthFt": 49.47
+  },
+  {
+    "xmlName": "Run8_Tank105_BNSF",
+    "initials": "BNSF",
+    "emptyWeight": 36,
+    "lengthFt": 49.47
+  },
+  {
+    "xmlName": "Run8_Tank105_Cstar",
+    "initials": "NATX",
+    "emptyWeight": 36,
+    "lengthFt": 49.47
+  },
+  {
+    "xmlName": "Run8_Tank105_UTLX",
+    "initials": "UTLX",
+    "emptyWeight": 36,
+    "lengthFt": 49.47
+  },
+  {
+    "xmlName": "Run8_Tank107AGP01",
+    "initials": "AGP",
+    "emptyWeight": 40,
+    "lengthFt": 59.38
+  },
+  {
+    "xmlName": "Run8_Tank107BNSF01",
+    "initials": "BNSF",
+    "emptyWeight": 40,
+    "lengthFt": 59.38
+  },
+  {
+    "xmlName": "Run8_Tank107FRS01",
+    "initials": "FRS",
+    "emptyWeight": 40,
+    "lengthFt": 59.38
+  },
+  {
+    "xmlName": "Run8_Tank107PROC02",
+    "initials": "PROX",
+    "emptyWeight": 40,
+    "lengthFt": 59.38
+  },
+  {
+    "xmlName": "Run8_Tank107RC01",
+    "initials": "RC",
+    "emptyWeight": 40,
+    "lengthFt": 59.38
+  },
+  {
+    "xmlName": "Run8_Tank107SanFe01",
+    "initials": "ATSF",
+    "emptyWeight": 40,
+    "lengthFt": 59.38
+  },
+  {
+    "xmlName": "Run8_Tank107UTLXblk",
+    "initials": "UTLX",
+    "emptyWeight": 40,
+    "lengthFt": 59.38
+  },
+  {
+    "xmlName": "Run8_Tank107UTLXwht",
+    "initials": "UTLX",
+    "emptyWeight": 40,
+    "lengthFt": 59.38
+  },
+  {
+    "xmlName": "R8_ChipHopper_GSC7000_CSXT01",
+    "initials": "CSXT",
+    "emptyWeight": 41,
+    "lengthFt": 73.16
+  },
+  {
+    "xmlName": "R8_ChipHopper_GSC7000_GPSX01",
+    "initials": "GPSX",
+    "emptyWeight": 41,
+    "lengthFt": 73.16
+  },
+  {
+    "xmlName": "R8_ChipHopper_GSC7000_IFRX01",
+    "initials": "IFRX",
+    "emptyWeight": 41,
+    "lengthFt": 73.16
+  }
+]

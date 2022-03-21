@@ -1,0 +1,31 @@
+YARD CLERK
+
+Assistive software for yardmasters and yard crews in Run8 
+
+
+
+Goals:
+    * Calculate number of cars present, length, tonnage:
+        ✓ In the yard as a whole 
+        ✓ In the bowl
+        ✓ In receiving (per track)
+        ☐ In departure (per track)
+        ☐ In other yard areas as appropriate for the yard
+    ☐ Calculate how much of receiving track will fit in bowl before trimming
+    ☐ Show graphical representation of cars and free space
+    ☐ Show tonnage/length or tonnage/car count graphs per track/cut
+    ☐ Check rule compliance on outbounds
+        ☐ OK to require user to designate departure track for train
+    ☐ Suggest power amount and location for outbounds 
+    ☐ Calculate DBA, RPA/TPA, need for cutouts
+    
+    
+
+
+Needed classes:
+    * Train:
+        * Units in train (list of RailUnit)
+        * Symbol
+        * Weight
+        * Length
+        * 
