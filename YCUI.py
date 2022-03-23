@@ -145,7 +145,14 @@ def updateJobsTable(program_state):
     # create table row for each job
     values = []
     for job in jobs:
-        row = [job.jobID, job.jobName, '', job.jobType, '', '']
+        tracks = job.listAffectedTracks()
+        trackStr = ' '.join(tracks)
+        row = [job.jobID, 
+               job.jobName, 
+               '', 
+               job.jobType, 
+               '', 
+               trackStr]
         values.append(row)
         
     jobsTable = mainw['jobsTable']
@@ -1047,7 +1054,7 @@ def buildOpsTab(world):
                         background_color = '#333333',
                         expand_x = False,
                         expand_y = True,
-                        hide_vertical_scroll = True,
+                        hide_vertical_scroll = False,
                         font = 'Consolas 10',
                         k = 'jobsTable',
                         display_row_numbers = False

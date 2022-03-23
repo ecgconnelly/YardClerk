@@ -145,7 +145,27 @@ class Job():
         else:
             self.jobNotes = jobNotes
         
-    
+    def listAffectedTracks(self):
+        """
+        Returns a list of all tracks affected by this Job.
+        """
+
+        # iterate over all operations in this job
+        # list all tracks that appear as a source or destination
+        tracks = []
+        
+        for step in self.steps:
+            for op in step.operations:
+                s = op.sourceTrackName
+                d = op.destinationTrackName
+                if not (s in tracks):
+                    tracks.append(s)
+                if not (d in tracks):
+                    tracks.append(d)
+                    
+        return tracks
+        
+        
     def execute(self):
         for step in self.steps:
             step.execute()
@@ -236,7 +256,9 @@ class Operation():
         # and inserts to destination track at destinationIndex
         self.world = world
         self.sourceTrack = world.getTrackObject(sourceTrackName)
+        self.sourceTrackName = sourceTrackName
         self.destinationTrack = world.getTrackObject(destinationTrackName)
+        self.destinationTrackName = destinationTrackName
         self.count = count
         self.sourceIndex = sourceIndex
         self.destinationIndex = destinationIndex
