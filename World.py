@@ -87,12 +87,14 @@ class Track():
                 
                 
         def setVisTag(self, world):
-            subyard = world.yardSettings['subyards'][self.subyardName]
-            track = subyard[self.trackName]
             try:
+                subyard = world.yardSettings['subyards'][self.subyardName]
+                track = subyard[self.trackName]
                 self.visTag = track['visTag']
+                
             except KeyError:
-                # if the track has no visualizer tag defined
+                # if the track has no visualizer tag defined, 
+                # or the track is a dummy that doesn't exist in the JSON
                 self.visTag = None
             
         def populateFromWorld(self, world):
@@ -181,6 +183,60 @@ class Job():
         lastStep.undo()
         self.steps.remove(lastStep)
         self.world.redrawAllVisualizers()
+        
+    def addOutboundStep(self, sourceTrackName, sourceIndex, count):
+        """
+        Adds a step to outbound units from a track.
+        Creates the dummy outbound track if necessary.
+        """
+        
+        outboundTrackName = f'outbound{self.jobID}'
+        
+        # does the outbound track already exist in the world?
+        # if not, create it
+        outboundTrackObj = self.world.getTrackObject(outboundTrackName)
+        if outboundTrackObj is None:
+            self.createOutboundTrack()
+            
+        """
+        Operation():
+        def __init__(self, world, sourceTrackName, destinationTrackName, 
+                 count, sourceIndex, destinationIndex):
+        """
+        
+        op = Operation(self.world, sourceTrackName, outboundTrackName,
+                       count, sourceIndex, 0)
+        
+        op.execute()
+        
+        step = JobStep([op])
+        
+        # put the step we just created into the Job we're working on
+        self.steps.append(step)
+        
+        # show the results
+        self.world.redrawAllVisualizers()
+        
+        
+        
+    def createOutboundTrack(self):
+        # creates a dummy track to hold cars outbounded by this job
+        # doing this rather than simply deleting the units makes
+        # the outbounding step reversible
+        
+        outboundTrackName = f'outbound{self.jobID}'
+               
+        trackObjects = self.world.trackObjects
+        
+        """
+        Track():
+        def __init__(self, world, subyardName, trackName, units = [],
+                     length = 0, status = None):
+        """
+        
+        newTrack = Track(self.world, 'Outbounds', outboundTrackName)
+        
+        trackObjects[outboundTrackName] = newTrack
         
         
             

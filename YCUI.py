@@ -115,6 +115,7 @@ def bindMainWindowKeys(mainw):
     mainw.bind("<Control-KeyPress-q>", "abortJob")
     mainw.bind("<Control-KeyPress-h>", 'humpTrack')
     mainw.bind("<Control-KeyPress-s>", 'moveCars')
+    mainw.bind("<Control-KeyPress-o>", 'outboundUnits')
     mainw.bind("<KeyPress-h>", 'h alone')
     mainw.bind("<KeyPress-y>", 'y')
     mainw.bind("<KeyPress-n>", 'n')
@@ -168,9 +169,10 @@ def clickedToSelectMoveDest(query, event):
     return False
     
     
-def clickedToSelectMoveSource(query, event):
+def clickedToSelectSourceUnits(query, event):
     # are we even looking to select source cars??
-    if query == 'selectCarsToMoveSource':
+    if (query == 'selectCarsToMoveSource' or
+        query == 'selectCarsToOutboundSource'):
         # was this a click on a visualizer?
         if event.startswith('subyardVis'):
             return True
@@ -279,7 +281,18 @@ def mainLoop(program_state):
             banner.update(f"Job {job.jobID} created")
             
             status['query'] = None
-            
+        
+        if event == 'outboundUnits':
+            job = status['settingUpJob']
+            if job is None:
+                sg.popup("Start setting up a job first.",
+                         no_titlebar = True)
+                continue # nothing to do
+            banner.update("Select units to depart")
+            visTab = mainw['visualInventoryTab']
+            visTab.select()
+            status['query'] = 'selectCarsToOutboundSource'
+        
         if event == 'moveCars':
             job = status['settingUpJob']
             if job is None:
@@ -403,7 +416,7 @@ def mainLoop(program_state):
                 
             continue
             
-        if clickedToSelectMoveSource(status['query'], event):
+        if clickedToSelectSourceUnits(status['query'], event):
             # what track??
             trackName = event.replace('subyardVis', '')
             trackObj = world.getTrackObject(trackName)
@@ -455,16 +468,50 @@ def mainLoop(program_state):
                 p1 = trackObj.pointers[1]['xCoord']
                 
                 if p0 == p1:
-                    sg.popup("Select at least one unit to move",
+                    if "outbound" in status['query']:
+                        opString = "depart"
+                    else:
+                        opString = "move"
+                    sg.popup(f"Select at least one unit to {opString}",
                              no_titlebar = True)
                     del trackObj.pointers[1]
                     continue # don't change status yet!
                     
                 # we have two distinct source pointers
                 
-                # now it's time to select the destination
-                status['query'] = 'selectCarsToMoveDest'
-                banner.update("Move cars to where?")
+                # now it's time to select the destination,
+                # or if we're outbounding cars, to do the outbounding
+                
+                outbounding = 'Outbound' in status['query']
+                if outbounding:
+                    job = status['settingUpJob']
+                    
+                    
+                    # get the indices
+                    sourceCoords = [p['xCoord'] for p in trackObj.pointers]
+                    sourceCoords = sorted(sourceCoords) # put left coord at idx 0
+                    sourceIndices = [int(x) for x in sourceCoords]
+                    count = sourceIndices[1] - sourceIndices[0]
+                    sourceIndex = sourceIndices[0]
+                    
+                    job.addOutboundStep(trackName, sourceIndex, count)
+                                    
+                    # clear pointers
+                    trackObj.pointers = []
+                    
+                    # clear query
+                    status['query'] = None
+                    status['sourceTrack'] = None
+                    status['destTrack'] = None
+                    
+                    world.redrawAllVisualizers()
+                    
+                    banner.update("Departed")
+                    
+                else:
+                    # this is an in-yard move
+                    status['query'] = 'selectCarsToMoveDest'
+                    banner.update("Move cars to where?")
                 
             world.redrawAllVisualizers()
             
