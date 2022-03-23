@@ -1196,7 +1196,6 @@ class TrackVisualizer():
     """
     
     def redraw(self):
-        #print(f"Redrawing visualizer: {self.trackName}... ", end = "")
 
         self.units = self.trackObject.units
         
@@ -1208,12 +1207,6 @@ class TrackVisualizer():
         
         x = 1
         y = 1
-        
-        #if self.trackName in ['R2', 'R3']:
-        #    print(f"{self.trackName}: {self.units}")
-        #    input()
-        #    pass
-            
             
         for unitIdx in range(0, len(self.units)):
             unit = self.units[unitIdx]
