@@ -146,7 +146,7 @@ def updateJobsTable(program_state):
     values = []
     for job in jobs:
         tracks = job.listAffectedTracks()
-        trackStr = ', '.join(tracks)
+        trackStr = ' '.join(tracks)
         row = [job.jobID, 
                job.jobName, 
                '', 
@@ -1048,13 +1048,13 @@ def buildOpsTab(world):
                                     "Type",
                                     "Status",
                                     "Tracks"],
-                        col_widths = [20, 30, 10, 10, 10, 20, 20], 
+                        col_widths = [20, 30, 10, 10, 10, 50], 
                         auto_size_columns = False,
                         justification = 'center',
                         background_color = '#333333',
                         expand_x = False,
                         expand_y = True,
-                        hide_vertical_scroll = True,
+                        hide_vertical_scroll = False,
                         font = 'Consolas 10',
                         k = 'jobsTable',
                         display_row_numbers = False
