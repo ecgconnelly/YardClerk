@@ -87,12 +87,14 @@ class Track():
                 
                 
         def setVisTag(self, world):
-            subyard = world.yardSettings['subyards'][self.subyardName]
-            track = subyard[self.trackName]
             try:
+                subyard = world.yardSettings['subyards'][self.subyardName]
+                track = subyard[self.trackName]
                 self.visTag = track['visTag']
+                
             except KeyError:
-                # if the track has no visualizer tag defined
+                # if the track has no visualizer tag defined, 
+                # or the track is a dummy that doesn't exist in the JSON
                 self.visTag = None
             
         def populateFromWorld(self, world):
@@ -232,7 +234,7 @@ class Job():
                      length = 0, status = None):
         """
         
-        newTrack = Track(self.world, 'outbounds', outboundTrackName)
+        newTrack = Track(self.world, 'Outbounds', outboundTrackName)
         
         trackObjects[outboundTrackName] = newTrack
         
