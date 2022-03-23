@@ -1196,7 +1196,6 @@ class TrackVisualizer():
     """
     
     def redraw(self):
-        #print(f"Redrawing visualizer: {self.trackName}... ", end = "")
 
         self.units = self.trackObject.units
         
@@ -1205,34 +1204,34 @@ class TrackVisualizer():
         self.unitFromFigIdx = {}
         
         coLines = []
+        hazLines = []
         
         x = 1
         y = 1
-        
-        #if self.trackName in ['R2', 'R3']:
-        #    print(f"{self.trackName}: {self.units}")
-        #    input()
-        #    pass
-            
             
         for unitIdx in range(0, len(self.units)):
             unit = self.units[unitIdx]
             
             try:
                 prevUnitTag = self.units[unitIdx-1].destinationTag
+                prevUnitHaz = self.units[unitIdx-1].isHazmat()
             except IndexError:
                 prevUnitTag = None
+                prevUnitHaz = False
             
             try:
                 nextUnitTag = self.units[unitIdx+1].destinationTag
+                nextUnitHaz = self.units[unitIdx+1].isHazmat()
             except IndexError:
                 nextUnitTag = None
+                nextUnitHaz = False
                 
             center = (x, y)
             radius = 0.4
             
             lowY = y - 0.2
             ulineY = y - 0.5
+            hazlineY = y - 0.7
             highY = y + 0.2
             lowX = x - 0.3
             lowXext = x - 0.6
@@ -1268,24 +1267,26 @@ class TrackVisualizer():
                 
                 
                 if unit.isHazmat():
-                    # draw square on point
-                    points = [ (x - .5, y),
-                               (x, y+.25),
-                               (x+.5, y),
-                               (x, y-.25) ]
-                           
-                           
-                    figIdx = self.element.draw_polygon(points,
-                                              fill_color = fill,
-                                              line_color = carColor,
-                                              line_width = 1)
-                else:
-                    # draw circle
-                    figIdx = self.element.draw_circle(center,
-                                         radius, 
-                                         fill_color = fill,
-                                         line_color = carColor,
-                                         line_width = 1)
+                    # add to list of hazmat lines
+                    if prevUnitHaz:
+                        thisLowX = lowXext
+                    else:
+                        thisLowX = lowX
+                    if nextUnitHaz:
+                        thisHighX = highXext
+                    else:
+                        thisHighX = highX
+                        
+                    linePoints = [(thisLowX, hazlineY), (thisHighX, hazlineY)]
+                    hazLines.append(linePoints)
+                
+                # draw circle for unit 
+                # all cars are circles now
+                figIdx = self.element.draw_circle(center,
+                                     radius, 
+                                     fill_color = fill,
+                                     line_color = carColor,
+                                     line_width = 1)
                                          
                 
                 
@@ -1315,6 +1316,12 @@ class TrackVisualizer():
             self.element.draw_line(line[0],
                                    line[1],
                                    color = 'white',
+                                   width = 2)
+        # draw underlines for hazmat
+        for line in hazLines:
+            self.element.draw_line(line[0],
+                                   line[1],
+                                   color = 'red',
                                    width = 2)
         
         # draw selection pointers
