@@ -1041,7 +1041,7 @@ def buildOpsTab(world):
                                     "Type",
                                     "Status",
                                     "Tracks"],
-                        col_widths = [20, 30, 10, 10, 10, 20, 20], 
+                        col_widths = [20, 30, 10, 10, 10, 50], 
                         auto_size_columns = False,
                         justification = 'center',
                         background_color = '#333333',
