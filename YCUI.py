@@ -116,6 +116,7 @@ def bindMainWindowKeys(mainw):
     mainw.bind("<Control-KeyPress-h>", 'humpTrack')
     mainw.bind("<Control-KeyPress-s>", 'moveCars')
     mainw.bind("<Control-KeyPress-o>", 'outboundUnits')
+    mainw.bind("<Control-KeyPress-i>", 'inboundUnits')
     mainw.bind("<KeyPress-h>", 'h alone')
     mainw.bind("<KeyPress-y>", 'y')
     mainw.bind("<KeyPress-n>", 'n')
