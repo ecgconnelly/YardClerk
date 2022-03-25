@@ -346,7 +346,7 @@ def mainLoop(program_state):
             status['sourceTrack'] = dummyTrackName
             dummyTrackObj.pointers = []
             dummyTrackObj.pointers.append({'xCoord':0})
-            dummyTrackObj.pointers.append({'xCoord':len(inboundUnits)-1})
+            dummyTrackObj.pointers.append({'xCoord':len(inboundUnits)})
             banner.update("Place inbound units where?")
             continue
             
