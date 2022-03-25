@@ -116,11 +116,16 @@ def bindMainWindowKeys(mainw):
     mainw.bind("<Control-KeyPress-h>", 'humpTrack')
     mainw.bind("<Control-KeyPress-s>", 'moveCars')
     mainw.bind("<Control-KeyPress-o>", 'outboundUnits')
+    mainw.bind("<Control-KeyPress-i>", 'inboundUnits')
     mainw.bind("<KeyPress-h>", 'h alone')
     mainw.bind("<KeyPress-y>", 'y')
     mainw.bind("<KeyPress-n>", 'n')
     mainw.bind("<KeyPress-Y>", 'Y')
     mainw.bind("<KeyPress-N>", 'N')
+    mainw.bind("<KeyPress-e>", 'e')
+    mainw.bind("<KeyPress-w>", 'w')
+    mainw.bind("<KeyPress-E>", 'E')
+    mainw.bind("<KeyPress-W>", 'W')
     mainw.bind("<Escape>", "ESC")
     mainw.bind("<space>", "SPACE")
     mainw.bind("<Enter>", "ENTER")
@@ -282,6 +287,71 @@ def mainLoop(program_state):
             
             status['query'] = None
         
+        if event == 'inboundUnits':
+            job = status['settingUpJob']
+            if job is None:
+                sg.popup("Start setting up a job first.",
+                         no_titlebar = True)
+                continue # nothing to do
+            
+            # if we're here, we do have a job in process of being set up
+            
+            # what file should we load from?
+            trainFile = sg.popup_get_file("Select train XML to inbound",
+                                          title = "Inbound Train",
+                                          #default_path = 'C:\Run8Studios\Run8 Train Simulator V3\Content\V3Routes\Regions\SouthernCA\Trains',
+                                          default_extension = 'xml',
+                                          file_types = (("XML Files", ".xml"),),
+                                          initial_folder = 'C:\Run8Studios\Run8 Train Simulator V3\Content\V3Routes\Regions\SouthernCA\Trains'
+                                          )
+            
+            if trainFile is None:
+                banner.update("Inbounding cancelled.")
+                continue # wait for next event
+            
+            
+
+            
+            # load the file, make a list of units
+            inboundTrainList = world.trainsFromFile(trainFile)
+            
+            if len(inboundTrainList) > 1:
+                sg.popup_error("That file contains more than one train.")
+                continue
+            elif len(inboundTrainList) == 0:
+                sg.popup_error("That file doesn't contain any trains.")
+                continue
+            
+            # if we're here, we loaded a file with exactly one train
+            inboundTrain = inboundTrainList[0]
+            inboundUnits = inboundTrain.units
+            
+            # determine which units in the inbound train are for customers
+            for unit in inboundUnits:
+                unit.isCustomerOrder = world.isUnitCustomerOrder(unit)
+            
+            
+            # check whether we already have a dummy track for inbounds on this job
+            dummyTrackName = f'inbound{job.jobID}'
+            dummyTrackObj = world.getTrackObject(dummyTrackName)
+            if dummyTrackObj is None:
+                dummyTrackObj = World.Track(world, 'inbounds', dummyTrackName)
+                world.trackObjects[dummyTrackName] = dummyTrackObj
+                            
+            # add the inbound units to the dummy track
+            dummyTrackObj.units += inboundUnits
+            
+            # where should the units go?
+            status['query'] = 'selectCarsToMoveDest'
+            status['sourceTrack'] = dummyTrackName
+            dummyTrackObj.pointers = []
+            dummyTrackObj.pointers.append({'xCoord':0})
+            dummyTrackObj.pointers.append({'xCoord':len(inboundUnits)})
+            banner.update("Place inbound units where?")
+            continue
+            
+        
+    
         if event == 'outboundUnits':
             job = status['settingUpJob']
             if job is None:
@@ -292,6 +362,7 @@ def mainLoop(program_state):
             visTab = mainw['visualInventoryTab']
             visTab.select()
             status['query'] = 'selectCarsToOutboundSource'
+            continue
         
         if event == 'moveCars':
             job = status['settingUpJob']
@@ -304,6 +375,7 @@ def mainLoop(program_state):
             visTab = mainw['visualInventoryTab']
             visTab.select()
             status['query'] = 'selectCarsToMoveSource'
+            continue
             
         
         if clickedToSelectMoveDest(status['query'], event):
@@ -347,14 +419,42 @@ def mainLoop(program_state):
             trackObj.pointers.append({'xCoord':x})
             world.redrawAllVisualizers()
 
-            # now confirm the move
-            banner.update("Confirm move? (Y/N)")
-            
-            status['query'] = 'confirmMove'
+            if status['sourceTrack'].startswith('inbound'):
+                # we are inbounding a train, 
+                status['query'] = 'confirmInbound'
+                banner.update("Inbound faces which direction? E/W/Esc")
+            else:
+                # we're moving stuff around the yard
+                # now confirm the move
+                status['query'] = 'confirmMove'
+                banner.update("Confirm move? (Y/N)")
             continue
         
-        if status['query'] == 'confirmMove':
-            if event in ['y', 'Y']:
+        if status['query'] in ['confirmMove', 'confirmInbound']:
+            if status['query'] == 'confirmInbound':
+                if event in ['e', 'E']:
+                    reverse = True
+                    confirm = True
+                elif event in ['w', 'W']:
+                    reverse = False
+                    confirm = True
+                elif event == 'Escape':
+                    reverse = None
+                    confirm = False
+                else:
+                    continue #this event wasn't relevant to inbounding
+            else:
+                # if we're just moving stuff around the yard
+                if event in ['y', 'Y']:
+                    reverse = False
+                    confirm = True
+                elif event in ['n', 'N']:
+                    reverse = False
+                    confirm = False
+                else:
+                    continue # not a relevant event
+            
+            if confirm == True:
                 # which tracks?
                 sourceName = status['sourceTrack']
                 destName = status['destTrack']
@@ -373,7 +473,7 @@ def mainLoop(program_state):
                 
                 # create job step for the move
                 op = World.Operation(world, sourceName, destName, count, 
-                                     sourceIndex, destIndex)
+                                     sourceIndex, destIndex, reverse = reverse)
                                      
                 step = World.JobStep([op])
                 step.execute()
@@ -393,9 +493,11 @@ def mainLoop(program_state):
                 
                 world.redrawAllVisualizers()
                 
-                banner.update("Move confirmed")
+                banner.update("Move/inbound confirmed")
                 
-            elif event in ['n', 'N']:
+            else:
+                # if operation was cancelled
+                
                 # which tracks were we dealing with?
                 sourceName = status['sourceTrack']
                 destName = status['destTrack']
