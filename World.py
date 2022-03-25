@@ -183,6 +183,9 @@ class Job():
         lastStep.undo()
         self.steps.remove(lastStep)
         self.world.redrawAllVisualizers()
+    
+    def addInboundStep(self, destTrackName, destIndex, unitList):
+        pass
         
     def addOutboundStep(self, sourceTrackName, sourceIndex, count):
         """
@@ -306,7 +309,7 @@ class Operation():
     """
     
     def __init__(self, world, sourceTrackName, destinationTrackName, 
-                 count, sourceIndex, destinationIndex):
+                 count, sourceIndex, destinationIndex, reverse = False):
         # moves the given number of cars from source to destination
         # pulls #count cars from source track, starting at sourceIndex,
         # and inserts to destination track at destinationIndex
@@ -318,6 +321,7 @@ class Operation():
         self.count = count
         self.sourceIndex = sourceIndex
         self.destinationIndex = destinationIndex
+        self.reverse = reverse
         
         
         
@@ -337,6 +341,8 @@ class Operation():
         # split the source into left remaining, 
         # moving, and right remaining chunks
         sourceUnits = sourceTrack.units
+        if self.reverse:
+            sourceUnits.reverse()
         
         sourceLeft = sourceUnits[:sourceIndex]
 
@@ -390,23 +396,25 @@ class WorldState():
         self.loadYardSettings()
         
         for unit in self.units:
-            if not unit.isLoco():
-                # this is a car
-                unit.nextTrain = self.getNextTrain(unit.destinationTag)
-                co = self.isTagCustomerOrder(unit.destinationTag)
-            else:
-                # this is a loco
-                co = False
-            
-            unit.isCustomerOrder = co
+            unit.isCustomerOrder = self.isUnitCustomerOrder(unit)
                 
-        
-        
         # build track objects 
         # this depends on trackGroups, trains, units, yardSettings
         self.buildTrackObjects()
     
-    
+
+    def isUnitCustomerOrder(self, unit):
+        if not unit.isLoco():
+                # this is a car
+                unit.nextTrain = self.getNextTrain(unit.destinationTag)
+                co = self.isTagCustomerOrder(unit.destinationTag)
+        else:
+            # this is a loco
+            co = False
+        return co
+        
+
+
     def redrawAllVisualizers(self):
         for track in self.trackObjects:
             self.trackObjects[track].redrawVisualizers()
@@ -624,6 +632,13 @@ class WorldState():
             train = Train(ldr)
             trains.append(train)
         return trains
+    
+    
+    def trainsFromFile(self, filepath):
+        loaders = self.trainLoadersFromFile(filepath)
+        trains = self.trainsFromLoaders(loaders)
+        return trains
+        
         
     def trainLoadersFromFile(self, filepath):
         print(f"Loading file {filepath}")
@@ -632,7 +647,10 @@ class WorldState():
             fstr = f.read()
             fdict = xmltodict.parse(fstr)
             
-            trainLoaders = fdict['ScnLoader']['trainList']['TrainLoader']
+            try:
+                trainLoaders = fdict['ScnLoader']['trainList']['TrainLoader']
+            except KeyError:
+                return [] # there are no trains in this file, return empty list
             # there may be one or multiple trains per file
             # if there is one train, trainLoaders is an OrderedDict
             # otherwise trainLoaders is a list
