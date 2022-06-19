@@ -1326,6 +1326,24 @@
     "lengthFt": 74.47
   },
   {
+    "xmlName": "R8_C449W_BNSF01",
+    "initials": "ATSF",
+    "emptyWeight": 0,
+    "lengthFt": 74.47
+  },
+  {
+    "xmlName": "R8_C449W_BNSF02",
+    "initials": "ATSF",
+    "emptyWeight": 0,
+    "lengthFt": 74.47
+  },
+  {
+    "xmlName": "R8_C449W_BNSF03",
+    "initials": "ATSF",
+    "emptyWeight": 0,
+    "lengthFt": 74.47
+  },
+  {
     "xmlName": "R8_C449W_SP01",
     "initials": "SP",
     "emptyWeight": 0,
