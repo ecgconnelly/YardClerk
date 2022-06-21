@@ -377,6 +377,42 @@ def mainLoop(program_state):
             status['query'] = 'selectCarsToMoveSource'
             continue
             
+        if status['query'] == 'confirmOutboundSelection':
+            if event in ['y', 'Y']:
+                doClear = True
+                job = status['settingUpJob']
+                
+                
+                # get the indices
+                sourceCoords = [p['xCoord'] for p in trackObj.pointers]
+                sourceCoords = sorted(sourceCoords) # put left coord at idx 0
+                sourceIndices = [int(x) for x in sourceCoords]
+                count = sourceIndices[1] - sourceIndices[0]
+                sourceIndex = sourceIndices[0]
+                
+                job.addOutboundStep(trackName, sourceIndex, count)
+                
+                banner.update("Units outbounded")
+
+            elif event in ['n', 'N']:
+                doClear = True
+                banner.update("Outbound cancelled")
+                
+            else:
+                #don't clear pointers for timeout or other irrelvant events
+                continue 
+            
+            # if we're here, we got a y/n to outbound or not 
+            trackObj.pointers = []
+            
+            # clear query
+            status['query'] = None
+            status['sourceTrack'] = None
+            status['destTrack'] = None
+            
+            world.redrawAllVisualizers()
+                
+                
         
         if clickedToSelectMoveDest(status['query'], event):
             # select the destination for cars to move to
@@ -586,29 +622,9 @@ def mainLoop(program_state):
                 
                 outbounding = 'Outbound' in status['query']
                 if outbounding:
-                    job = status['settingUpJob']
                     
-                    
-                    # get the indices
-                    sourceCoords = [p['xCoord'] for p in trackObj.pointers]
-                    sourceCoords = sorted(sourceCoords) # put left coord at idx 0
-                    sourceIndices = [int(x) for x in sourceCoords]
-                    count = sourceIndices[1] - sourceIndices[0]
-                    sourceIndex = sourceIndices[0]
-                    
-                    job.addOutboundStep(trackName, sourceIndex, count)
-                                    
-                    # clear pointers
-                    trackObj.pointers = []
-                    
-                    # clear query
-                    status['query'] = None
-                    status['sourceTrack'] = None
-                    status['destTrack'] = None
-                    
-                    world.redrawAllVisualizers()
-                    
-                    banner.update("Departed")
+                    status['query'] = 'confirmOutboundSelection'
+                    banner.update("Outbound selected units?")
                     
                 else:
                     # this is an in-yard move
@@ -616,9 +632,7 @@ def mainLoop(program_state):
                     banner.update("Move cars to where?")
                 
             world.redrawAllVisualizers()
-            
-        
-        
+                    
         
         
         if event == 'humpTrack':
