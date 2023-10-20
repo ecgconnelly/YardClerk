@@ -661,7 +661,7 @@ class WorldState():
                 # insert them all into configTrains
                 for t in trainLoaders:
                     allTrainLoaders.append(t)
-            elif type(trainLoaders) is collections.OrderedDict:
+            elif type(trainLoaders) is collections.OrderedDict or type(trainLoaders) is dict:
                 # there is only one train in this file
                 # insert it into configTrains
                 allTrainLoaders.append(trainLoaders)
