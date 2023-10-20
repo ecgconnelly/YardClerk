@@ -187,9 +187,10 @@ def clickedToSelectSourceUnits(query, event):
     
     
 def mainLoop(program_state):
-    
+
+    printEventSpam = False
+
     # unpack dict
-    
     world = program_state['world']
     mainw = program_state['mainw']
     status = program_state['uiStatus']
@@ -201,16 +202,17 @@ def mainLoop(program_state):
     banner = mainw['bannerText']
     
     
+    
     while True:
         (event, values) = mainw.read()
         
-        print (f"{event=}, {type(event)}")
-        try:
-            print(f"{values[event]=}")
-        except:
-            pass
-            
-        # respond to UI events
+        if printEventSpam == True:
+            print (f"{event=}, {type(event)}")
+            try:
+                print(f"{values[event]=}")
+            except:
+                pass
+                
         
         if event == sg.WIN_CLOSED:
             # our main window was closed, exit the program
