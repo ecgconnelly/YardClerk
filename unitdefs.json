@@ -1308,12 +1308,6 @@
     "lengthFt": 76.77
   },
   {
-    "xmlName": "R8_C449W_Run801",
-    "initials": "R8W",
-    "emptyWeight": 0,
-    "lengthFt": 74.47
-  },
-  {
     "xmlName": "R8_C449W_ATSF01",
     "initials": "ATSF",
     "emptyWeight": 0,
@@ -1327,19 +1321,43 @@
   },
   {
     "xmlName": "R8_C449W_BNSF01",
-    "initials": "ATSF",
+    "initials": "BNSF",
     "emptyWeight": 0,
     "lengthFt": 74.47
   },
   {
     "xmlName": "R8_C449W_BNSF02",
-    "initials": "ATSF",
+    "initials": "BNSF",
     "emptyWeight": 0,
     "lengthFt": 74.47
   },
   {
     "xmlName": "R8_C449W_BNSF03",
-    "initials": "ATSF",
+    "initials": "BNSF",
+    "emptyWeight": 0,
+    "lengthFt": 74.47
+  },
+  {
+    "xmlName": "R8_C449W_BNSF04",
+    "initials": "BNSF",
+    "emptyWeight": 0,
+    "lengthFt": 74.47
+  },
+  {
+    "xmlName": "R8_C449W_CSX01",
+    "initials": "CSX",
+    "emptyWeight": 0,
+    "lengthFt": 74.47
+  },
+  {
+    "xmlName": "R8_C449W_CSX02",
+    "initials": "CSX",
+    "emptyWeight": 0,
+    "lengthFt": 74.47
+  },
+  {
+    "xmlName": "R8_C449W_Run801",
+    "initials": "R8W",
     "emptyWeight": 0,
     "lengthFt": 74.47
   },
@@ -1351,6 +1369,18 @@
   },
   {
     "xmlName": "R8_C449W_SP02",
+    "initials": "SP",
+    "emptyWeight": 0,
+    "lengthFt": 74.47
+  },
+  {
+    "xmlName": "R8_C449W_UP02",
+    "initials": "SP",
+    "emptyWeight": 0,
+    "lengthFt": 74.47
+  },
+  {
+    "xmlName": "R8_C449W_UP02",
     "initials": "SP",
     "emptyWeight": 0,
     "lengthFt": 74.47
@@ -2338,5 +2368,47 @@
     "initials": "IFRX",
     "emptyWeight": 41,
     "lengthFt": 73.16
+  },
+  {
+    "xmlName": "R8_Box_60Ft_HC_CSX01",
+    "initials": "CSXT",
+    "emptyWeight": 40,
+    "lengthFt": 67.86
+  },
+  {
+    "xmlName": "R8_Box_60Ft_HC_NS01",
+    "initials": "NS",
+    "emptyWeight": 40,
+    "lengthFt": 67.86
+  },
+  {
+    "xmlName": "R8_Box_60Ft_HC_TTX01",
+    "initials": "TBOX",
+    "emptyWeight": 40,
+    "lengthFt": 67.86
+  },
+  {
+    "xmlName": "R8_T104_ADMX",
+    "initials": "ADMX",
+    "emptyWeight": 32,
+    "lengthFt": 45.66
+  },
+  {
+    "xmlName": "R8_T104_TILX_Sulfur",
+    "initials": "TILX",
+    "emptyWeight": 32,
+    "lengthFt": 45.66
+  },
+  {
+    "xmlName": "R8_T389_ACF_LPG_SHPX",
+    "initials": "SHPX",
+    "emptyWeight": 50,
+    "lengthFt": 67.78
+  },
+  {
+    "xmlName": "R8_T389_ACF_NH3_CWBX",
+    "initials": "CWBX",
+    "emptyWeight": 62,
+    "lengthFt": 67.78
   }
 ]
