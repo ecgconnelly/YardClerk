@@ -1666,8 +1666,18 @@ def buildSubyardTab(world, allVisualizers):
     
     return subyardTab
                   
+def buildTerminalTab(world):
+    layout = [[]]
+
+    return sg.Tab("Terminal",
+                  layout,
+                  background_color='#333333')
+
 def buildTabList(world, allVisualizers):
     tabs = []
+
+    terminalTab = buildTerminalTab(world)
+    tabs.append(terminalTab)
     
     opsTab = buildOpsTab(world)
     tabs.append(opsTab)
