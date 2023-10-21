@@ -14,8 +14,8 @@ class Train():
         # find the first and last units in the train 
         # that occupy a known track group
         group = None
-        first = None
-        last = None
+        firstUnit = None
+        lastUnit = None
         
         count = self.countUnits()
         
@@ -24,7 +24,7 @@ class Train():
             unit = self.units[idx]
             groups = unit.trackGroupsForUnit(trackGroups)
             if len(groups):
-                first = unit
+                firstUnit = unit
                 group = groups[0]
                 break
         
@@ -33,13 +33,13 @@ class Train():
             unit = self.units[idx]
             groups = unit.trackGroupsForUnit(trackGroups)
             if group in groups:
-                last = unit
+                lastUnit = unit
                 break
         
         if group is not None:
             #print(f"{self.symbol()} is on {group}")
-            firstKeys = first.trackKeys()
-            lastKeys = last.trackKeys()
+            firstKeys = firstUnit.trackKeys()
+            lastKeys = lastUnit.trackKeys()
             
             groupKeys = trackGroups[group]['sections']
             
@@ -48,29 +48,29 @@ class Train():
             # rearmost truck on the rear end
             # but we need to handle the case where those trucks are not
             # actually occupying the track groups
-            firstIdealTruck = bool(first.reverseDirection[0])
-            lastIdealTruck = bool(not(last.reverseDirection[0]))
+            firstIdealTruck = bool(firstUnit.reverseDirection[0])
+            lastIdealTruck = bool(not(lastUnit.reverseDirection[0]))
             try:
-                leadKey = first.trackKeys()[firstIdealTruck]
+                leadKey = firstUnit.trackKeys()[firstIdealTruck]
                 leadIdx = list(groupKeys).index(firstKeys[firstIdealTruck])
-                leadDist = first.distanceTravelledInMeters[firstIdealTruck]
-                leadStartNode = first.startNodeIndex[firstIdealTruck]
+                leadDist = firstUnit.distanceTravelledInMeters[firstIdealTruck]
+                leadStartNode = firstUnit.startNodeIndex[firstIdealTruck]
             except:
-                leadKey = first.trackKeys()[1-firstIdealTruck]
+                leadKey = firstUnit.trackKeys()[1-firstIdealTruck]
                 leadIdx = list(groupKeys).index(firstKeys[1-firstIdealTruck])
-                leadDist = first.distanceTravelledInMeters[1-firstIdealTruck]
-                leadStartNode = first.startNodeIndex[1-firstIdealTruck]
+                leadDist = firstUnit.distanceTravelledInMeters[1-firstIdealTruck]
+                leadStartNode = firstUnit.startNodeIndex[1-firstIdealTruck]
             
             try:
-                trailKey = last.trackKeys()[lastIdealTruck]
+                trailKey = lastUnit.trackKeys()[lastIdealTruck]
                 trailIdx = list(groupKeys).index(lastKeys[lastIdealTruck])
-                trailDist = last.distanceTravelledInMeters[lastIdealTruck]
-                trailStartNode = last.startNodeIndex[lastIdealTruck]
+                trailDist = lastUnit.distanceTravelledInMeters[lastIdealTruck]
+                trailStartNode = lastUnit.startNodeIndex[lastIdealTruck]
             except:
-                trailKey = last.trackKeys()[1-lastIdealTruck]
+                trailKey = lastUnit.trackKeys()[1-lastIdealTruck]
                 trailIdx = list(groupKeys).index(lastKeys[1-lastIdealTruck])
-                trailDist = last.distanceTravelledInMeters[1-lastIdealTruck]
-                trailStartNode = last.startNodeIndex[1-lastIdealTruck]
+                trailDist = lastUnit.distanceTravelledInMeters[1-lastIdealTruck]
+                trailStartNode = lastUnit.startNodeIndex[1-lastIdealTruck]
             
             #print(f"{leadIdx=}, {trailIdx=}")
             
