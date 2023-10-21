@@ -41,9 +41,17 @@ class RailUnit():
             print(unitXML['rvXMLfilename'])
             input()
             raise
-       
-        self.setPropertiesFromXMLName()
-       
+        
+        try:
+            self.setPropertiesFromXMLName()
+        except ValueError:
+            self.initials = '????'
+            self.emptyWeight = 0
+            self.lengthFt = 0
+            print("Unknown unit type: ", self.rvXMLfilename)
+
+
+
         self.unitType = unitXML['unitType']
         self.currentRoutePrefix = (unitXML
             ['currentRoutePrefix']['int'])
