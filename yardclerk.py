@@ -6,8 +6,7 @@
 # OPERATING PARAMETERS
 
 DEFAULT_YARD = 'barstow'
-DEFAULT_WORLD_XML = 'C:\Run8Studios\Run8 Train Simulator V3\Content\V3Routes\Regions\SouthernCA\Trains\yardclerk.xml'
-
+DEFAULT_WORLD_XML = 'D:\Run8Studios\Run8 Train Simulator V3\Content\V3Routes\Regions\SouthernCA\Trains\yardclerk.xml'
 
 ################################################################################
 #
