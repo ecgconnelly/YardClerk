@@ -6,8 +6,7 @@
 # OPERATING PARAMETERS
 
 DEFAULT_YARD = 'barstow'
-DEFAULT_WORLD_XML = 'C:\Run8Studios\Run8 Train Simulator V3\Content\V3Routes\Regions\SouthernCA\Trains\yardclerk.xml'
-
+DEFAULT_WORLD_XML = 'D:\Run8Studios\Run8 Train Simulator V3\Content\V3Routes\Regions\SouthernCA\Trains\yardclerk.xml'
 
 ################################################################################
 #
@@ -61,15 +60,12 @@ def main():
     
     # build UI to show results of analysis
     mainw = YCUI.buildMainWindow(baseWorld, allVisualizers).Finalize()
-    
-    
+
     baseWorld.redrawAllVisualizers()
-    
+
     #mainw.maximize()
     #mainw.refresh()
-    
-    
-    
+
     YCUI.updateInventoryTable(baseWorld, mainw)
        
     
