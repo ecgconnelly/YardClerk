@@ -60,15 +60,12 @@ def main():
     
     # build UI to show results of analysis
     mainw = YCUI.buildMainWindow(baseWorld, allVisualizers).Finalize()
-    
-    
+
     baseWorld.redrawAllVisualizers()
-    
+
     #mainw.maximize()
     #mainw.refresh()
-    
-    
-    
+
     YCUI.updateInventoryTable(baseWorld, mainw)
        
     
