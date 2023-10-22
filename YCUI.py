@@ -1715,7 +1715,6 @@ def buildMainWindow(world, allVisualizers):
     layout = []
     
     # status bar
-    
     row = []
     row.append(sg.Text(f"Good morning {world.yardSettings['shortName']}!", 
                        text_color = 'white', 
@@ -1729,8 +1728,7 @@ def buildMainWindow(world, allVisualizers):
     
     # main panel
     tabs = buildTabList(world, allVisualizers)
-       
-    
+
     tabBar = sg.TabGroup([tabs],
                          title_color = '#AAAAAA',
                          selected_title_color = '#66FF66',
@@ -1743,26 +1741,33 @@ def buildMainWindow(world, allVisualizers):
                          font = 'Consolas 12 bold',
                          expand_x = True,
                          expand_y = True,
+                         size=[400,400],
                          k = 'mainTabs')
                          
     layout.append([tabBar])
-    
-    
 
+    #input line
+    inputBar = sg.Input(background_color='#333333', 
+                        text_color='white',
+                        #size=[400,100],
+                        expand_x=True,
+                        font='Consolas 12',
+                        )
+    layout.append([inputBar])
 
-    
     
     win = sg.Window(title, 
                     layout,
                     #finalize = True
                     #text_color = 'white',
                     background_color = 'black',
-                    #use_custom_titlebar = False,
+                    use_custom_titlebar = False,
                     titlebar_text_color = 'white',
                     titlebar_background_color = 'black',
                     size = (1400, 800),
                     location = (0,0)
                     )
+    
     
     print("Done building UI.")
     return win
