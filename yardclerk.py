@@ -73,12 +73,6 @@ def main():
     
     # show UI
     
-
-    
-    
-    
-    testOpStack = []
-    
     
     banner = mainw['bannerText']
     
