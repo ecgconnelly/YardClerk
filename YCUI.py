@@ -5,6 +5,7 @@ VISUALIZER_BG_COLOR = '#111111'
 
 
 import datetime
+import string
 
 
 import World
@@ -107,33 +108,49 @@ def newJobPopup(program_state):
     return job
     
 def bindMainWindowKeys(mainw):
-    mainw.bind("<Control-KeyPress-1>", "colorFilter_humpTags")
-    mainw.bind("<Control-KeyPress-2>", "colorFilter_compliance")
-    mainw.bind("<Control-KeyPress-z>", "undo")
-    mainw.bind("<Control-KeyPress-n>", "newJob")
-    mainw.bind("<Control-KeyPress-c>", "finishJob")
-    mainw.bind("<Control-KeyPress-q>", "abortJob")
-    mainw.bind("<Control-KeyPress-h>", 'humpTrack')
-    mainw.bind("<Control-KeyPress-s>", 'moveCars')
-    mainw.bind("<Control-KeyPress-o>", 'outboundUnits')
-    mainw.bind("<Control-KeyPress-i>", 'inboundUnits')
-    mainw.bind("<KeyPress-h>", 'h alone')
-    mainw.bind("<KeyPress-y>", 'y')
-    mainw.bind("<KeyPress-n>", 'n')
-    mainw.bind("<KeyPress-Y>", 'Y')
-    mainw.bind("<KeyPress-N>", 'N')
-    mainw.bind("<KeyPress-e>", 'e')
-    mainw.bind("<KeyPress-w>", 'w')
-    mainw.bind("<KeyPress-E>", 'E')
-    mainw.bind("<KeyPress-W>", 'W')
-    mainw.bind("<Escape>", "ESC")
-    mainw.bind("<space>", "SPACE")
-    mainw.bind("<Enter>", "ENTER")
-    mainw.bind("<Control-KeyPress-W>", "walkTrack")
-    mainw.bind("<Control-Shift-KeyPress-R>", "Restart")
-    mainw.bind("<KeyPress-d>", "d")
-    mainw.bind("<KeyPress-D>", "D")
-    #mainw.bind("<Shift-KeyPress-T>", "Shift-T")
+
+    # bind all the letters with all combinations of ctrl and shift      
+    # known issue: cannot bind to - key (lots of false positives)
+    bases_cased = list(string.ascii_letters + string.digits + '!"#$%&\'()*+,./:;<=>?@[\\]^_`{|}~')
+    bases_nocase = [f"F{n}" for n in range(1, 13)]
+    bases_nocase += ['Left', 'Up', 'Right', 'Down', 
+                     'Insert', 'Delete', 'Home', 'End', 'Prior', 'Next',
+                     'Escape', 'Tab', 'BackSpace', 'Return', 'space']
+
+    for base in bases_cased + bases_nocase:
+        # no control 
+        tk_event_string = f"<KeyPress-{base}>"
+        mainw.bind(tk_event_string, tk_event_string)
+
+        # control
+        tk_event_string = f"<Control-KeyPress-{base}>"
+        mainw.bind(tk_event_string, tk_event_string)
+
+        # alt
+        tk_event_string = f"<Alt-KeyPress-{base}>"
+        mainw.bind(tk_event_string, tk_event_string)
+
+        # control-alt
+        tk_event_string = f"<Control-Alt-KeyPress-{base}>"
+        mainw.bind(tk_event_string, tk_event_string)
+
+        if base in bases_nocase:
+            # shift
+            tk_event_string = f"<Shift-KeyPress-{base}>"
+            mainw.bind(tk_event_string, tk_event_string)  
+
+            # control shift
+            tk_event_string = f"<Control-Shift-KeyPress-{base}>"
+            mainw.bind(tk_event_string, tk_event_string)  
+
+            # alt shift
+            tk_event_string = f"<Alt-Shift-KeyPress-{base}>"
+            mainw.bind(tk_event_string, tk_event_string)
+
+            # control alt shift
+            tk_event_string = f"<Control-Alt-Shift-KeyPress-{base}>"
+            mainw.bind(tk_event_string, tk_event_string)
+
     #mainw.bind("<Key-Control_L>", "LCtrl")
     #mainw.bind('<Key-Shift_L>', 'Shift_Down')
     #mainw.bind('<Key-Shift_R>', 'Shift_Down')
@@ -188,7 +205,7 @@ def clickedToSelectSourceUnits(query, event):
     
 def mainLoop(program_state):
 
-    printEventSpam = False
+    printEventSpam = True
 
     # unpack dict
     world = program_state['world']
