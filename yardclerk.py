@@ -31,14 +31,17 @@ import PySimpleGUI as sg
 # PROJECT IMPORTS
 
 import World
-
-import YCUI 
+import YCUI
+from modes import Modes
+#from Modes import basemode
 ################################################################################
 #
 ################################################################################
 # MAIN PROGRAM
 
+
 def main():
+
     # what yard are we working today?
     # TODO: ask which yard to work
     yardName = DEFAULT_YARD
@@ -53,8 +56,6 @@ def main():
     baseWorld = World.WorldState(worldName = 'Base',
                                   yardName = yardName, 
                                   stateFilenames = worldFilenames)
-    
-    
     
     allVisualizers = {}
     
@@ -89,10 +90,30 @@ def main():
                      "allVisualizers" : allVisualizers,
                      "jobs" : []}
     
-    return YCUI.mainLoop(program_state)
-    
+    printEventSpam = True
+    YCUI.bindMainWindowKeys(mainw)
+    activeMode = Modes.Base
+    while True:
+        (event, values) = mainw.read()
+
+        if printEventSpam == True:
+            print (f"{event=}, {type(event)}")
+            try:
+                print(f"{values[event]=}")
+            except:
+                pass
         
-            
+        if event == sg.WIN_CLOSED:
+            # our main window was closed, exit the program
+            break
+
+        if 'KeyPress' in event:
+            activeMode.HandleKeyEvent(event, program_state)
+
+
+    
+    return YCUI.mainLoop_OLD(program_state)
+    
 
 if __name__ == '__main__':
     while True:

@@ -203,7 +203,7 @@ def clickedToSelectSourceUnits(query, event):
         
     
     
-def mainLoop(program_state):
+def mainLoop_OLD(program_state):
 
     printEventSpam = True
 
@@ -217,9 +217,7 @@ def mainLoop(program_state):
     bindMainWindowKeys(mainw)
     
     banner = mainw['bannerText']
-    
-    
-    
+
     while True:
         (event, values) = mainw.read()
         
@@ -229,7 +227,6 @@ def mainLoop(program_state):
                 print(f"{values[event]=}")
             except:
                 pass
-                
         
         if event == sg.WIN_CLOSED:
             # our main window was closed, exit the program
