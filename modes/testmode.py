@@ -1,6 +1,11 @@
 from . import basemode
 class TestMode(basemode.BaseMode):
-    keyEvents = {}
 
     def __init__(self):
-        pass
+        self.registerMode('test')
+        self.keyCommands = {
+            '<KeyPress-Escape>' : self.selectBaseMode
+            }
+    
+    def selectBaseMode(self, programState):
+        programState.setMode('base')

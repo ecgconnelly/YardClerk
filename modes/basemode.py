@@ -1,17 +1,23 @@
 class BaseMode():
     
+    allModes = {}
 
     def __init__(self):
         self.keyCommands = {
             '<Control-KeyPress-R>' : self.RestartProgram,
             '<Control-KeyPress-t>' : self.selectTestMode
             }
+        self.registerMode('base')
+
+    def registerMode(self, modeKey:str):        
+        if modeKey not in self.allModes:
+            self.allModes[modeKey] = self
 
     def RestartProgram(self, programState):
         print("night night")
 
     def selectTestMode(self, programState):
-        pass
+        programState.setMode('test')
 
 
 

@@ -33,7 +33,8 @@ import PySimpleGUI as sg
 import World
 import YCUI
 from modes import Modes
-#from Modes import basemode
+from ycstate import YCState
+
 ################################################################################
 #
 ################################################################################
@@ -83,16 +84,22 @@ def main():
               'query' : None,
               'sourceTrack' : None}
     
-    program_state = {"world":baseWorld, 
-                     "mainw":mainw, 
-                     "uiStatus":status,
-                     "nextJobNumber" : nextJobNumber,
-                     "allVisualizers" : allVisualizers,
-                     "jobs" : []}
+    # program_state = {"world":baseWorld, 
+    #                  "mainw":mainw, 
+    #                  "uiStatus":status,
+    #                  "nextJobNumber" : nextJobNumber,
+    #                  "allVisualizers" : allVisualizers,
+    #                  "jobs" : []}
+    
+    
+
+    programState = YCState(
+        baseWorld, mainw, Modes.Base, 1, allVisualizers, []
+    )
     
     printEventSpam = True
     YCUI.bindMainWindowKeys(mainw)
-    activeMode = Modes.Base
+
     while True:
         (event, values) = mainw.read()
 
@@ -108,11 +115,12 @@ def main():
             break
 
         if 'KeyPress' in event:
-            activeMode.HandleKeyEvent(event, program_state)
+            programState.activeMode.HandleKeyEvent(event, programState)
+            print(programState.activeMode)
 
 
     
-    return YCUI.mainLoop_OLD(program_state)
+    #return YCUI.mainLoop_OLD(program_state)
     
 
 if __name__ == '__main__':
