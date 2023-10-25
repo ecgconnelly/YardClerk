@@ -114,9 +114,8 @@ def main():
             # our main window was closed, exit the program
             break
 
-        if 'KeyPress' in event:
-            programState.activeMode.HandleKeyEvent(event, programState)
-            print(programState.activeMode)
+        programState.activeMode.HandleEvent(event, values, programState)
+        print(programState.activeMode)
 
 
     
