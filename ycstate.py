@@ -19,6 +19,8 @@ class YCState():
         self.jobs = jobs
 
     def setMode(self, modeKey):
+        self.activeMode.deactivate()
         self.activeMode = Modes.Base.allModes[modeKey]
+        self.activeMode.activate()
         
     

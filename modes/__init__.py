@@ -1,4 +1,4 @@
-from . import basemode, testmode
+from . import basemode, testmode, editjobmode
 
 class Mode():
     def __init__(self):
@@ -7,4 +7,5 @@ class Mode():
 class Modes():
     Base = basemode.BaseMode()
     Test = testmode.TestMode()
+    EditJob = editjobmode.EditJobMode()
     

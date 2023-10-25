@@ -5,7 +5,8 @@ class BaseMode():
     def __init__(self):
         self.keyCommands = {
             '<Control-KeyPress-R>' : self.RestartProgram,
-            '<Control-KeyPress-t>' : self.selectTestMode
+            '<Control-KeyPress-t>' : self.selectTestMode,
+            '<Control-KeyPress-n>' : self.createNewJob,
             }
         self.registerMode('base')
 
@@ -16,20 +17,20 @@ class BaseMode():
     def RestartProgram(self, programState):
         print("night night")
 
+    def createNewJob(self, programState):
+        programState.setMode('editjob')
+
     def selectTestMode(self, programState):
         programState.setMode('test')
 
 
+    def HandleEvent(self, event, values, programState):
+        if event in self.keyCommands:
+            handler = self.keyCommands[event]
+            handler(programState)
 
+    def activate(self):
+        print(f"Entering {self.__class__}")    
 
-
-    def HandleKeyEvent(self, keyEventString, programState):
-        if keyEventString not in self.keyCommands:
-            return None
-        
-        handler = self.keyCommands[keyEventString]
-        handler(programState)
-        # if keystroke in self.keyEvents:
-        #     return self.keyEvents[keystroke]
-        # else:
-        #     return None
+    def deactivate(self):
+        print(f"Leaving {self.__class__}")
