@@ -35,6 +35,9 @@ class EditJobMode(basemode.BaseMode):
     def keypress_escape(self):
         if self.currentState == self.EditorState.ConfirmMove:
             self.confirmMove(False)
+            return
+        if self.currentState == self.EditorState.Resting:
+            self.programState.setMode('base')
 
     def keypress_return(self):
         if self.currentState == self.EditorState.ConfirmMove:
@@ -52,7 +55,7 @@ class EditJobMode(basemode.BaseMode):
         # which tracks?
         sourceTrack:World.Track = self.selectedSourceTrack
         destTrack:World.Track = self.selectedDestinationTrack
-        
+
         if confirmed == True:
 
             
@@ -144,7 +147,7 @@ class EditJobMode(basemode.BaseMode):
         world.redrawAllVisualizers()
 
         if self.currentState == self.EditorState.SelectInboundDestination:
-            print("Normally you'd select the inbound direction now, but that's not implemented yet")
+            self.programState.setBanner("Normally you'd select the inbound direction now, but that's not implemented yet")
         else:
             # we're moving stuff around the yard
             # now confirm the move
