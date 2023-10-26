@@ -32,8 +32,8 @@ import PySimpleGUI as sg
 
 import World
 import YCUI
-from modes import Modes
 from ycstate import YCState
+from modes import Modes
 
 ################################################################################
 #

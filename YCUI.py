@@ -5,6 +5,7 @@ VISUALIZER_BG_COLOR = '#111111'
 
 
 import datetime
+import enum
 import string
 
 
@@ -34,7 +35,7 @@ def newJobPopup(program_state):
     
     # set up defaults
     
-    jobNumber = program_state['nextJobNumber']
+    jobNumber = program_state.nextJobNumber
     
     # default job ID
     now = datetime.datetime.now()
@@ -100,7 +101,7 @@ def newJobPopup(program_state):
         jobType = 'SWITCH'
         
         
-    job = World.Job(world = program_state['world'],
+    job = World.Job(world = program_state.world,
                     jobID = vals['newJobID'],
                     jobName = vals['newJobName'],
                     jobType = jobType)
@@ -162,8 +163,8 @@ def bindMainWindowKeys(mainw):
 
 
 def updateJobsTable(program_state):
-    mainw = program_state['mainw']
-    jobs = program_state['jobs']
+    mainw = program_state.mainWindow
+    jobs = program_state.jobs
 
     # create table row for each job
     values = []
@@ -1264,7 +1265,8 @@ def buildOpsTab(world):
                   layout,
                   background_color = '#333333',
                   element_justification = 'left',
-                  expand_x = True)
+                  expand_x = True,
+                  k='operationsTab')
     
 def buildInventoryTab(world):
     layout = []
@@ -1569,11 +1571,8 @@ class TrackVisualizer():
                                color = tColor,
                                text_location = sg.TEXT_LOCATION_LEFT,
                                font = "Consolas 11")
-        
-        
-        
-        
-    
+
+
     def __init__(self, world, subyardName, trackName, size):
         if type(subyardName) is not str:
             raise TypeError("Track visualizer: subyardName must be a string")
@@ -1778,7 +1777,7 @@ def buildMainWindow(world, allVisualizers):
                     use_custom_titlebar = False,
                     titlebar_text_color = 'white',
                     titlebar_background_color = 'black',
-                    size = (1400, 800),
+                    size = (1400, 600),
                     location = (0,0)
                     )
     

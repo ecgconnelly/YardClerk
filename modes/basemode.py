@@ -1,3 +1,7 @@
+import PySimpleGUI as sg
+import ycstate
+import YCUI
+
 class BaseMode():
     
     allModes = {}
@@ -16,9 +20,20 @@ class BaseMode():
 
     def RestartProgram(self, programState):
         print("night night")
+        
 
     def createNewJob(self, programState):
-        programState.setMode('editjob')
+        opsTab = programState.mainWindow['operationsTab']
+        opsTab.select()
+
+        newJob = YCUI.newJobPopup(programState)
+
+        if newJob is not None:
+            programState.nextJobNumber += 1
+            programState.jobs.append(newJob)
+            YCUI.updateJobsTable(programState)
+            programState.setMode('editjob')
+
 
     def selectTestMode(self, programState):
         programState.setMode('test')
@@ -28,6 +43,12 @@ class BaseMode():
         if event in self.keyCommands:
             handler = self.keyCommands[event]
             handler(programState)
+
+        if 'subyardVis' in event:
+            handler = self.handleVisualizerClick(event, values, programState)
+
+    def handleVisualizerClick(self, event, values, programState):
+        print(f"You clicked on visualizer {event} but this mode doesn't care")
 
     def activate(self):
         print(f"Entering {self.__class__}")    
