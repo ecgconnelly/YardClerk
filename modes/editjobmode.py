@@ -49,10 +49,12 @@ class EditJobMode(basemode.BaseMode):
 
     def confirmMove(self, confirmed:bool):
         # handles the user response to asking whether to move cars or not
+        # which tracks?
+        sourceTrack:World.Track = self.selectedSourceTrack
+        destTrack:World.Track = self.selectedDestinationTrack
+        
         if confirmed == True:
-            # which tracks?
-            sourceTrack:World.Track = self.selectedSourceTrack
-            destTrack:World.Track = self.selectedDestinationTrack
+
             
             # get the indices
             sourceCoords = [p['xCoord'] for p in sourceTrack.pointers]
@@ -86,8 +88,21 @@ class EditJobMode(basemode.BaseMode):
             
             self.programState.world.redrawAllVisualizers()
             
-            self.programState.setBanner("Move/inbound confirmed")
+            self.programState.setBanner("Move confirmed")
+        else:
+            # clear pointers
+            sourceTrack.pointers = []
+            destTrack.pointers = []
+            
+            # clear query
+            self.selectedSourceTrack = None
+            self.selectedDestinationTrack = None
+            
+            self.programState.world.redrawAllVisualizers()
 
+            self.programState.setBanner("Move cancelled")
+
+        self.currentState = self.EditorState.Resting
 
     def startSwitchMove(self):
         self.currentState = self.EditorState.SelectSourceLimit0
