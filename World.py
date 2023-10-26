@@ -7,6 +7,8 @@ import xmltodict
 
 
 from Train import Train 
+import World
+from RailUnit import RailUnit
 
 
 # WorldState.trains: list of all trains in the world
@@ -207,7 +209,7 @@ class Job():
                  count, sourceIndex, destinationIndex):
         """
         
-        op = Operation(self.world, sourceTrackName, outboundTrackName,
+        op = Movement(self.world, sourceTrackName, outboundTrackName,
                        count, sourceIndex, 0)
         
         op.execute()
@@ -266,7 +268,7 @@ class Job():
             destIndex = 0
             dest = self.world.getHumpTrack(tag)
             
-            op = Operation(self.world, source, dest,
+            op = Movement(self.world, source, dest,
                            count, sourceIndex, destIndex)
                                  
             op.execute()
@@ -301,7 +303,7 @@ class JobStep():
             op.execute(undo = True)
         
 
-class Operation():
+class Movement():
     """
     Object to represent moving a single block of cars from one track to another.
     
@@ -314,9 +316,9 @@ class Operation():
         # pulls #count cars from source track, starting at sourceIndex,
         # and inserts to destination track at destinationIndex
         self.world = world
-        self.sourceTrack = world.getTrackObject(sourceTrackName)
+        self.sourceTrack:Track = world.getTrackObject(sourceTrackName)
         self.sourceTrackName = sourceTrackName
-        self.destinationTrack = world.getTrackObject(destinationTrackName)
+        self.destinationTrack:Track = world.getTrackObject(destinationTrackName)
         self.destinationTrackName = destinationTrackName
         self.count = count
         self.sourceIndex = sourceIndex
@@ -363,6 +365,19 @@ class Operation():
         # update the destination track
         destinationTrack.units = destLeft + movedUnits + destRight
 
+        leftMovedUnit:RailUnit = movedUnits[0]
+        rightMovedUnit:RailUnit = movedUnits[-1]
+
+        pi = f"Pull {self.count} from {self.sourceTrackName}: "
+        pi +=f"{leftMovedUnit.initials} {leftMovedUnit.unitNumber} - "
+        pi +=f"{rightMovedUnit.initials} {rightMovedUnit.unitNumber}"
+        self.pullInstruction = pi
+
+        si = f"Spot on {self.destinationTrackName}"
+        self.spotInstruction = si
+
+        print(self.pullInstruction)
+        print(self.spotInstruction)
 
     
 

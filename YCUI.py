@@ -525,7 +525,7 @@ def mainLoop_OLD(program_state):
                 destIndex = int(destCoords[0])
                 
                 # create job step for the move
-                op = World.Operation(world, sourceName, destName, count, 
+                op = World.Movement(world, sourceName, destName, count, 
                                      sourceIndex, destIndex, reverse = reverse)
                                      
                 step = World.JobStep([op])

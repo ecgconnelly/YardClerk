@@ -71,11 +71,11 @@ class EditJobMode(basemode.BaseMode):
             destIndex = int(destCoords[0])
             
             # create job step for the move
-            op = World.Operation(self.programState.world, 
+            mv = World.Movement(self.programState.world, 
                                 sourceTrack.trackName, destTrack.trackName, count,
                                 sourceIndex, destIndex, reverse = False)
                                 
-            step = World.JobStep([op])
+            step = World.JobStep([mv])
             step.execute()
             
             job = self.settingUpJob
