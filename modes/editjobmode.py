@@ -20,7 +20,7 @@ class EditJobMode(basemode.BaseMode):
             '<KeyPress-n>' : self.keypress_n,
 
 
-            '<Control-KeyPress-s>' : self.startSwitchMove,
+            '<KeyPress-s>' : self.startSwitchMove,
             }
         
     class EditorState(enum.Enum):
@@ -36,6 +36,7 @@ class EditJobMode(basemode.BaseMode):
         if self.currentState == self.EditorState.ConfirmMove:
             self.confirmMove(False)
             return
+
         if self.currentState == self.EditorState.Resting:
             self.programState.setMode('base')
 
@@ -71,7 +72,7 @@ class EditJobMode(basemode.BaseMode):
             
             # create job step for the move
             op = World.Operation(self.programState.world, 
-                                sourceTrack.trackName, destTrack.trackName, count, 
+                                sourceTrack.trackName, destTrack.trackName, count,
                                 sourceIndex, destIndex, reverse = False)
                                 
             step = World.JobStep([op])
