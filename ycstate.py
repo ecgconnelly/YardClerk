@@ -17,10 +17,15 @@ class YCState():
         self.nextJobNumber = nextJobNumber
         self.visualizers = visualizers
         self.jobs = jobs
+        self.setMode('base')
+    
+    def setBanner(self, newText:str):
+        print(newText)
+        self.mainWindow['bannerText'].update(newText)
 
     def setMode(self, modeKey):
         self.activeMode.deactivate()
         self.activeMode = Modes.Base.allModes[modeKey]
-        self.activeMode.activate()
+        self.activeMode.activate(self)
         
     

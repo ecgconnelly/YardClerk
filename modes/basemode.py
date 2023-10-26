@@ -22,7 +22,8 @@ class BaseMode():
         print("night night")
         
 
-    def createNewJob(self, programState):
+    def createNewJob(self):
+        programState = self.programState
         opsTab = programState.mainWindow['operationsTab']
         opsTab.select()
 
@@ -33,25 +34,27 @@ class BaseMode():
             programState.jobs.append(newJob)
             YCUI.updateJobsTable(programState)
             programState.setMode('editjob')
+            programState.activeMode.settingUpJob = newJob
 
 
     def selectTestMode(self, programState):
         programState.setMode('test')
 
 
-    def HandleEvent(self, event, values, programState):
+    def HandleEvent(self, event, values):
         if event in self.keyCommands:
             handler = self.keyCommands[event]
-            handler(programState)
+            handler()
 
         if 'subyardVis' in event:
-            handler = self.handleVisualizerClick(event, values, programState)
+            handler = self.handleVisualizerClick(event, values)
 
-    def handleVisualizerClick(self, event, values, programState):
+    def handleVisualizerClick(self, event, values):
         print(f"You clicked on visualizer {event} but this mode doesn't care")
 
-    def activate(self):
-        print(f"Entering {self.__class__}")    
+    def activate(self, programState):
+        print(f"Entering {self.__class__}")
+        self.programState = programState
 
     def deactivate(self):
         print(f"Leaving {self.__class__}")

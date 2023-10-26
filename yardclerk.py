@@ -114,7 +114,7 @@ def main():
             # our main window was closed, exit the program
             break
 
-        programState.activeMode.HandleEvent(event, values, programState)
+        programState.activeMode.HandleEvent(event, values)
         print(programState.activeMode)
 
 

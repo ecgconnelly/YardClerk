@@ -2,6 +2,7 @@ import enum
 import PySimpleGUI as sg
 
 from YCUI import TrackVisualizer
+import World
 
 from . import basemode
 class EditJobMode(basemode.BaseMode):
@@ -13,9 +14,13 @@ class EditJobMode(basemode.BaseMode):
         self.selectedSourceTrack = None
         self.selectedDestinationTrack = None
         self.keyCommands = {
-            '<KeyPress-Escape>' : self.selectBaseMode,
+            '<KeyPress-Escape>' : self.keypress_escape,
+            '<KeyPress-Return>' : self.keypress_return,
+            '<KeyPress-y>' : self.keypress_y,
+            '<KeyPress-n>' : self.keypress_n,
 
-            '<Control-KeyPress-m>' : self.startMovement,
+
+            '<Control-KeyPress-s>' : self.startSwitchMove,
             }
         
     class EditorState(enum.Enum):
@@ -27,13 +32,70 @@ class EditJobMode(basemode.BaseMode):
         SelectInboundDestination = enum.auto()
         SelectInboundDirection = enum.auto()
 
-    def startMovement(self, programState):
+    def keypress_escape(self):
+        if self.currentState == self.EditorState.ConfirmMove:
+            self.confirmMove(False)
+
+    def keypress_return(self):
+        if self.currentState == self.EditorState.ConfirmMove:
+            self.confirmMove(True)
+
+    def keypress_y(self):
+        if self.currentState == self.EditorState.ConfirmMove:
+            self.confirmMove(True)
+    def keypress_n(self):
+        if self.currentState == self.EditorState.ConfirmMove:
+            self.confirmMove(False)
+
+    def confirmMove(self, confirmed:bool):
+        # handles the user response to asking whether to move cars or not
+        if confirmed == True:
+            # which tracks?
+            sourceTrack:World.Track = self.selectedSourceTrack
+            destTrack:World.Track = self.selectedDestinationTrack
+            
+            # get the indices
+            sourceCoords = [p['xCoord'] for p in sourceTrack.pointers]
+            destCoords = [p['xCoord'] for p in destTrack.pointers]
+            
+            sourceCoords = sorted(sourceCoords) # put left coord at idx 0
+            sourceIndices = [int(x) for x in sourceCoords]
+            count = sourceIndices[1] - sourceIndices[0]
+            sourceIndex = sourceIndices[0]
+            destIndex = int(destCoords[0])
+            
+            # create job step for the move
+            op = World.Operation(self.programState.world, 
+                                sourceTrack.trackName, destTrack.trackName, count, 
+                                sourceIndex, destIndex, reverse = False)
+                                
+            step = World.JobStep([op])
+            step.execute()
+            
+            job = self.settingUpJob
+            job.steps.append(step)
+            
+            
+            # clear pointers
+            sourceTrack.pointers = []
+            destTrack.pointers = []
+            
+            # clear query
+            self.selectedSourceTrack = None
+            self.selectedDestinationTrack = None
+            
+            self.programState.world.redrawAllVisualizers()
+            
+            self.programState.setBanner("Move/inbound confirmed")
+
+
+    def startSwitchMove(self):
         self.currentState = self.EditorState.SelectSourceLimit0
 
-    def handleDestinationClick(self, event, values, programState):
+    def handleDestinationClick(self, event, values):
         # what track??
         trackName = event.replace('subyardVis', '')
-        world = programState.world
+        world = self.programState.world
         trackObj = world.getTrackObject(trackName)
         unitCount = len(trackObj.units)
 
@@ -72,14 +134,14 @@ class EditJobMode(basemode.BaseMode):
             # we're moving stuff around the yard
             # now confirm the move
             self.currentState = self.EditorState.ConfirmMove
-            print("Confirm move?")
+            self.programState.setBanner('Confirm move? Y/N/Enter/Esc')
 
 
 
-    def handleSourceLimitClick(self, event, values, programState):
+    def handleSourceLimitClick(self, event, values):
         # what track??
         trackName = event.replace('subyardVis', '')
-        world = programState.world
+        world = self.programState.world
         trackObj = world.getTrackObject(trackName)
         unitCount = len(trackObj.units)
         print(f"Source: track {trackName} which has {unitCount} units")
@@ -146,23 +208,27 @@ class EditJobMode(basemode.BaseMode):
 
 
 
-    def handleVisualizerClick(self, event, values, programState):
+    def handleVisualizerClick(self, event, values):
 
         if self.currentState == self.EditorState.Resting:
-            return super().handleVisualizerClick(event, values, programState)
+            return super().handleVisualizerClick(event, values)
         
         elif self.currentState in [self.EditorState.SelectSourceLimit0,
                                    self.EditorState.SelectSourceLimit1]:
-            self.handleSourceLimitClick(event, values, programState)
+            self.handleSourceLimitClick(event, values)
         
         elif self.currentState == self.EditorState.SelectMoveDestination:
-            self.handleDestinationClick(event, values, programState)
+            self.handleDestinationClick(event, values)
 
 
-    def selectBaseMode(self, programState):
-        programState.setMode('base')
+    def selectBaseMode(self):
+        self.programState.setMode('base')
+    
+    def focusOnJob(self, jobToFocus:World.Job):
+        self.settingUpJob = jobToFocus
 
-    def activate(self):
+    def activate(self, programState):
+        self.programState = programState
         self.settingUpJob = None
         self.currentState = self.EditorState.Resting
         self.selectedSourceTrack = None
