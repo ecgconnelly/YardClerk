@@ -22,6 +22,7 @@ class EditJobMode(basemode.BaseMode):
 
 
             '<KeyPress-s>' : self.startSwitchMove,
+            '<Control-KeyPress-z>' : self.undo,
             }
         
     class EditorState(enum.Enum):
@@ -70,7 +71,24 @@ class EditJobMode(basemode.BaseMode):
             visTab.select()
             recTab = self.programState.mainWindow['subyardTabReceiving']
             recTab.select()
-    
+
+    def undo(self):
+        # are we setting up a job?
+        job = self.settingUpJob
+        if job is None:
+            sg.popup("No job to undo from!", no_titlebar = True)
+            return
+        
+        # ok, there is a job
+        try:
+            job.undoLast()
+        except IndexError:
+            sg.popup(f"Nothing to undo in job {job.jobID}",
+                        no_titlebar = True)
+            self.programState.setBanner("Undo failed")
+        else:
+            self.programState.setBanner("Undo successful")
+
     def selectHumpTrack(self, event, values):
 
         if 'subyardButton' in event:
