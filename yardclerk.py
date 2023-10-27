@@ -123,9 +123,4 @@ def main():
     
 
 if __name__ == '__main__':
-    while True:
-        res = main()
-        if res == 'softReset':
-            continue
-        else:
-            break
+    main()

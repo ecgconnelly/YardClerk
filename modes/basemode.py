@@ -8,7 +8,7 @@ class BaseMode():
 
     def __init__(self):
         self.keyCommands = {
-            '<Control-KeyPress-R>' : self.RestartProgram,
+            #'<Control-KeyPress-R>' : self.RestartProgram,
             '<Control-KeyPress-t>' : self.selectTestMode,
             '<Control-KeyPress-n>' : self.createNewJob,
             }
@@ -18,8 +18,9 @@ class BaseMode():
         if modeKey not in self.allModes:
             self.allModes[modeKey] = self
 
-    def RestartProgram(self, programState):
-        print("night night")
+    #def RestartProgram(self):
+    #    print("night night")
+    #    raise RuntimeError("HardReset")
         
 
     def createNewJob(self):
@@ -50,7 +51,83 @@ class BaseMode():
             handler = self.handleVisualizerClick(event, values)
 
     def handleVisualizerClick(self, event, values):
-        print(f"You clicked on visualizer {event} but this mode doesn't care")
+        # base functionality: show infobox for the clicked unit
+
+            allVisualizers = self.programState.visualizers
+        
+            point = values[event]
+
+            graph = self.programState.mainWindow[event]
+            
+            figures = graph.get_figures_at_location(point)
+            #print(f"{figures=}")
+            if len(figures) > 0:
+                
+                # figure index is no longer guaranteed to be the unit index
+                # 
+                
+                figIndex = figures[0]
+                
+                vis = allVisualizers[event] # get the Visualizer object by track name
+                
+                try:
+                    unit = vis.unitFromFigIdx[figIndex]
+                except KeyError:
+                    dString = f"{figIndex=}"
+                    sg.popup("oops", dString)
+                    return
+                    
+                
+                trackCount = len(vis.units)
+                
+                
+                try:
+                    nextTrainStr = f"Next: {' / '.join(unit.nextTrain)}"
+                except AttributeError:
+                    nextTrainStr = "ENG"
+                except TypeError:
+                    nextTrainStr = "No scheduled outbound train"
+                    
+                #calculate lengfth and tonnage to car from each end
+                leftTons = 0
+                leftFt = 0
+                unitIdx = vis.units.index(unit)
+                for count in range(0, unitIdx + 1):
+                    thisUnit = vis.units[count]
+                    leftFt += thisUnit.lengthFt
+                    if thisUnit.isLoco():
+                        continue #don't count engine weight
+                    leftTons += thisUnit.totalWeight()
+                
+                rightTons = 0
+                rightFt = 0
+                for count in range(trackCount - 1, unitIdx - 1, -1):
+                    thisUnit = vis.units[count]
+                    rightFt += thisUnit.lengthFt
+                    if thisUnit.isLoco():
+                        continue # don't count engine weight
+                    rightTons += thisUnit.totalWeight()
+                
+                leftTons = round(leftTons)
+                leftFt = round(leftFt)
+                rightTons = round(rightTons)
+                rightFt = round(rightFt)
+                
+                tonnageStr = f"{leftTons} T --> X <-- {rightTons} T"
+                lengthStr = f"{leftFt} FT --> X <-- {rightFt} FT"
+                sg.popup(#dString,
+                         f"{unit.initials} {unit.unitNumber}",
+                         f"Tag: {unit.destinationTag}",
+                         f"{round(unit.lengthFt)} FT - {round(unit.totalWeight())} TONS",
+                         nextTrainStr,
+                         f"{unitIdx + 1} --> X <-- {trackCount - (unitIdx)}", 
+                         lengthStr,
+                         tonnageStr,
+                         any_key_closes = True,
+                         background_color = '#666666',
+                         
+                         no_titlebar = True)
+
 
     def activate(self, programState):
         print(f"Entering {self.__class__}")
