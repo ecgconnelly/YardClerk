@@ -18,6 +18,7 @@ class EditJobMode(basemode.BaseMode):
             '<KeyPress-Return>' : self.keypress_return,
             '<KeyPress-y>' : self.keypress_y,
             '<KeyPress-n>' : self.keypress_n,
+            '<KeyPress-h>' : self.keypress_h,
 
 
             '<KeyPress-s>' : self.startSwitchMove,
@@ -31,6 +32,7 @@ class EditJobMode(basemode.BaseMode):
         ConfirmMove = enum.auto()
         SelectInboundDestination = enum.auto()
         SelectInboundDirection = enum.auto()
+        SelectHumpTrack = enum.auto()
 
     def keypress_escape(self):
         if self.currentState == self.EditorState.ConfirmMove:
@@ -50,6 +52,52 @@ class EditJobMode(basemode.BaseMode):
     def keypress_n(self):
         if self.currentState == self.EditorState.ConfirmMove:
             self.confirmMove(False)
+
+    def keypress_h(self):
+        if self.currentState == self.EditorState.Resting:
+            job:World.Job = self.settingUpJob
+
+            if job is None:
+                self.programState.setBanner(
+                    "Start setting up a job before trying to hump cars")
+                return
+            
+            self.currentState = self.EditorState.SelectHumpTrack
+            self.programState.setBanner(
+                "Hump which track?"
+            )
+            visTab = self.programState.mainWindow['visualInventoryTab']
+            visTab.select()
+            recTab = self.programState.mainWindow['subyardTabReceiving']
+            recTab.select()
+    
+    def selectHumpTrack(self, event, values):
+
+        if 'subyardButton' in event:
+            trackName = event.replace('subyardButton', '')
+        elif 'subyardVis' in event:
+            trackName = event.replace('subyardVis', '')
+        
+
+        
+        self.currentState = self.EditorState.Resting
+        
+        visTab = self.programState.mainWindow['visualInventoryTab']
+        bowlTab = self.programState.mainWindow['subyardTabBowl']
+        visTab.select()
+        bowlTab.select()
+            
+        
+        job = self.settingUpJob
+        job.addHumpStep(trackName)
+        
+        overs = self.programState.world.listOverLengthTracks(subyard = 'Bowl')
+        
+        if overs == []:                
+            self.programState.setBanner(f"Hump {trackName} OK")
+        else:
+            txt = f"Hump {trackName} - OVERFLOW {' ,'.join(overs)}"
+            self.programState.setBanner(txt)
 
     def confirmMove(self, confirmed:bool):
         # handles the user response to asking whether to move cars or not
@@ -238,6 +286,9 @@ class EditJobMode(basemode.BaseMode):
         
         elif self.currentState == self.EditorState.SelectMoveDestination:
             self.handleDestinationClick(event, values)
+
+        elif self.currentState == self.EditorState.SelectHumpTrack:
+            self.selectHumpTrack(event, values)
 
 
     def selectBaseMode(self):

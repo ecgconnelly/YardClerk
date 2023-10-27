@@ -376,9 +376,6 @@ class Movement():
         si = f"Spot on {self.destinationTrackName}"
         self.spotInstruction = si
 
-        print(self.pullInstruction)
-        print(self.spotInstruction)
-
     
 
 class WorldState():
