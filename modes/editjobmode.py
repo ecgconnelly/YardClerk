@@ -176,6 +176,7 @@ class EditJobMode(basemode.BaseMode):
 
     def startSwitchMove(self):
         self.currentState = self.EditorState.SelectSourceLimit0
+        self.programState.setBanner("Select units to move")
 
     def handleDestinationClick(self, event, values):
         # what track??
@@ -241,7 +242,7 @@ class EditJobMode(basemode.BaseMode):
             # we were expecting to get the second source limit
             # check whether the user clicked on the same track as limit0
             if trackObj == self.selectedSourceTrack:
-                print("Thanks for clicking on the same track")
+                self.programState.setBanner("Select move destination")
             else:
                 # user clicked on a different track
                 self.selectedSourceTrack.pointers = []
