@@ -39,8 +39,13 @@ class EditJobMode(basemode.BaseMode):
         if self.currentState == self.EditorState.ConfirmMove:
             self.confirmMove(False)
             return
+        
+        elif self.currentState in [self.EditorState.SelectSourceLimit0,
+                                 self.EditorState.SelectSourceLimit1,
+                                 self.EditorState.SelectMoveDestination]:
+            self.confirmMove(confirmed=False)
 
-        if self.currentState == self.EditorState.Resting:
+        elif self.currentState == self.EditorState.Resting:
             self.programState.setMode('base')
 
     def keypress_return(self):
@@ -161,8 +166,10 @@ class EditJobMode(basemode.BaseMode):
             self.programState.setBanner("Move confirmed")
         else:
             # clear pointers
-            sourceTrack.pointers = []
-            destTrack.pointers = []
+            if sourceTrack is not None:
+                sourceTrack.pointers = []
+            if destTrack is not None:
+                destTrack.pointers = []
             
             # clear query
             self.selectedSourceTrack = None
