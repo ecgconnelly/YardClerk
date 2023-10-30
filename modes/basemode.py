@@ -13,6 +13,7 @@ class BaseMode():
             # '<Control-KeyPress-n>' : self.createNewJob,
             '<KeyPress-i>' : self.inboundTrain,
             '<KeyPress-s>' : self.createSwitchMove,
+            '<KeyPress-h>' : self.humpFullTrack,
             }
         self.registerMode('base')
 
@@ -24,6 +25,13 @@ class BaseMode():
     #    print("night night")
     #    raise RuntimeError("HardReset")
 
+    def humpFullTrack(self):
+        programState = self.programState
+        visTab = programState.mainWindow['visualInventoryTab']
+        visTab.select()
+
+        programState.setMode('hump')
+        
     def createSwitchMove(self):
         programState = self.programState
         visTab = programState.mainWindow['visualInventoryTab']

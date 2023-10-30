@@ -246,45 +246,6 @@ class Job():
         
         
             
-    def addHumpStep(self, trackName):
-        # hump the rightmost unit on selected track
-        # iterate one by one until track is empty
-        # create undo stack for each humped unit
-        ops = []
-        while True:
-        # what is that unit??
-            sourceTrackObj = self.world.getTrackObject(trackName)
-            units = sourceTrackObj.units
-            uCount = len(units)
-            if uCount == 0:
-                break # stop humping, we have no cars
-            humpUnit = units[uCount-1]
-            if humpUnit.isLoco():
-                break # don't hump engines
-            tag = humpUnit.destinationTag
-            
-            source = trackName
-            sourceIndex = uCount - 1
-            count = 1
-            destIndex = 0
-            dest = self.world.getHumpTrack(tag)
-            
-            op = Movement(self.world, source, dest,
-                           count, sourceIndex, destIndex)
-                                 
-            op.execute()
-            
-            ops.append(op)
-        
-        # done humping, put all those operations into a JobStep
-        step = Operation(operations = ops)
-        
-        # put the step we just created into the Job we're working on
-        self.steps.append(step)
-        
-        # show the results
-        self.world.redrawAllVisualizers()
-
 
 class Operation():
     """
@@ -314,11 +275,15 @@ class Operation():
 
             return f"{pull}; {spot}"
         
+        elif self.type == self.OperationTypes.Hump:
+            mv:World.Movement = moves[0]
+            return f"Hump {mv.sourceTrackName}"
+
         elif self.type is None:
             return("BUG: This job doesn't have a type")
         
         else:
-            return(f"BUG: I don't know how to write instructions for job type {self.type}")
+            return(f"BUG: I don't know how to write instructions for operation type {self.type}")
 
 
     def execute(self):
@@ -460,7 +425,8 @@ class WorldState():
         # this depends on trackGroups, trains, units, yardSettings
         self.buildTrackObjects()
     
-
+ 
+        
     def isUnitCustomerOrder(self, unit):
         if not unit.isLoco():
                 # this is a car

@@ -5,61 +5,50 @@ import YCUI
 from YCUI import TrackVisualizer
 import World
 
-from . import basemode
-class SwitchMode(basemode.BaseMode):
+from . import switchmode
+class HumpMode(switchmode.SwitchMode):
 
     def __init__(self):
-        self.registerMode('switch')
-        self.settingUpJob = None
+        self.registerMode('hump')
         #self.currentState = self.EditorState.Resting
-        self.currentState = self.EditorState.SelectSourceLimit0
+        self.currentState = self.EditorState.SelectHumpTrack
         self.selectedSourceTrack = None
-        self.selectedDestinationTrack = None
         self.keyCommands = {
-            '<KeyPress-Escape>' : self.keypress_escape,
-            '<KeyPress-Return>' : self.keypress_return,
-            '<KeyPress-y>' : self.keypress_y,
-            '<KeyPress-n>' : self.keypress_n,
-            # '<KeyPress-h>' : self.keypress_h,
+            # '<KeyPress-Escape>' : self.keypress_escape,
+            # '<KeyPress-Return>' : self.keypress_return,
+            # '<KeyPress-y>' : self.keypress_y,
+            # '<KeyPress-n>' : self.keypress_n,
+            # # '<KeyPress-h>' : self.keypress_h,
 
 
-            '<KeyPress-s>' : self.startSwitchMove,
-            '<Control-KeyPress-z>' : self.undo,
+            # '<KeyPress-s>' : self.startSwitchMove,
+            # '<Control-KeyPress-z>' : self.undo,
             }
+
+
+    # def keypress_escape(self):
+    #     if self.currentState == self.EditorState.ConfirmMove:
+    #         self.confirmMove(False)
+    #         return
         
-    class EditorState(enum.Enum):
-        #Resting = enum.auto()
-        SelectSourceLimit0 = enum.auto()
-        SelectSourceLimit1 = enum.auto()
-        SelectMoveDestination = enum.auto()
-        ConfirmMove = enum.auto()
-        SelectInboundDestination = enum.auto()
-        SelectInboundDirection = enum.auto()
-        SelectHumpTrack = enum.auto()
+    #     elif self.currentState in [self.EditorState.SelectSourceLimit0,
+    #                              self.EditorState.SelectSourceLimit1,
+    #                              self.EditorState.SelectMoveDestination]:
+    #         self.confirmMove(confirmed=False)
 
-    def keypress_escape(self):
-        if self.currentState == self.EditorState.ConfirmMove:
-            self.confirmMove(False)
-            return
-        
-        elif self.currentState in [self.EditorState.SelectSourceLimit0,
-                                 self.EditorState.SelectSourceLimit1,
-                                 self.EditorState.SelectMoveDestination]:
-            self.confirmMove(confirmed=False)
+    #     elif self.currentState == self.EditorState.Resting:
+    #         self.programState.setMode('base')
 
-        elif self.currentState == self.EditorState.Resting:
-            self.programState.setMode('base')
+    # def keypress_return(self):
+    #     if self.currentState == self.EditorState.ConfirmMove:
+    #         self.confirmMove(True)
 
-    def keypress_return(self):
-        if self.currentState == self.EditorState.ConfirmMove:
-            self.confirmMove(True)
-
-    def keypress_y(self):
-        if self.currentState == self.EditorState.ConfirmMove:
-            self.confirmMove(True)
-    def keypress_n(self):
-        if self.currentState == self.EditorState.ConfirmMove:
-            self.confirmMove(False)
+    # def keypress_y(self):
+    #     if self.currentState == self.EditorState.ConfirmMove:
+    #         self.confirmMove(True)
+    # def keypress_n(self):
+    #     if self.currentState == self.EditorState.ConfirmMove:
+    #         self.confirmMove(False)
 
     # def keypress_h(self):
     #     if self.currentState == self.EditorState.Resting:
@@ -79,24 +68,50 @@ class SwitchMode(basemode.BaseMode):
     #         recTab = self.programState.mainWindow['subyardTabReceiving']
     #         recTab.select()
 
-    def undo(self):
-        # are we setting up a job?
-        job = self.settingUpJob
-        if job is None:
-            sg.popup("No job to undo from!", no_titlebar = True)
-            return
+    # def undo(self):
+    #     # are we setting up a job?
+    #     job = self.settingUpJob
+    #     if job is None:
+    #         sg.popup("No job to undo from!", no_titlebar = True)
+    #         return
         
-        # ok, there is a job
-        try:
-            job.undoLast()
-        except IndexError:
-            sg.popup(f"Nothing to undo in job {job.jobID}",
-                        no_titlebar = True)
-            self.programState.setBanner("Undo failed")
+    #     # ok, there is a job
+    #     try:
+    #         job.undoLast()
+    #     except IndexError:
+    #         sg.popup(f"Nothing to undo in job {job.jobID}",
+    #                     no_titlebar = True)
+    #         self.programState.setBanner("Undo failed")
+    #     else:
+    #         self.programState.setBanner("Undo successful")
+
+    def selectHumpTrack(self, event, values):
+
+        if 'subyardButton' in event:
+            trackName = event.replace('subyardButton', '')
+        elif 'subyardVis' in event:
+            trackName = event.replace('subyardVis', '')
+        
+
+        
+        # self.currentState = self.EditorState.Resting
+        
+        visTab = self.programState.mainWindow['visualInventoryTab']
+        bowlTab = self.programState.mainWindow['subyardTabBowl']
+        visTab.select()
+        bowlTab.select()
+            
+        
+        # job = self.settingUpJob
+        self.programState.addHumpOperation(trackName)
+        
+        overs = self.programState.world.listOverLengthTracks(subyard = 'Bowl')
+        
+        if overs == []:                
+            self.programState.setBanner(f"Hump {trackName} OK")
         else:
-            self.programState.setBanner("Undo successful")
-
-
+            txt = f"Hump {trackName} - OVERFLOW {' ,'.join(overs)}"
+            self.programState.setBanner(txt)
 
     def confirmMove(self, confirmed:bool):
         # handles the user response to asking whether to move cars or not
@@ -293,8 +308,8 @@ class SwitchMode(basemode.BaseMode):
         elif self.currentState == self.EditorState.SelectMoveDestination:
             self.handleDestinationClick(event, values)
 
-        # elif self.currentState == self.EditorState.SelectHumpTrack:
-        #     self.selectHumpTrack(event, values)
+        elif self.currentState == self.EditorState.SelectHumpTrack:
+            self.selectHumpTrack(event, values)
         
         else:
             super().handleVisualizerClick(event, values)
@@ -308,9 +323,9 @@ class SwitchMode(basemode.BaseMode):
 
     def activate(self, programState):
         self.programState = programState
-        self.settingUpJob = None
+        # self.settingUpJob = None
         #self.currentState = self.EditorState.Resting
-        self.currentState = self.EditorState.SelectSourceLimit0
+        self.currentState = self.EditorState.SelectHumpTrack
         self.selectedSourceTrack = None
         self.selectedDestinationTrack = None
 

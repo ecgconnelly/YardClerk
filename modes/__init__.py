@@ -1,4 +1,4 @@
-from . import basemode, switchmode, testmode, inboundtrainmode
+from . import basemode, switchmode, testmode, inboundtrainmode, humpmode
 
 class Mode():
     def __init__(self):
@@ -9,4 +9,5 @@ class Modes():
     Test = testmode.TestMode()
     EditJob = switchmode.SwitchMode()
     InboundTrain = inboundtrainmode.InboundTrainMode()
+    Hump = humpmode.HumpMode()
     
