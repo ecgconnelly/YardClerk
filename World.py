@@ -1,5 +1,6 @@
 import collections
 import copy
+from enum import Enum, auto
 import json
 from os import walk
 
@@ -214,7 +215,7 @@ class Job():
         
         op.execute()
         
-        step = JobStep([op])
+        step = Operation([op])
         
         # put the step we just created into the Job we're working on
         self.steps.append(step)
@@ -276,7 +277,7 @@ class Job():
             ops.append(op)
         
         # done humping, put all those operations into a JobStep
-        step = JobStep(operations = ops)
+        step = Operation(operations = ops)
         
         # put the step we just created into the Job we're working on
         self.steps.append(step)
@@ -285,22 +286,67 @@ class Job():
         self.world.redrawAllVisualizers()
 
 
-class JobStep():
+class Operation():
     """
-    Object representing a group of Operations to be accomplished together.
+    Object representing a group of Movements to be accomplished together.
     """
+    class OperationTypes(Enum):
+        BasicSwitch = auto()
+        Hump = auto()
+        Inbound = auto()
+        Outbound = auto()
+
+
+    def __init__(self, movements, operationType = None):
+        self.movements = movements
+        self.type = operationType
     
-    def __init__(self, operations):
-        self.operations = operations
-    
-    
+    def writeDefaultInstruction(self):
+        moves = self.movements
+
+        if self.type == self.OperationTypes.BasicSwitch:
+            if len(moves) != 1:
+                return(f"BUG: This operation should have 1 move, not {len(moves)}")
+            mv:World.Movement = moves[0]
+
+            pull = mv.pullInstruction
+            spot = mv.spotInstruction
+
+            return f"{pull}; {spot}"
+        
+        elif self.type is None:
+            return("BUG: This job doesn't have a type")
+        
+        else:
+            return(f"BUG: I don't know how to write instructions for job type {self.type}")
+
+
     def execute(self):
-        for op in self.operations:
+        for op in self.movements:
             op.execute()
     
     def undo(self):
-        for op in reversed(self.operations):
+        for op in reversed(self.movements):
             op.execute(undo = True)
+
+    def listAffectedTracks(self):
+        """
+        Returns a list of all tracks affected by this Job.
+        """
+
+        # iterate over all operations in this job
+        # list all tracks that appear as a source or destination
+        tracks = []
+        
+        for move in self.movements:
+            s = move.sourceTrackName
+            d = move.destinationTrackName
+            if not (s in tracks):
+                tracks.append(s)
+            if not (d in tracks):
+                tracks.append(d)
+                    
+        return tracks
         
 
 class Movement():

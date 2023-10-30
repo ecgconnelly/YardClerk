@@ -162,25 +162,7 @@ def bindMainWindowKeys(mainw):
 
 
 
-def updateJobsTable(program_state):
-    mainw = program_state.mainWindow
-    jobs = program_state.jobs
 
-    # create table row for each job
-    values = []
-    for job in jobs:
-        tracks = job.listAffectedTracks()
-        trackStr = ' '.join(tracks)
-        row = [job.jobID, 
-               job.jobName, 
-               '', 
-               job.jobType, 
-               '', 
-               trackStr]
-        values.append(row)
-        
-    jobsTable = mainw['jobsTable']
-    jobsTable.update(values = values)
 
 def clickedToSelectMoveDest(query, event):
     # are we looking to select a destination point?
@@ -291,7 +273,7 @@ def mainLoop_OLD(program_state):
             jobs.append(job)
             
             # update the jobs table
-            updateJobsTable(program_state)
+            updateOpsTable(program_state)
             
             # we're no longer setting up the job
             status['settingUpJob'] = None
@@ -528,7 +510,7 @@ def mainLoop_OLD(program_state):
                 op = World.Movement(world, sourceName, destName, count, 
                                      sourceIndex, destIndex, reverse = reverse)
                                      
-                step = World.JobStep([op])
+                step = World.Operation([op])
                 step.execute()
                 
                 job = status['settingUpJob']
@@ -1214,8 +1196,30 @@ def updateInventoryTable(world, window):
     
     window['inventoryTable'].update(values = values)
         
+
+def updateOpsTable(program_state):
+    mainw = program_state.mainWindow
+    ops = program_state.ops
+
+    # create table row for each job
+    values = []
+    for op in ops:
+        tracks = op.listAffectedTracks()
+        trackStr = ' '.join(tracks)
+        row = [
+               "",      #op.jobID, 
+               f"{op.writeDefaultInstruction()}"
+               "",      #op.jobName, 
+               '',
+               "",      #op.jobType,
+               '', 
+               trackStr]
+        values.append(row)
+        
+    opsTable = mainw['opsTable']
+    opsTable.update(values = values)
     
-def buildOpsTab(world):
+def buildOpsTab(world:World.WorldState):
     
     layout = []
     
@@ -1223,20 +1227,20 @@ def buildOpsTab(world):
     row = []
     row.append(sg.Table(values = [[]],
                         headings = ["Job ID",
-                                    "Job Name",
+                                    "Description",
                                     "Visible",
                                     "Type",
                                     "Status",
                                     "Tracks"],
-                        col_widths = [20, 30, 10, 10, 10, 50], 
+                        col_widths = [10, 80, 10, 10, 10, 50], 
                         auto_size_columns = False,
                         justification = 'center',
                         background_color = '#333333',
-                        expand_x = False,
+                        expand_x = True,
                         expand_y = True,
                         hide_vertical_scroll = False,
                         font = 'Consolas 10',
-                        k = 'jobsTable',
+                        k = 'opsTable',
                         display_row_numbers = False
                         ))
     layout.append(row)

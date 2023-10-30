@@ -10,7 +10,9 @@ class BaseMode():
         self.keyCommands = {
             #'<Control-KeyPress-R>' : self.RestartProgram,
             '<Control-KeyPress-t>' : self.selectTestMode,
-            '<Control-KeyPress-n>' : self.createNewJob,
+            # '<Control-KeyPress-n>' : self.createNewJob,
+            '<KeyPress-i>' : self.inboundTrain,
+            '<KeyPress-s>' : self.createSwitchMove,
             }
         self.registerMode('base')
 
@@ -21,21 +23,35 @@ class BaseMode():
     #def RestartProgram(self):
     #    print("night night")
     #    raise RuntimeError("HardReset")
-        
 
-    def createNewJob(self):
+    def createSwitchMove(self):
         programState = self.programState
-        opsTab = programState.mainWindow['operationsTab']
-        opsTab.select()
+        visTab = programState.mainWindow['visualInventoryTab']
+        visTab.select()
 
-        newJob = YCUI.newJobPopup(programState)
+        programState.setMode('switch')
+        
+    def inboundTrain(self):
+        programState = self.programState
+        visTab = programState.mainWindow['visualInventoryTab']
+        visTab.select()
 
-        if newJob is not None:
-            programState.nextJobNumber += 1
-            programState.jobs.append(newJob)
-            YCUI.updateJobsTable(programState)
-            programState.setMode('editjob')
-            programState.activeMode.settingUpJob = newJob
+        programState.setMode('inboundtrain')
+
+    
+    # def createNewJob(self):
+    #     programState = self.programState
+    #     opsTab = programState.mainWindow['operationsTab']
+    #     opsTab.select()
+
+    #     newJob = YCUI.newJobPopup(programState)
+
+    #     if newJob is not None:
+    #         programState.nextJobNumber += 1
+    #         programState.jobs.append(newJob)
+    #         YCUI.updateJobsTable(programState)
+    #         programState.setMode('switch')
+    #         programState.activeMode.settingUpJob = newJob
 
 
     def selectTestMode(self, programState):
@@ -48,7 +64,9 @@ class BaseMode():
             handler()
 
         if 'subyardVis' in event:
-            handler = self.handleVisualizerClick(event, values)
+            # handler = self.handleVisualizerClick(event, values)
+            # what was that?!
+            self.handleVisualizerClick(event, values)
 
     def handleVisualizerClick(self, event, values):
         # base functionality: show infobox for the clicked unit

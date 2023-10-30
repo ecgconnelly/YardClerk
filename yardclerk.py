@@ -94,7 +94,7 @@ def main():
     
 
     programState = YCState(
-        baseWorld, mainw, Modes.Base, 1, allVisualizers, []
+        baseWorld, mainw, Modes.Base, 1, allVisualizers, [], []
     )
     
     printEventSpam = True

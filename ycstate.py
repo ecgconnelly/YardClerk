@@ -9,6 +9,7 @@ class YCState():
                  activeMode:Modes.Base = None,
                  nextJobNumber:int = None,
                  visualizers:dict = None,
+                 ops:list = None,
                  jobs:list = None
                  ):
         self.world = world
@@ -16,6 +17,7 @@ class YCState():
         self.activeMode = activeMode
         self.nextJobNumber = nextJobNumber
         self.visualizers = visualizers
+        self.ops = ops
         self.jobs = jobs
         self.setMode('base')
     

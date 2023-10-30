@@ -1,16 +1,18 @@
 import enum
 import PySimpleGUI as sg
 
+import YCUI
 from YCUI import TrackVisualizer
 import World
 
 from . import basemode
-class EditJobMode(basemode.BaseMode):
+class SwitchMode(basemode.BaseMode):
 
     def __init__(self):
-        self.registerMode('editjob')
+        self.registerMode('switch')
         self.settingUpJob = None
-        self.currentState = self.EditorState.Resting
+        #self.currentState = self.EditorState.Resting
+        self.currentState = self.EditorState.SelectSourceLimit0
         self.selectedSourceTrack = None
         self.selectedDestinationTrack = None
         self.keyCommands = {
@@ -26,7 +28,7 @@ class EditJobMode(basemode.BaseMode):
             }
         
     class EditorState(enum.Enum):
-        Resting = enum.auto()
+        #Resting = enum.auto()
         SelectSourceLimit0 = enum.auto()
         SelectSourceLimit1 = enum.auto()
         SelectMoveDestination = enum.auto()
@@ -141,16 +143,19 @@ class EditJobMode(basemode.BaseMode):
             sourceIndex = sourceIndices[0]
             destIndex = int(destCoords[0])
             
-            # create job step for the move
+            # create the move and an Operation to hold it
             mv = World.Movement(self.programState.world, 
                                 sourceTrack.trackName, destTrack.trackName, count,
                                 sourceIndex, destIndex, reverse = False)
                                 
-            step = World.JobStep([mv])
-            step.execute()
+            op = World.Operation([mv], operationType=World.Operation.OperationTypes.BasicSwitch)
+            op.execute()
+
+            self.programState.ops.append(op)
+            YCUI.updateOpsTable(self.programState)
             
-            job = self.settingUpJob
-            job.steps.append(step)
+            # job = self.settingUpJob
+            # job.steps.append(step)
             
             
             # clear pointers
@@ -179,7 +184,8 @@ class EditJobMode(basemode.BaseMode):
 
             self.programState.setBanner("Move cancelled")
 
-        self.currentState = self.EditorState.Resting
+        self.currentState = None
+        self.programState.setMode('base')
 
     def startSwitchMove(self):
         self.currentState = self.EditorState.SelectSourceLimit0
@@ -303,10 +309,10 @@ class EditJobMode(basemode.BaseMode):
 
     def handleVisualizerClick(self, event, values):
 
-        if self.currentState == self.EditorState.Resting:
-            return super().handleVisualizerClick(event, values)
+        # if self.currentState == self.EditorState.Resting:
+        #     return super().handleVisualizerClick(event, values)
         
-        elif self.currentState in [self.EditorState.SelectSourceLimit0,
+        if self.currentState in [self.EditorState.SelectSourceLimit0,
                                    self.EditorState.SelectSourceLimit1]:
             self.handleSourceLimitClick(event, values)
         
@@ -315,6 +321,9 @@ class EditJobMode(basemode.BaseMode):
 
         elif self.currentState == self.EditorState.SelectHumpTrack:
             self.selectHumpTrack(event, values)
+        
+        else:
+            super().handleVisualizerClick(event, values)
 
 
     def selectBaseMode(self):
@@ -326,6 +335,7 @@ class EditJobMode(basemode.BaseMode):
     def activate(self, programState):
         self.programState = programState
         self.settingUpJob = None
-        self.currentState = self.EditorState.Resting
+        #self.currentState = self.EditorState.Resting
+        self.currentState = self.EditorState.SelectSourceLimit0
         self.selectedSourceTrack = None
         self.selectedDestinationTrack = None
