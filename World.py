@@ -792,7 +792,7 @@ class WorldState():
                         print(f'Unknown exception while orienting section {section}.')
                         raise Exception(e)      
                 
-                if 'lastOne' in unit.destinationTag:
+                if unit.destinationTag is not None and 'lastOne' in unit.destinationTag:
                     #ignore the rest of this train 
                     #(train goes onto track we don't want in this group)
                      
