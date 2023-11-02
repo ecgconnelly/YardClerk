@@ -10,4 +10,3 @@ class Modes():
     EditJob = switchmode.SwitchMode()
     InboundTrain = inboundtrainmode.InboundTrainMode()
     Hump = humpmode.HumpMode()
-    
