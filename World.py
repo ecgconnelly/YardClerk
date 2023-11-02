@@ -673,7 +673,7 @@ class WorldState():
             
             try:
                 trainLoaders = fdict['ScnLoader']['trainList']['TrainLoader']
-            except KeyError:
+            except (KeyError, TypeError):
                 return [] # there are no trains in this file, return empty list
             # there may be one or multiple trains per file
             # if there is one train, trainLoaders is an OrderedDict

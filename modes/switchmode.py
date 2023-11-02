@@ -44,10 +44,13 @@ class SwitchMode(basemode.BaseMode):
         
         elif self.currentState in [self.EditorState.SelectSourceLimit0,
                                  self.EditorState.SelectSourceLimit1,
-                                 self.EditorState.SelectMoveDestination]:
+                                 self.EditorState.SelectMoveDestination,
+                                 self.EditorState.SelectInboundDestination,
+                                 self.EditorState.SelectInboundDirection]:
             self.confirmMove(confirmed=False)
 
-        elif self.currentState == self.EditorState.Resting:
+        else:
+            self.programState.setBanner(f"Cancelled something")
             self.programState.setMode('base')
 
     def keypress_return(self):
@@ -98,7 +101,7 @@ class SwitchMode(basemode.BaseMode):
 
 
 
-    def confirmMove(self, confirmed:bool):
+    def confirmMove(self, confirmed:bool, reverse = False):
         # handles the user response to asking whether to move cars or not
         # which tracks?
         sourceTrack:World.Track = self.selectedSourceTrack
@@ -120,7 +123,7 @@ class SwitchMode(basemode.BaseMode):
             # create the move and an Operation to hold it
             mv = World.Movement(self.programState.world, 
                                 sourceTrack.trackName, destTrack.trackName, count,
-                                sourceIndex, destIndex, reverse = False)
+                                sourceIndex, destIndex, reverse = reverse)
                                 
             op = World.Operation([mv], operationType=World.Operation.OperationTypes.BasicSwitch)
             op.execute()
@@ -202,7 +205,9 @@ class SwitchMode(basemode.BaseMode):
         world.redrawAllVisualizers()
 
         if self.currentState == self.EditorState.SelectInboundDestination:
-            self.programState.setBanner("Normally you'd select the inbound direction now, but that's not implemented yet")
+            self.programState.setBanner(
+                f"Which direction? A/D/Esc")
+            self.currentState = self.EditorState.SelectInboundDirection
         else:
             # we're moving stuff around the yard
             # now confirm the move
@@ -291,6 +296,9 @@ class SwitchMode(basemode.BaseMode):
             self.handleSourceLimitClick(event, values)
         
         elif self.currentState == self.EditorState.SelectMoveDestination:
+            self.handleDestinationClick(event, values)
+
+        elif self.currentState == self.EditorState.SelectInboundDestination:
             self.handleDestinationClick(event, values)
 
         # elif self.currentState == self.EditorState.SelectHumpTrack:

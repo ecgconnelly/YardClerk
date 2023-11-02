@@ -18,10 +18,9 @@ class InboundTrainMode(switchmode.SwitchMode):
             '<KeyPress-Return>' : self.keypress_return,
             '<KeyPress-y>' : self.keypress_y,
             '<KeyPress-n>' : self.keypress_n,
+            '<KeyPress-d>' : self.keypress_d,
+            '<KeyPress-a>' : self.keypress_a,
 
-
-            '<KeyPress-s>' : self.startSwitchMove,
-            '<Control-KeyPress-z>' : self.undo,
             }
         
     # class EditorState(enum.Enum):
@@ -57,6 +56,13 @@ class InboundTrainMode(switchmode.SwitchMode):
     # def keypress_n(self):
     #     if self.currentState == self.EditorState.ConfirmMove:
     #         self.confirmMove(False)
+
+    def keypress_a(self):
+        if self.currentState == self.EditorState.SelectInboundDirection:
+            self.confirmMove(True, reverse=False)
+    def keypress_d(self):
+        if self.currentState == self.EditorState.SelectInboundDirection:
+            self.confirmMove(True, reverse=True)
 
     # def keypress_h(self):
     #     if self.currentState == self.EditorState.Resting:
@@ -300,22 +306,6 @@ class InboundTrainMode(switchmode.SwitchMode):
 
 
 
-    # def handleVisualizerClick(self, event, values):
-
-    #     if self.currentState == self.EditorState.Resting:
-    #         return super().handleVisualizerClick(event, values)
-        
-    #     elif self.currentState in [self.EditorState.SelectSourceLimit0,
-    #                                self.EditorState.SelectSourceLimit1]:
-    #         self.handleSourceLimitClick(event, values)
-        
-    #     elif self.currentState == self.EditorState.SelectMoveDestination:
-    #         self.handleDestinationClick(event, values)
-
-    #     elif self.currentState == self.EditorState.SelectHumpTrack:
-    #         self.selectHumpTrack(event, values)
-
-
     # def selectBaseMode(self):
     #     self.programState.setMode('base')
     
@@ -325,9 +315,10 @@ class InboundTrainMode(switchmode.SwitchMode):
     def activate(self, programState):
         self.programState = programState
         self.settingUpJob = None
-        self.currentState = self.EditorState.Resting
         self.selectedSourceTrack = None
         self.selectedDestinationTrack = None
+
+        world = self.programState.world
 
         # what file should we load from?
         trainFile = sg.popup_get_file(
@@ -342,3 +333,51 @@ class InboundTrainMode(switchmode.SwitchMode):
         if trainFile is None:
             self.programState.setBanner("Inbounding cancelled.")
             self.programState.setMode('base') # wait for next event
+            return
+
+        # load the file, make a list of units
+        inboundTrainList = world.trainsFromFile(trainFile)
+        
+        if len(inboundTrainList) > 1:
+            self.programState.setBanner('Error: selected file contains multiple trains')
+            self.programState.setMode('base')
+            return
+        elif len(inboundTrainList) == 0:
+            self.programState.setBanner('Error: selected file contains no trains')
+            self.programState.setMode('base')
+            return
+        
+        # if we're here, we loaded a file with exactly one train
+        inboundTrain = inboundTrainList[0]
+        inboundUnits = inboundTrain.units
+        
+        # determine which units in the inbound train are for customers
+        for unit in inboundUnits:
+            unit.isCustomerOrder = world.isUnitCustomerOrder(unit)
+        
+        
+        # check whether we already have a dummy track for inbounds on this job
+        leadUnit:World.RailUnit = inboundUnits[0]
+        leadUnitStr = f'{leadUnit.initials}{leadUnit.unitNumber}'
+
+
+        dummyTrackName = f'inbound-{leadUnitStr}'
+        dummyTrackObj = world.getTrackObject(dummyTrackName)
+        if dummyTrackObj is None:
+            dummyTrackObj = World.Track(world, 'inbounds', dummyTrackName)
+            world.trackObjects[dummyTrackName] = dummyTrackObj
+                        
+        # add the inbound units to the dummy track
+        dummyTrackObj.units += inboundUnits
+        
+        # where should the units go?
+        dummyTrackObj.pointers = []
+        dummyTrackObj.pointers.append({'xCoord':0})
+        dummyTrackObj.pointers.append({'xCoord':len(inboundUnits)})
+
+        inboundLen = round(sum([unit.lengthFt for unit in inboundUnits]))
+        programState.setBanner(f"Which track?  Inbound train is {inboundLen} ft")
+
+        self.selectedSourceTrack = dummyTrackObj
+        self.currentState = self.EditorState.SelectInboundDestination
+        

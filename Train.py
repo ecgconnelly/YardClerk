@@ -217,7 +217,7 @@ class Train():
                 thisUnit = RailUnit(unit) # build the RailUnit object
             except:
                 print('\n\n\n\ntried to interpret the following as xml: ', unit)
-                print('\n\nunits: ', units)
+                #print('\n\nunits: ', units)
                 input()
             self.units.append(thisUnit)
 
