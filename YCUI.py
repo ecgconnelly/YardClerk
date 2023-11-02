@@ -5,6 +5,8 @@ VISUALIZER_BG_COLOR = '#111111'
 
 
 import datetime
+import enum
+import string
 
 
 import World
@@ -33,7 +35,7 @@ def newJobPopup(program_state):
     
     # set up defaults
     
-    jobNumber = program_state['nextJobNumber']
+    jobNumber = program_state.nextJobNumber
     
     # default job ID
     now = datetime.datetime.now()
@@ -99,7 +101,7 @@ def newJobPopup(program_state):
         jobType = 'SWITCH'
         
         
-    job = World.Job(world = program_state['world'],
+    job = World.Job(world = program_state.world,
                     jobID = vals['newJobID'],
                     jobName = vals['newJobName'],
                     jobType = jobType)
@@ -107,33 +109,49 @@ def newJobPopup(program_state):
     return job
     
 def bindMainWindowKeys(mainw):
-    mainw.bind("<Control-KeyPress-1>", "colorFilter_humpTags")
-    mainw.bind("<Control-KeyPress-2>", "colorFilter_compliance")
-    mainw.bind("<Control-KeyPress-z>", "undo")
-    mainw.bind("<Control-KeyPress-n>", "newJob")
-    mainw.bind("<Control-KeyPress-c>", "finishJob")
-    mainw.bind("<Control-KeyPress-q>", "abortJob")
-    mainw.bind("<Control-KeyPress-h>", 'humpTrack')
-    mainw.bind("<Control-KeyPress-s>", 'moveCars')
-    mainw.bind("<Control-KeyPress-o>", 'outboundUnits')
-    mainw.bind("<Control-KeyPress-i>", 'inboundUnits')
-    mainw.bind("<KeyPress-h>", 'h alone')
-    mainw.bind("<KeyPress-y>", 'y')
-    mainw.bind("<KeyPress-n>", 'n')
-    mainw.bind("<KeyPress-Y>", 'Y')
-    mainw.bind("<KeyPress-N>", 'N')
-    mainw.bind("<KeyPress-e>", 'e')
-    mainw.bind("<KeyPress-w>", 'w')
-    mainw.bind("<KeyPress-E>", 'E')
-    mainw.bind("<KeyPress-W>", 'W')
-    mainw.bind("<Escape>", "ESC")
-    mainw.bind("<space>", "SPACE")
-    mainw.bind("<Enter>", "ENTER")
-    mainw.bind("<Control-KeyPress-W>", "walkTrack")
-    mainw.bind("<Control-Shift-KeyPress-R>", "Restart")
-    mainw.bind("<KeyPress-d>", "d")
-    mainw.bind("<KeyPress-D>", "D")
-    #mainw.bind("<Shift-KeyPress-T>", "Shift-T")
+
+    # bind all the letters with all combinations of ctrl and shift      
+    # known issue: cannot bind to - key (lots of false positives)
+    bases_cased = list(string.ascii_letters + string.digits + '!"#$%&\'()*+,./:;<=>?@[\\]^_`{|}~')
+    bases_nocase = [f"F{n}" for n in range(1, 13)]
+    bases_nocase += ['Left', 'Up', 'Right', 'Down', 
+                     'Insert', 'Delete', 'Home', 'End', 'Prior', 'Next',
+                     'Escape', 'Tab', 'BackSpace', 'Return', 'space']
+
+    for base in bases_cased + bases_nocase:
+        # no control 
+        tk_event_string = f"<KeyPress-{base}>"
+        mainw.bind(tk_event_string, tk_event_string)
+
+        # control
+        tk_event_string = f"<Control-KeyPress-{base}>"
+        mainw.bind(tk_event_string, tk_event_string)
+
+        # alt
+        tk_event_string = f"<Alt-KeyPress-{base}>"
+        mainw.bind(tk_event_string, tk_event_string)
+
+        # control-alt
+        tk_event_string = f"<Control-Alt-KeyPress-{base}>"
+        mainw.bind(tk_event_string, tk_event_string)
+
+        if base in bases_nocase:
+            # shift
+            tk_event_string = f"<Shift-KeyPress-{base}>"
+            mainw.bind(tk_event_string, tk_event_string)  
+
+            # control shift
+            tk_event_string = f"<Control-Shift-KeyPress-{base}>"
+            mainw.bind(tk_event_string, tk_event_string)  
+
+            # alt shift
+            tk_event_string = f"<Alt-Shift-KeyPress-{base}>"
+            mainw.bind(tk_event_string, tk_event_string)
+
+            # control alt shift
+            tk_event_string = f"<Control-Alt-Shift-KeyPress-{base}>"
+            mainw.bind(tk_event_string, tk_event_string)
+
     #mainw.bind("<Key-Control_L>", "LCtrl")
     #mainw.bind('<Key-Shift_L>', 'Shift_Down')
     #mainw.bind('<Key-Shift_R>', 'Shift_Down')
@@ -144,25 +162,7 @@ def bindMainWindowKeys(mainw):
 
 
 
-def updateJobsTable(program_state):
-    mainw = program_state['mainw']
-    jobs = program_state['jobs']
 
-    # create table row for each job
-    values = []
-    for job in jobs:
-        tracks = job.listAffectedTracks()
-        trackStr = ' '.join(tracks)
-        row = [job.jobID, 
-               job.jobName, 
-               '', 
-               job.jobType, 
-               '', 
-               trackStr]
-        values.append(row)
-        
-    jobsTable = mainw['jobsTable']
-    jobsTable.update(values = values)
 
 def clickedToSelectMoveDest(query, event):
     # are we looking to select a destination point?
@@ -186,9 +186,9 @@ def clickedToSelectSourceUnits(query, event):
         
     
     
-def mainLoop(program_state):
+def mainLoop_OLD(program_state):
 
-    printEventSpam = False
+    printEventSpam = True
 
     # unpack dict
     world = program_state['world']
@@ -200,9 +200,7 @@ def mainLoop(program_state):
     bindMainWindowKeys(mainw)
     
     banner = mainw['bannerText']
-    
-    
-    
+
     while True:
         (event, values) = mainw.read()
         
@@ -212,7 +210,6 @@ def mainLoop(program_state):
                 print(f"{values[event]=}")
             except:
                 pass
-                
         
         if event == sg.WIN_CLOSED:
             # our main window was closed, exit the program
@@ -276,7 +273,7 @@ def mainLoop(program_state):
             jobs.append(job)
             
             # update the jobs table
-            updateJobsTable(program_state)
+            updateOpsTable(program_state)
             
             # we're no longer setting up the job
             status['settingUpJob'] = None
@@ -510,10 +507,10 @@ def mainLoop(program_state):
                 destIndex = int(destCoords[0])
                 
                 # create job step for the move
-                op = World.Operation(world, sourceName, destName, count, 
+                op = World.Movement(world, sourceName, destName, count, 
                                      sourceIndex, destIndex, reverse = reverse)
                                      
-                step = World.JobStep([op])
+                step = World.Operation([op])
                 step.execute()
                 
                 job = status['settingUpJob']
@@ -1199,8 +1196,30 @@ def updateInventoryTable(world, window):
     
     window['inventoryTable'].update(values = values)
         
+
+def updateOpsTable(program_state):
+    mainw = program_state.mainWindow
+    ops = program_state.ops
+
+    # create table row for each job
+    values = []
+    for op in ops:
+        tracks = op.listAffectedTracks()
+        trackStr = ' '.join(tracks)
+        row = [
+               "",      #op.jobID, 
+               f"{op.writeDefaultInstruction()}"
+               "",      #op.jobName, 
+               '',
+               "",      #op.jobType,
+               '', 
+               trackStr]
+        values.append(row)
+        
+    opsTable = mainw['opsTable']
+    opsTable.update(values = values)
     
-def buildOpsTab(world):
+def buildOpsTab(world:World.WorldState):
     
     layout = []
     
@@ -1208,20 +1227,20 @@ def buildOpsTab(world):
     row = []
     row.append(sg.Table(values = [[]],
                         headings = ["Job ID",
-                                    "Job Name",
+                                    "Description",
                                     "Visible",
                                     "Type",
                                     "Status",
                                     "Tracks"],
-                        col_widths = [20, 30, 10, 10, 10, 50], 
+                        col_widths = [10, 80, 10, 10, 10, 50], 
                         auto_size_columns = False,
                         justification = 'center',
                         background_color = '#333333',
-                        expand_x = False,
+                        expand_x = True,
                         expand_y = True,
                         hide_vertical_scroll = False,
                         font = 'Consolas 10',
-                        k = 'jobsTable',
+                        k = 'opsTable',
                         display_row_numbers = False
                         ))
     layout.append(row)
@@ -1250,7 +1269,8 @@ def buildOpsTab(world):
                   layout,
                   background_color = '#333333',
                   element_justification = 'left',
-                  expand_x = True)
+                  expand_x = True,
+                  k='operationsTab')
     
 def buildInventoryTab(world):
     layout = []
@@ -1555,11 +1575,8 @@ class TrackVisualizer():
                                color = tColor,
                                text_location = sg.TEXT_LOCATION_LEFT,
                                font = "Consolas 11")
-        
-        
-        
-        
-    
+
+
     def __init__(self, world, subyardName, trackName, size):
         if type(subyardName) is not str:
             raise TypeError("Track visualizer: subyardName must be a string")
@@ -1764,7 +1781,7 @@ def buildMainWindow(world, allVisualizers):
                     use_custom_titlebar = False,
                     titlebar_text_color = 'white',
                     titlebar_background_color = 'black',
-                    size = (1400, 800),
+                    size = (1400, 600),
                     location = (0,0)
                     )
     

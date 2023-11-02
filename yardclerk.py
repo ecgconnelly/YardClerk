@@ -31,14 +31,18 @@ import PySimpleGUI as sg
 # PROJECT IMPORTS
 
 import World
+import YCUI
+from ycstate import YCState
+from modes import Modes
 
-import YCUI 
 ################################################################################
 #
 ################################################################################
 # MAIN PROGRAM
 
+
 def main():
+
     # what yard are we working today?
     # TODO: ask which yard to work
     yardName = DEFAULT_YARD
@@ -53,8 +57,6 @@ def main():
     baseWorld = World.WorldState(worldName = 'Base',
                                   yardName = yardName, 
                                   stateFilenames = worldFilenames)
-    
-    
     
     allVisualizers = {}
     
@@ -73,12 +75,6 @@ def main():
     
     # show UI
     
-
-    
-    
-    
-    testOpStack = []
-    
     
     banner = mainw['bannerText']
     
@@ -88,22 +84,43 @@ def main():
               'query' : None,
               'sourceTrack' : None}
     
-    program_state = {"world":baseWorld, 
-                     "mainw":mainw, 
-                     "uiStatus":status,
-                     "nextJobNumber" : nextJobNumber,
-                     "allVisualizers" : allVisualizers,
-                     "jobs" : []}
+    # program_state = {"world":baseWorld, 
+    #                  "mainw":mainw, 
+    #                  "uiStatus":status,
+    #                  "nextJobNumber" : nextJobNumber,
+    #                  "allVisualizers" : allVisualizers,
+    #                  "jobs" : []}
     
-    return YCUI.mainLoop(program_state)
     
+
+    programState = YCState(
+        baseWorld, mainw, Modes.Base, 1, allVisualizers, [], []
+    )
+    
+    printEventSpam = True
+    YCUI.bindMainWindowKeys(mainw)
+
+    while True:
+        (event, values) = mainw.read()
+
+        if printEventSpam == True:
+            print (f"{event=}, {type(event)}")
+            try:
+                print(f"{values[event]=}")
+            except:
+                pass
         
-            
+        if event == sg.WIN_CLOSED:
+            # our main window was closed, exit the program
+            break
+
+        programState.activeMode.HandleEvent(event, values)
+        print(programState.activeMode)
+
+
+    
+    #return YCUI.mainLoop_OLD(program_state)
+    
 
 if __name__ == '__main__':
-    while True:
-        res = main()
-        if res == 'softReset':
-            continue
-        else:
-            break
+    main()

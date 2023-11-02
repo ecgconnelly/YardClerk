@@ -1,5 +1,6 @@
 import collections
 import copy
+from enum import Enum, auto
 import json
 from os import walk
 
@@ -7,6 +8,8 @@ import xmltodict
 
 
 from Train import Train 
+import World
+from RailUnit import RailUnit
 
 
 # WorldState.trains: list of all trains in the world
@@ -207,12 +210,12 @@ class Job():
                  count, sourceIndex, destinationIndex):
         """
         
-        op = Operation(self.world, sourceTrackName, outboundTrackName,
+        op = Movement(self.world, sourceTrackName, outboundTrackName,
                        count, sourceIndex, 0)
         
         op.execute()
         
-        step = JobStep([op])
+        step = Operation([op])
         
         # put the step we just created into the Job we're working on
         self.steps.append(step)
@@ -243,65 +246,75 @@ class Job():
         
         
             
-    def addHumpStep(self, trackName):
-        # hump the rightmost unit on selected track
-        # iterate one by one until track is empty
-        # create undo stack for each humped unit
-        ops = []
-        while True:
-        # what is that unit??
-            sourceTrackObj = self.world.getTrackObject(trackName)
-            units = sourceTrackObj.units
-            uCount = len(units)
-            if uCount == 0:
-                break # stop humping, we have no cars
-            humpUnit = units[uCount-1]
-            if humpUnit.isLoco():
-                break # don't hump engines
-            tag = humpUnit.destinationTag
-            
-            source = trackName
-            sourceIndex = uCount - 1
-            count = 1
-            destIndex = 0
-            dest = self.world.getHumpTrack(tag)
-            
-            op = Operation(self.world, source, dest,
-                           count, sourceIndex, destIndex)
-                                 
-            op.execute()
-            
-            ops.append(op)
-        
-        # done humping, put all those operations into a JobStep
-        step = JobStep(operations = ops)
-        
-        # put the step we just created into the Job we're working on
-        self.steps.append(step)
-        
-        # show the results
-        self.world.redrawAllVisualizers()
+
+class Operation():
+    """
+    Object representing a group of Movements to be accomplished together.
+    """
+    class OperationTypes(Enum):
+        BasicSwitch = auto()
+        Hump = auto()
+        Inbound = auto()
+        Outbound = auto()
 
 
-class JobStep():
-    """
-    Object representing a group of Operations to be accomplished together.
-    """
+    def __init__(self, movements, operationType = None):
+        self.movements = movements
+        self.type = operationType
     
-    def __init__(self, operations):
-        self.operations = operations
-    
-    
+    def writeDefaultInstruction(self):
+        moves = self.movements
+
+        if self.type == self.OperationTypes.BasicSwitch:
+            if len(moves) != 1:
+                return(f"BUG: This operation should have 1 move, not {len(moves)}")
+            mv:World.Movement = moves[0]
+
+            pull = mv.pullInstruction
+            spot = mv.spotInstruction
+
+            return f"{pull}; {spot}"
+        
+        elif self.type == self.OperationTypes.Hump:
+            mv:World.Movement = moves[0]
+            return f"Hump {mv.sourceTrackName}"
+
+        elif self.type is None:
+            return("BUG: This job doesn't have a type")
+        
+        else:
+            return(f"BUG: I don't know how to write instructions for operation type {self.type}")
+
+
     def execute(self):
-        for op in self.operations:
+        for op in self.movements:
             op.execute()
     
     def undo(self):
-        for op in reversed(self.operations):
+        for op in reversed(self.movements):
             op.execute(undo = True)
+
+    def listAffectedTracks(self):
+        """
+        Returns a list of all tracks affected by this Job.
+        """
+
+        # iterate over all operations in this job
+        # list all tracks that appear as a source or destination
+        tracks = []
+        
+        for move in self.movements:
+            s = move.sourceTrackName
+            d = move.destinationTrackName
+            if not (s in tracks):
+                tracks.append(s)
+            if not (d in tracks):
+                tracks.append(d)
+                    
+        return tracks
         
 
-class Operation():
+class Movement():
     """
     Object to represent moving a single block of cars from one track to another.
     
@@ -314,9 +327,9 @@ class Operation():
         # pulls #count cars from source track, starting at sourceIndex,
         # and inserts to destination track at destinationIndex
         self.world = world
-        self.sourceTrack = world.getTrackObject(sourceTrackName)
+        self.sourceTrack:Track = world.getTrackObject(sourceTrackName)
         self.sourceTrackName = sourceTrackName
-        self.destinationTrack = world.getTrackObject(destinationTrackName)
+        self.destinationTrack:Track = world.getTrackObject(destinationTrackName)
         self.destinationTrackName = destinationTrackName
         self.count = count
         self.sourceIndex = sourceIndex
@@ -363,6 +376,16 @@ class Operation():
         # update the destination track
         destinationTrack.units = destLeft + movedUnits + destRight
 
+        leftMovedUnit:RailUnit = movedUnits[0]
+        rightMovedUnit:RailUnit = movedUnits[-1]
+
+        pi = f"Pull {self.count} from {self.sourceTrackName}: "
+        pi +=f"{leftMovedUnit.initials} {leftMovedUnit.unitNumber} - "
+        pi +=f"{rightMovedUnit.initials} {rightMovedUnit.unitNumber}"
+        self.pullInstruction = pi
+
+        si = f"Spot on {self.destinationTrackName}"
+        self.spotInstruction = si
 
     
 
@@ -402,7 +425,8 @@ class WorldState():
         # this depends on trackGroups, trains, units, yardSettings
         self.buildTrackObjects()
     
-
+ 
+        
     def isUnitCustomerOrder(self, unit):
         if not unit.isLoco():
                 # this is a car
@@ -649,7 +673,7 @@ class WorldState():
             
             try:
                 trainLoaders = fdict['ScnLoader']['trainList']['TrainLoader']
-            except KeyError:
+            except (KeyError, TypeError):
                 return [] # there are no trains in this file, return empty list
             # there may be one or multiple trains per file
             # if there is one train, trainLoaders is an OrderedDict
