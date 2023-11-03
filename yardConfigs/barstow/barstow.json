@@ -86,9 +86,9 @@
         },
         "Bowl":{
             "B1":{"length":1650, "visTag":"SLUFF"},
-            "B2":{"length":1760, "visTag":"CAJON"},
-            "B3":{"length":1870, "visTag":"HESPERIA"},
-            "B4":{"length":1975, "visTag":"THORN"},
+            "B2":{"length":1760, "visTag":"CAJON - 0102"},
+            "B3":{"length":1870, "visTag":"HESPERIA - 0101"},
+            "B4":{"length":1975, "visTag":"THORN - 0041"},
             "B5":{"length":2085, "visTag":"SAN BERNARDINO"},
             "B6":{"length":2195, "visTag":"PORPHYRY"},
             "B7":{"length":2300, "visTag":"OVERFLOW"},
