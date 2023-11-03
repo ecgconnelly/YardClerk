@@ -112,15 +112,14 @@
             "B25":{"length":2630, "visTag":"CADIZ"},
             "B26":{"length":2630, "visTag":"PHOENIX"}
         },
-        "North Departure":{
+        "Departure":{
             "ND1":{"length":8000},
             "ND2":{"length":7680},
             "ND3":{"length":7445},
             "ND4":{"length":7155},
             "ND5":{"length":6860},
-            "ND6":{"length":6860}
-        },
-        "South Departure":{
+            "ND6":{"length":6860},
+
             "SD1":{"length":6700},
             "SD2":{"length":6400},
             "SD3":{"length":6115},
