@@ -14,6 +14,7 @@ class BaseMode():
             '<KeyPress-i>' : self.inboundTrain,
             '<KeyPress-s>' : self.createSwitchMove,
             '<KeyPress-h>' : self.humpFullTrack,
+            '<KeyPress-BackSpace>' : self.cancelTopOperation
             }
         self.registerMode('base')
 
@@ -24,6 +25,17 @@ class BaseMode():
     #def RestartProgram(self):
     #    print("night night")
     #    raise RuntimeError("HardReset")
+
+    def cancelTopOperation(self):
+        programState:ycstate.YCState = self.programState
+        topOp:ycstate.World.Operation = programState.ops[-1]
+
+        topOp.undo()
+        programState.ops.remove(topOp)
+        programState.world.redrawAllVisualizers()
+        YCUI.updateOpsTable(programState)
+        programState.setBanner(f"CANCELLED: {topOp.writeDefaultInstruction()}")
+
 
     def humpFullTrack(self):
         programState = self.programState
