@@ -113,6 +113,8 @@ class HumpMode(switchmode.SwitchMode):
             txt = f"Hump {trackName} - OVERFLOW {' ,'.join(overs)}"
             self.programState.setBanner(txt)
 
+        self.programState.setMode('base')
+
     def confirmMove(self, confirmed:bool):
         # handles the user response to asking whether to move cars or not
         # which tracks?
