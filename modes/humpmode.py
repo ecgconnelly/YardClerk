@@ -320,8 +320,8 @@ class HumpMode(switchmode.SwitchMode):
     def selectBaseMode(self):
         self.programState.setMode('base')
     
-    def focusOnJob(self, jobToFocus:World.Job):
-        self.settingUpJob = jobToFocus
+    # def focusOnJob(self, jobToFocus:World.Job):
+    #     self.settingUpJob = jobToFocus
 
     def activate(self, programState):
         self.programState = programState

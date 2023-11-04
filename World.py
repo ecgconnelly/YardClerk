@@ -137,112 +137,112 @@ class Track():
             for vis in self.visualizers:
                 vis.redraw()
 
-class Job():
-    def __init__(self, world, jobID, jobName, jobType, jobNotes = None):
-        self.world = world
-        self.steps = [] # start with empty job
-        self.jobID = jobID
-        self.jobName = jobName
-        self.jobType = jobType
+# class Job():
+#     def __init__(self, world, jobID, jobName, jobType, jobNotes = None):
+#         self.world = world
+#         self.steps = [] # start with empty job
+#         self.jobID = jobID
+#         self.jobName = jobName
+#         self.jobType = jobType
         
-        if jobNotes is None:
-            self.jobNotes = ''
-        else:
-            self.jobNotes = jobNotes
+#         if jobNotes is None:
+#             self.jobNotes = ''
+#         else:
+#             self.jobNotes = jobNotes
         
-    def listAffectedTracks(self):
-        """
-        Returns a list of all tracks affected by this Job.
-        """
+#     def listAffectedTracks(self):
+#         """
+#         Returns a list of all tracks affected by this Job.
+#         """
 
-        # iterate over all operations in this job
-        # list all tracks that appear as a source or destination
-        tracks = []
+#         # iterate over all operations in this job
+#         # list all tracks that appear as a source or destination
+#         tracks = []
         
-        for step in self.steps:
-            for op in step.operations:
-                s = op.sourceTrackName
-                d = op.destinationTrackName
-                if not (s in tracks):
-                    tracks.append(s)
-                if not (d in tracks):
-                    tracks.append(d)
+#         for step in self.steps:
+#             for op in step.operations:
+#                 s = op.sourceTrackName
+#                 d = op.destinationTrackName
+#                 if not (s in tracks):
+#                     tracks.append(s)
+#                 if not (d in tracks):
+#                     tracks.append(d)
                     
-        return tracks
+#         return tracks
         
         
-    def execute(self):
-        for step in self.steps:
-            step.execute()
+#     def execute(self):
+#         for step in self.steps:
+#             step.execute()
     
-    def undo(self):
-        for step in reversed(self.steps):
-            step.undo()
+#     def undo(self):
+#         for step in reversed(self.steps):
+#             step.undo()
         
-        self.world.redrawAllVisualizers()
+#         self.world.redrawAllVisualizers()
             
-    def undoLast(self):
-        lastStep = self.steps[-1]
-        lastStep.undo()
-        self.steps.remove(lastStep)
-        self.world.redrawAllVisualizers()
+#     def undoLast(self):
+#         lastStep = self.steps[-1]
+#         lastStep.undo()
+#         self.steps.remove(lastStep)
+#         self.world.redrawAllVisualizers()
     
-    def addInboundStep(self, destTrackName, destIndex, unitList):
-        pass
+#     def addInboundStep(self, destTrackName, destIndex, unitList):
+#         pass
         
-    def addOutboundStep(self, sourceTrackName, sourceIndex, count):
-        """
-        Adds a step to outbound units from a track.
-        Creates the dummy outbound track if necessary.
-        """
+#     def addOutboundStep(self, sourceTrackName, sourceIndex, count):
+#         """
+#         Adds a step to outbound units from a track.
+#         Creates the dummy outbound track if necessary.
+#         """
         
-        outboundTrackName = f'outbound{self.jobID}'
+#         outboundTrackName = f'outbound{self.jobID}'
         
-        # does the outbound track already exist in the world?
-        # if not, create it
-        outboundTrackObj = self.world.getTrackObject(outboundTrackName)
-        if outboundTrackObj is None:
-            self.createOutboundTrack()
+#         # does the outbound track already exist in the world?
+#         # if not, create it
+#         outboundTrackObj = self.world.getTrackObject(outboundTrackName)
+#         if outboundTrackObj is None:
+#             self.createOutboundTrack()
             
-        """
-        Operation():
-        def __init__(self, world, sourceTrackName, destinationTrackName, 
-                 count, sourceIndex, destinationIndex):
-        """
+#         """
+#         Operation():
+#         def __init__(self, world, sourceTrackName, destinationTrackName, 
+#                  count, sourceIndex, destinationIndex):
+#         """
         
-        op = Movement(self.world, sourceTrackName, outboundTrackName,
-                       count, sourceIndex, 0)
+#         op = Movement(self.world, sourceTrackName, outboundTrackName,
+#                        count, sourceIndex, 0)
         
-        op.execute()
+#         op.execute()
         
-        step = Operation([op])
+#         step = Operation([op])
         
-        # put the step we just created into the Job we're working on
-        self.steps.append(step)
+#         # put the step we just created into the Job we're working on
+#         self.steps.append(step)
         
-        # show the results
-        self.world.redrawAllVisualizers()
+#         # show the results
+#         self.world.redrawAllVisualizers()
         
         
         
-    def createOutboundTrack(self):
-        # creates a dummy track to hold cars outbounded by this job
-        # doing this rather than simply deleting the units makes
-        # the outbounding step reversible
+#     def createOutboundTrack(self):
+#         # creates a dummy track to hold cars outbounded by this job
+#         # doing this rather than simply deleting the units makes
+#         # the outbounding step reversible
         
-        outboundTrackName = f'outbound{self.jobID}'
+#         outboundTrackName = f'outbound{self.jobID}'
                
-        trackObjects = self.world.trackObjects
+#         trackObjects = self.world.trackObjects
         
-        """
-        Track():
-        def __init__(self, world, subyardName, trackName, units = [],
-                     length = 0, status = None):
-        """
+#         """
+#         Track():
+#         def __init__(self, world, subyardName, trackName, units = [],
+#                      length = 0, status = None):
+#         """
         
-        newTrack = Track(self.world, 'Outbounds', outboundTrackName)
+#         newTrack = Track(self.world, 'Outbounds', outboundTrackName)
         
-        trackObjects[outboundTrackName] = newTrack
+#         trackObjects[outboundTrackName] = newTrack
         
         
             
@@ -318,7 +318,7 @@ class Movement():
     """
     Object to represent moving a single block of cars from one track to another.
     
-    A job is made up of multiple operations.
+    An operation is made up of one or more movements.
     """
     
     def __init__(self, world, sourceTrackName, destinationTrackName, 
