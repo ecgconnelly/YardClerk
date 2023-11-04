@@ -123,7 +123,7 @@ class RailUnit():
         
     def trackGroupsForTruck(self, groupDef, truckIndex):
         truck = self.truckInfo(truckIndex)
-        key = trucks[truckIndex]['trackKey']
+        key = truck['trackKey']
         
         occupiedGroups = []
         for g in groupDef:
