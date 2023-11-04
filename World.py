@@ -379,6 +379,10 @@ class Movement():
         leftMovedUnit:RailUnit = movedUnits[0]
         rightMovedUnit:RailUnit = movedUnits[-1]
 
+        u:World.RailUnit
+        for u in movedUnits:
+            u.plannedTrack = destinationTrack
+
         pi = f"Pull {self.count} from {self.sourceTrackName}: "
         pi +=f"{leftMovedUnit.initials} {leftMovedUnit.unitNumber} - "
         pi +=f"{rightMovedUnit.initials} {rightMovedUnit.unitNumber}"

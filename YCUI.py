@@ -817,7 +817,13 @@ def buildInventoryFilterFrame(world):
                                   default = False,
                                   key = 'inventoryFilterIncludesLocos',
                                   enable_events = True,
-                                  background_color = '#333333'))                     
+                                  background_color = '#333333')) 
+
+    row.append(sg.Checkbox('Planned positions?',
+                                default = False,
+                                key = 'inventoryByPlannedPositions',
+                                enable_events = True,
+                                background_color = '#333333'))                     
 
     filterLayout.append(row)
     
@@ -934,6 +940,7 @@ def updateInventoryFindTable(world, window, selectedRows):
     includeLocos = window['inventoryFilterIncludesLocos'].get() 
     includeCars = window['inventoryFilterIncludesCars'].get() 
     trackFilterEnable = window['inventoryFilterTrackFilterEnable'].get()
+    usePlannedPositions = window['inventoryByPlannedPositions'].get()
     
     if trackFilterEnable:
         trackFilterTokens = window['inventoryFilterTracks'].get().split()
@@ -949,7 +956,8 @@ def updateInventoryFindTable(world, window, selectedRows):
             'weight':0,
             'loads':0,
             'empties':0}
-
+    
+    unit:World.RailUnit
     for unit in world.units:
         # first, ignore all the stuff we're filtering out
         if unit.isLoco() and includeLocos == False:
@@ -1005,7 +1013,11 @@ def updateInventoryFindTable(world, window, selectedRows):
         try:
             # track by location from save file
             # TODO: add option to find by planned location
-            utrack = unit.trackGroupsForUnit(world.trackGroups)[0]
+            if usePlannedPositions and unit.plannedTrack is not None:
+                utrack = unit.plannedTrack.trackName
+            else:
+                # track by "physically verified" location from save file
+                utrack = unit.trackGroupsForUnit(world.trackGroups)[0]
         except IndexError:
             utrack = '<< ???? >>'
             
@@ -1106,6 +1118,7 @@ def updateInventoryTable(world, window):
             'empties':0,
             'engines':0}
 
+    unit:World.RailUnit
     for unit in world.units:
         # first, ignore all the stuff we're filtering out
         if unit.isLoco() and includeLocos == False:
@@ -1117,7 +1130,13 @@ def updateInventoryTable(world, window):
         if trackFilterEnable:
             trackOK = False
             # where is this unit?
-            onGroups = unit.trackGroupsForUnit(world.trackGroups)
+            usePlannedPositions = window['inventoryByPlannedPositions'].get()
+
+            if usePlannedPositions and unit.plannedTrack is not None:
+                onGroups = [unit.plannedTrack.trackName]
+            else:
+                onGroups = unit.trackGroupsForUnit(world.trackGroups)
+
             for g in onGroups:
                 for tok in trackFilterTokens:
                     if '*' in tok:

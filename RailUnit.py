@@ -76,6 +76,8 @@ class RailUnit():
         self.destinationTag = unitXML['destinationTag']
         self.unitNumber = int(unitXML['unitNumber'])
         self.hazmatPlacardIndex = int(unitXML['hazmatPlacardIndex'])
+
+        self.plannedTrack = None
         
     def isHazmat(self):
         if self.hazmatPlacardIndex != 0:
