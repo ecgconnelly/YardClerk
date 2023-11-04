@@ -129,6 +129,7 @@ class SwitchMode(basemode.BaseMode):
             op.execute()
 
             self.programState.ops.append(op)
+
             YCUI.updateOpsTable(self.programState)
             
             # job = self.settingUpJob
@@ -162,6 +163,7 @@ class SwitchMode(basemode.BaseMode):
             self.programState.setBanner("Move cancelled")
 
         self.currentState = None
+        YCUI.updateInventoryTable(self.programState.world, self.programState.mainWindow)
         self.programState.setMode('base')
 
     def startSwitchMove(self):
@@ -311,8 +313,8 @@ class SwitchMode(basemode.BaseMode):
     def selectBaseMode(self):
         self.programState.setMode('base')
     
-    def focusOnJob(self, jobToFocus:World.Job):
-        self.settingUpJob = jobToFocus
+    # def focusOnJob(self, jobToFocus:World.Job):
+    #     self.settingUpJob = jobToFocus
 
     def activate(self, programState):
         self.programState = programState

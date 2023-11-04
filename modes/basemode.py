@@ -6,6 +6,14 @@ class BaseMode():
     
     allModes = {}
 
+    UPDATE_INVENTORY_TABLE = ['inventoryFilterOnlyHump',
+                          'inventoryFilterIncludesLocos',
+                          'inventoryFilterIncludesCars',
+                          'inventoryFilterApplyTrackFilter',
+                          'inventoryFilterClearTrackFilter']
+
+    UPDATE_INVENTORY_FINDER_TABLE = ['inventoryFilterFinderTableButton']
+
     def __init__(self):
         self.keyCommands = {
             #'<Control-KeyPress-R>' : self.RestartProgram,
@@ -14,7 +22,7 @@ class BaseMode():
             '<KeyPress-i>' : self.inboundTrain,
             '<KeyPress-s>' : self.createSwitchMove,
             '<KeyPress-h>' : self.humpFullTrack,
-            '<KeyPress-BackSpace>' : self.cancelTopOperation
+            '<Control-KeyPress-BackSpace>' : self.cancelTopOperation
             }
         self.registerMode('base')
 
@@ -79,14 +87,25 @@ class BaseMode():
 
 
     def HandleEvent(self, event, values):
+        world = self.programState.world
+        mainw = self.programState.mainWindow
+
         if event in self.keyCommands:
             handler = self.keyCommands[event]
             handler()
 
-        if 'subyardVis' in event:
+        elif 'subyardVis' in event:
             # handler = self.handleVisualizerClick(event, values)
             # what was that?!
             self.handleVisualizerClick(event, values)
+
+        if event in self.UPDATE_INVENTORY_TABLE:
+            YCUI.updateInventoryTable(world, mainw)
+            
+        if event in self.UPDATE_INVENTORY_FINDER_TABLE:
+            YCUI.updateInventoryFindTable(world, 
+                                      mainw,
+                                      values['inventoryTable'])
 
     def handleVisualizerClick(self, event, values):
         # base functionality: show infobox for the clicked unit
