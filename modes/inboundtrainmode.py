@@ -358,10 +358,10 @@ class InboundTrainMode(switchmode.SwitchMode):
         
         # check whether we already have a dummy track for inbounds on this job
         leadUnit:World.RailUnit = inboundUnits[0]
-        leadUnitStr = f'{leadUnit.initials}{leadUnit.unitNumber}'
+        leadUnitStr = f'{leadUnit.initials}{leadUnit.unitNumber}-{leadUnit.destinationTag}'
 
 
-        dummyTrackName = f'inbound-{leadUnitStr}'
+        dummyTrackName = f'dummy-inbound-{leadUnitStr}'
         dummyTrackObj = world.getTrackObject(dummyTrackName)
         if dummyTrackObj is None:
             dummyTrackObj = World.Track(world, 'inbounds', dummyTrackName)
@@ -369,6 +369,7 @@ class InboundTrainMode(switchmode.SwitchMode):
                         
         # add the inbound units to the dummy track
         dummyTrackObj.units += inboundUnits
+        world.units += inboundUnits
         
         # where should the units go?
         dummyTrackObj.pointers = []
