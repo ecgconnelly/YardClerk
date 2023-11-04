@@ -1087,7 +1087,7 @@ def updateInventoryTable(world, window):
     # inventory table headings:
     # headings = ['TAG', 'COUNT', 'LENGTH', 'WEIGHT', '# LDS', '# MTS', '# ENG']
     
-    tags = {}
+    foundTags = {}
     humpOnly = window['inventoryFilterOnlyHump'].get()
     includeLocos = window['inventoryFilterIncludesLocos'].get() 
     includeCars = window['inventoryFilterIncludesCars'].get() 
@@ -1144,15 +1144,15 @@ def updateInventoryTable(world, window):
             if dtag == "None":
                 dtag = "<< Tagged 'None' >>"
                 
-        if dtag not in tags:
-            tags[dtag] = {'count':0,
+        if dtag not in foundTags:
+            foundTags[dtag] = {'count':0,
                             'length':0,
                             'weight':0,
                             'loads':0,
                             'empties':0,
                             'engines':0}
         
-        tag = tags[dtag]
+        tag = foundTags[dtag]
         tag['count'] += 1
         tag['length'] += unit.lengthFt
         tag['weight'] += unit.totalWeight()
@@ -1170,14 +1170,14 @@ def updateInventoryTable(world, window):
     
     
     values = []
-    for tag in tags:
+    for tag in foundTags:
         row = [tag,
-               tags[tag]['count'], 
-               round(tags[tag]['length']), 
-               round(tags[tag]['weight']),
-               tags[tag]['loads'],
-               tags[tag]['empties'],
-               tags[tag]['engines']
+               foundTags[tag]['count'], 
+               round(foundTags[tag]['length']), 
+               round(foundTags[tag]['weight']),
+               foundTags[tag]['loads'],
+               foundTags[tag]['empties'],
+               foundTags[tag]['engines']
                ]
         values.append(row)
     
