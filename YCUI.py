@@ -185,7 +185,7 @@ def clickedToSelectSourceUnits(query, event):
     return False
         
     
-    
+# this is dead code, remove it when we're done reimplementing it
 def mainLoop_OLD(program_state):
 
     printEventSpam = True
@@ -1003,6 +1003,8 @@ def updateInventoryFindTable(world, window, selectedRows):
             continue
         
         try:
+            # track by location from save file
+            # TODO: add option to find by planned location
             utrack = unit.trackGroupsForUnit(world.trackGroups)[0]
         except IndexError:
             utrack = '<< ???? >>'
